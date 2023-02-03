@@ -30,7 +30,8 @@ public class FightStageManager : MonoBehaviour
         {
             for (int i = 0; i < PersistentInputHolder.Instance.GetInputs().Length; i++)
             {
-                //GameObject newfigther = Instantiate(fighterList[PersistentInputHolder.Instance.GetInputs()[i]], spawnPos[i].position, Quaternion.identity);
+                GameObject newfigther = Instantiate(fighterList[PersistentInputHolder.Instance.GetInputs()[i]], spawnPos[i].position, Quaternion.identity);
+                newfigther.GetComponent<FighterCore>().SetPlayerNum(i + 1);
 
                 foreach (MenuFighterActions menuFighter in PersistentInputHolder.Instance.MenuFighters)
                 {
@@ -39,7 +40,6 @@ public class FightStageManager : MonoBehaviour
                         menuFighter.transform.position = spawnPos[i].position;
                         menuFighter.GetAttachedActions().SwitchCurrentActionMap("Base");
                         Debug.Log(menuFighter.GetAttachedActions().currentActionMap.name);
-                        //menuFighter.SetChildObj(newfigther);
                     }
                 }
 

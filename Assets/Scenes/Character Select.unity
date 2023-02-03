@@ -645,7 +645,7 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 6532476729787528711, guid: 8a76933b0d00d814ba4ffe03eb642554,
       type: 3}
-  m_PlayerPrefab: {fileID: 6821633093860895009, guid: db0a989b700caa14faad2345f2baa998,
+  m_PlayerPrefab: {fileID: 6821633093860895009, guid: 9a31eaea75b9cad41988a9b39d1a6fc6,
     type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0

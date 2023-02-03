@@ -60,6 +60,9 @@ public class PersistentInputHolder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (GetComponent<PlayerInputManager>().playerCount >= GetComponent<PlayerInputManager>().maxPlayerCount)
+        {
+            GetComponent<PlayerInputManager>().joinBehavior = PlayerJoinBehavior.JoinPlayersManually;
+        }
     }
 }

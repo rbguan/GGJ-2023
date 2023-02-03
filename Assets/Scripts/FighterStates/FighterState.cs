@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 public class FighterState : MonoBehaviour
 {
     public FighterStates fighterState;
@@ -21,7 +21,15 @@ public class FighterState : MonoBehaviour
         return fighterState;
     }
 
+    public virtual void BlockInput(InputAction blockCTX)
+    {
 
+    }
+
+    public virtual void JumpInput(InputAction jumpCTX)
+    {
+
+    }
     public virtual void FallThroughPlatformInput()
     {
 

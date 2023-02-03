@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 public class DefaultState : FighterState
 {
 
@@ -13,30 +13,44 @@ public class DefaultState : FighterState
     public float JumpSpeed = 1f;
     public Vector3 Gravity = new Vector3(0f, -0.5f, 0f);
 
+
+    InputAction jumpCTX;
+    InputAction blockCTX;
+
     bool jumpActive = false;
     bool blockActive = false;
     // Update is called once per frame
     public override void FighterStateUpdate(float axisValue)
     {
-        if (fighterActions == null)
-            return;
 
         base.FighterStateUpdate(axisValue);
 
-        if (fighterActions.Base.Jump.WasPerformedThisFrame())
-            jumpActive = true;
+        if (jumpCTX != null)
+        {
+            if (jumpCTX.WasPerformedThisFrame())
+                jumpActive = true;
 
-        if (fighterActions.Base.Block.WasPerformedThisFrame())
-            blockActive = true;
+            if (jumpActive && jumpCTX.IsPressed())
+            {
+                Debug.Log("JUMP BEING HELD");
+            }
+        }
 
+        if (blockCTX != null)
+        {
+            if (blockActive && blockCTX.IsPressed())
+            {
+                Debug.Log("BLOCK BEING HELD");
+            }
+
+            if (blockCTX.WasPerformedThisFrame())
+                blockActive = true;
+        }
         Vector2 _frameForce = new Vector2(axisValue, 0f);
 
         HandleInputs(ref _frameForce);
 
-        if (jumpActive && fighterActions.Base.Jump.IsPressed())
-        {
-            Debug.Log("JUMP BEING HELD");
-        }
+       
         // transform.position += new Vector3(_frameForce.x, _frameForce.y, 0f) * Time.deltaTime;
         // transform.position += Gravity * Time.deltaTime;
         _rb.AddForce(_frameForce);
@@ -44,10 +58,7 @@ public class DefaultState : FighterState
 
       
 
-        if (blockActive && fighterActions.Base.Block.IsPressed())
-        {
-            Debug.Log("BLOCK BEING HELD");
-        }
+       
     }
 
     void HandleInputs(ref Vector2 currentVelocity)
@@ -55,7 +66,15 @@ public class DefaultState : FighterState
         currentVelocity += new Vector2(HorizontalSpeed * currentVelocity.x, 0f);
     }
 
+    public override void BlockInput(InputAction blockCTX)
+    {
+        this.blockCTX = blockCTX;
+    }
 
+    public override void JumpInput(InputAction jumpCTX)
+    {
+        this.jumpCTX = jumpCTX;
+    }
     public override void FallThroughPlatformInput()
     {
         base.FallThroughPlatformInput();
