@@ -1,0 +1,269 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6821633093860895009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6821633093860895011}
+  - component: {fileID: 6821633093860895010}
+  - component: {fileID: -8381943267821480215}
+  - component: {fileID: -3640188685179484675}
+  m_Layer: 0
+  m_Name: PlayerEventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6821633093860895011
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6821633093860895009}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 237.78073, y: 182.45937, z: -4.7434874}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6821633093860895010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6821633093860895009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 8a76933b0d00d814ba4ffe03eb642554,
+    type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -8381943267821480215}
+        m_TargetAssemblyTypeName: MenuFighterActions, Assembly-CSharp
+        m_MethodName: ChangeCharacter
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 38d7db63-3171-4350-903d-05496a3dc091
+    m_ActionName: Menu/ChangeCharacter[/Keyboard/leftArrow,/Keyboard/rightArrow,/DualShock4GamepadHID/dpad/left,/DualShock4GamepadHID1/dpad/left,/DualShock4GamepadHID2/dpad/left,/DualShock4GamepadHID3/dpad/left,/DualSenseGamepadHID/dpad/left,/DualShock4GamepadHID/dpad/right,/DualShock4GamepadHID1/dpad/right,/DualShock4GamepadHID2/dpad/right,/DualShock4GamepadHID3/dpad/right,/DualSenseGamepadHID/dpad/right]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -8381943267821480215}
+        m_TargetAssemblyTypeName: MenuFighterActions, Assembly-CSharp
+        m_MethodName: SelectAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 745368fb-21e3-4d88-9733-be9cfab14c35
+    m_ActionName: Menu/SelectCharacter[/Keyboard/enter,/DualShock4GamepadHID/buttonSouth,/DualShock4GamepadHID1/buttonSouth,/DualShock4GamepadHID2/buttonSouth,/DualShock4GamepadHID3/buttonSouth,/DualSenseGamepadHID/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -8381943267821480215}
+        m_TargetAssemblyTypeName: MenuFighterActions, Assembly-CSharp
+        m_MethodName: DeselectCharacter
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 114afdd5-e126-4e9f-99e7-6d963faa7515
+    m_ActionName: Menu/DeselectCharacter[/Keyboard/backspace,/DualShock4GamepadHID/dpad/right,/DualShock4GamepadHID1/dpad/right,/DualShock4GamepadHID2/dpad/right,/DualShock4GamepadHID3/dpad/right,/DualSenseGamepadHID/dpad/right]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -3640188685179484675}
+        m_TargetAssemblyTypeName: BaseMapInputReciever, Assembly-CSharp
+        m_MethodName: JumpInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 99be9611-49e6-4004-95b3-c2b75047b6cf
+    m_ActionName: Base/Jump[/Keyboard/upArrow,/DualShock4GamepadHID/buttonSouth,/DualShock4GamepadHID1/buttonSouth,/DualShock4GamepadHID2/buttonSouth,/DualShock4GamepadHID3/buttonSouth,/DualSenseGamepadHID/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -3640188685179484675}
+        m_TargetAssemblyTypeName: BaseMapInputReciever, Assembly-CSharp
+        m_MethodName: MovementInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f48661ef-21e0-45c0-904d-57407a3f7958
+    m_ActionName: Base/Movement[/DualShock4GamepadHID/dpad/left,/DualShock4GamepadHID1/dpad/left,/DualShock4GamepadHID2/dpad/left,/DualShock4GamepadHID3/dpad/left,/DualSenseGamepadHID/dpad/left,/DualShock4GamepadHID/dpad/right,/DualShock4GamepadHID1/dpad/right,/DualShock4GamepadHID2/dpad/right,/DualShock4GamepadHID3/dpad/right,/DualSenseGamepadHID/dpad/right,/Keyboard/leftArrow,/Keyboard/rightArrow,/DualShock4GamepadHID/leftStick/left,/DualShock4GamepadHID1/leftStick/left,/DualShock4GamepadHID2/leftStick/left,/DualShock4GamepadHID3/leftStick/left,/DualSenseGamepadHID/leftStick/left,/DualShock4GamepadHID/leftStick/right,/DualShock4GamepadHID1/leftStick/right,/DualShock4GamepadHID2/leftStick/right,/DualShock4GamepadHID3/leftStick/right,/DualSenseGamepadHID/leftStick/right]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -3640188685179484675}
+        m_TargetAssemblyTypeName: BaseMapInputReciever, Assembly-CSharp
+        m_MethodName: BasicAttackInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 03ad4191-bf0a-445f-a0b7-96bcac2b4bc2
+    m_ActionName: Base/BasicAttack[/DualShock4GamepadHID/buttonWest,/DualShock4GamepadHID1/buttonWest,/DualShock4GamepadHID2/buttonWest,/DualShock4GamepadHID3/buttonWest,/DualSenseGamepadHID/buttonWest]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -3640188685179484675}
+        m_TargetAssemblyTypeName: BaseMapInputReciever, Assembly-CSharp
+        m_MethodName: DodgeLeftInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: eba92155-4f59-412b-a47f-ea3e67771455
+    m_ActionName: Base/DodgeLeft[/Keyboard/leftArrow,/DualShock4GamepadHID/dpad/left,/DualShock4GamepadHID1/dpad/left,/DualShock4GamepadHID2/dpad/left,/DualShock4GamepadHID3/dpad/left,/DualSenseGamepadHID/dpad/left]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -3640188685179484675}
+        m_TargetAssemblyTypeName: BaseMapInputReciever, Assembly-CSharp
+        m_MethodName: DodgeRightInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 2119e003-1d2f-4d67-9188-65bc6581bfa5
+    m_ActionName: Base/DodgeRight[/Keyboard/rightArrow,/DualShock4GamepadHID/dpad/right,/DualShock4GamepadHID1/dpad/right,/DualShock4GamepadHID2/dpad/right,/DualShock4GamepadHID3/dpad/right,/DualSenseGamepadHID/dpad/right]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -3640188685179484675}
+        m_TargetAssemblyTypeName: BaseMapInputReciever, Assembly-CSharp
+        m_MethodName: DropDownInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 69e64bbe-293f-4841-afb2-456aea6db0eb
+    m_ActionName: Base/FallThroughPlatform[/Keyboard/downArrow,/DualShock4GamepadHID/dpad/down,/DualShock4GamepadHID1/dpad/down,/DualShock4GamepadHID2/dpad/down,/DualShock4GamepadHID3/dpad/down,/DualSenseGamepadHID/dpad/down]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -3640188685179484675}
+        m_TargetAssemblyTypeName: BaseMapInputReciever, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 62076a0d-26eb-4caa-a071-4d2b9658e5da
+    m_ActionName: Base/SpecialAttack[/DualShock4GamepadHID/buttonNorth,/DualShock4GamepadHID1/buttonNorth,/DualShock4GamepadHID2/buttonNorth,/DualShock4GamepadHID3/buttonNorth,/DualSenseGamepadHID/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -3640188685179484675}
+        m_TargetAssemblyTypeName: BaseMapInputReciever, Assembly-CSharp
+        m_MethodName: BlockInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c06dd848-7078-4ca7-8a80-d111add4943a
+    m_ActionName: Base/Block[/Keyboard/downArrow,/DualShock4GamepadHID/dpad/down,/DualShock4GamepadHID1/dpad/down,/DualShock4GamepadHID2/dpad/down,/DualShock4GamepadHID3/dpad/down,/DualSenseGamepadHID/dpad/down]
+  m_NeverAutoSwitchControlSchemes: 1
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Menu
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &-8381943267821480215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6821633093860895009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84d68deefe3e5a4488377b1613b5de56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNum: 0
+--- !u!114 &-3640188685179484675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6821633093860895009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31c1dc4ccaf62a94e8a47ad1074c979a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuActions: {fileID: -8381943267821480215}

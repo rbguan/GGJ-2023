@@ -6,9 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MultiplayerTitleTest.unity
-    guid: 7f584175fb01b6141978cfa3f0765e56
+    path: Assets/Scenes/Character Select.unity
+    guid: c954a661ca1bd39488b4deddb41e9f62
   - enabled: 1
     path: Assets/Scenes/SeanScene2.unity
     guid: 39ed89be7b5b08c4e9bfa5a4f0e446a6
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 819d847d408725546ba274eb1deffb02,
+      type: 2}

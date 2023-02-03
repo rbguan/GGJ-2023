@@ -38,12 +38,12 @@ public partial class @FighterActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""SelectCharacter"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""745368fb-21e3-4d88-9733-be9cfab14c35"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""DeselectCharacter"",
@@ -73,7 +73,7 @@ public partial class @FighterActions : IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard"",
                     ""action"": ""ChangeCharacter"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -201,7 +201,7 @@ public partial class @FighterActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""DodgeLeft"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""eba92155-4f59-412b-a47f-ea3e67771455"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -270,22 +270,22 @@ public partial class @FighterActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""cdf73527-bc79-4d68-aa95-13e7628fdf2b"",
-                    ""path"": ""<DualSenseGamepadHID>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""5e5dc741-f0d5-4a39-b93f-3774203773d0"",
                     ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
+                    ""action"": ""BasicAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f2747a52-d5cf-474d-91cc-5481984b8bed"",
+                    ""path"": ""<Keyboard>/numpad0"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
                     ""action"": ""BasicAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -509,7 +509,7 @@ public partial class @FighterActions : IInputActionCollection2, IDisposable
             ""devices"": [
                 {
                     ""devicePath"": ""<Gamepad>"",
-                    ""isOptional"": true,
+                    ""isOptional"": false,
                     ""isOR"": false
                 }
             ]

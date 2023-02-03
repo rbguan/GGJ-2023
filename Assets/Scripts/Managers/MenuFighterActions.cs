@@ -10,7 +10,7 @@ public class MenuFighterActions : MonoBehaviour
     [SerializeField]
     int playerNum = 0;
 
-
+    bool playerInit = false;
 
     public PlayerInput GetAttachedActions()
     {
@@ -31,36 +31,23 @@ public class MenuFighterActions : MonoBehaviour
     }
     private void Awake()
     {
-        
-        if (TitleGameManager.Instance.isOnTitle)
-        {
-            TitleGameManager.Instance.DisableTitle();//get rid of title
-        }
+
         Debug.Log("ENABLE");
         playerNum = TitleGameManager.Instance.GetPlayerNum();
-        InitalizePlayer();
     }
-
-
-    public void SetChildObj(GameObject newFighter)
-    {
-        PlayerInput pi = GetComponent<PlayerInput>();
-
-        
-    }
-
     void Start()
     {
         Debug.Log("START");
 
         transform.parent = PersistentInputHolder.Instance.transform;
         PersistentInputHolder.Instance.MenuFighters.Add(this);
+        //GetComponent<PlayerInput>().defaultControlScheme = PersistentInputHolder.Instance.GetComponent<PlayerInputManager>().D
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
 
@@ -68,20 +55,29 @@ public class MenuFighterActions : MonoBehaviour
 
     public void SelectAction(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed)
-        {
-            Debug.Log("SELECT ACTION" + this.gameObject.name);
-            if (TitleGameManager.Instance.isOnTitle)
+            if (ctx.started)
             {
-                TitleGameManager.Instance.DisableTitle();
-                InitalizePlayer();
-                //initalize 2nd player if it exists
+                Debug.Log("SELECT ACTION" + this.gameObject.name);
+                if (TitleGameManager.Instance.isOnTitle || !playerInit)
+                {
+
+                    if (TitleGameManager.Instance.isOnTitle)
+                    {
+                        TitleGameManager.Instance.DisableTitle();
+                    }
+                    if (!playerInit)
+                    {
+                   
+                        InitalizePlayer();
+                    }
+                    //initalize 2nd player if it exists
+                }
+                else
+                {
+                    CharacterSelectGameManager.Instance.SelectFighter(this);
+                }
             }
-            else
-            {
-                CharacterSelectGameManager.Instance.SelectFighter(this);
-            }
-        }
+        
     }
 
 
@@ -103,8 +99,8 @@ public class MenuFighterActions : MonoBehaviour
     }
     public void InitalizePlayer()
     {
-  
 
+        playerInit = true;
         CharacterSelectGameManager.Instance.PutPlayerOnFirstCard(this);
 
     }
