@@ -14,10 +14,7 @@ public class MenuButtonTweening : MonoBehaviour
     [SerializeField] private AnimationCurve ButtonDropdownCurve;
     [SerializeField][Range(0,1)] private float ButtonDropdownSquashFactor;
     [SerializeField] private AnimationCurve ButtonDropdownScaleCurve;
-    [SerializeField][Range(0,1)] private float TitleY;
-    [SerializeField][Range(0,1)] private float PlayButtonY;
-    [SerializeField][Range(0,1)] private float HowToPlayButtonY;
-    [SerializeField][Range(0,1)] private float QuitButtonY;
+ 
     [SerializeField] private AnimationCurve ButtonHoverScaleCurve;
     [SerializeField] private RectTransform Title;
     [SerializeField] private RectTransform PlayButton;
@@ -45,33 +42,26 @@ public class MenuButtonTweening : MonoBehaviour
 
     private IEnumerator LoadInMenuSequence()
     {
-        Sequence QuitButtonSequence = DOTween.Sequence();
-        QuitButtonSequence.AppendInterval(TimeGapBetweenEachDrop);
-        QuitButtonSequence.Append(QuitButton.DOMoveY(Screen.height * QuitButtonY, ButtonDropdownTime).SetEase(ButtonDropdownCurve));
-        QuitButtonSequence.Join(QuitButton.DOScaleY(ButtonDropdownSquashFactor, ButtonDropdownTime).SetEase(ButtonDropdownScaleCurve));
 
-        Sequence HowToPlayButtonSequence = DOTween.Sequence();
-        HowToPlayButtonSequence.AppendInterval(TimeGapBetweenEachDrop * 2);
-        HowToPlayButtonSequence.Append(HowToPlayButton.DOMoveY(Screen.height * HowToPlayButtonY, ButtonDropdownTime).SetEase(ButtonDropdownCurve));
-        HowToPlayButtonSequence.Join(HowToPlayButton.DOScaleY(ButtonDropdownSquashFactor, ButtonDropdownTime).SetEase(ButtonDropdownScaleCurve));
-
-        Sequence PlayButtonSequence = DOTween.Sequence();
-        PlayButtonSequence.AppendInterval(TimeGapBetweenEachDrop * 3);
-        PlayButtonSequence.Append(PlayButton.DOMoveY(Screen.height * PlayButtonY, ButtonDropdownTime).SetEase(ButtonDropdownCurve));
-        PlayButtonSequence.Join(PlayButton.DOScaleY(ButtonDropdownSquashFactor, ButtonDropdownTime).SetEase(ButtonDropdownScaleCurve));
         
-        Sequence TitleSequence = DOTween.Sequence();
-        TitleSequence.AppendInterval(TimeGapBetweenEachDrop * 4);
-        TitleSequence.Append(Title.DOMoveY(Screen.height * TitleY, ButtonDropdownTime).SetEase(ButtonDropdownCurve));
-        TitleSequence.Join(Title.DOScaleY(ButtonDropdownSquashFactor, ButtonDropdownTime).SetEase(ButtonDropdownScaleCurve));    
+        // Sequence TitleSequence = DOTween.Sequence();
+        // TitleSequence.AppendInterval(TimeGapBetweenEachDrop * 4);
+        // TitleSequence.Append(Title.DOMoveY(Screen.height * TitleY, ButtonDropdownTime).SetEase(ButtonDropdownCurve));
+        // TitleSequence.Join(Title.DOScaleY(ButtonDropdownSquashFactor, ButtonDropdownTime).SetEase(ButtonDropdownScaleCurve));    
         
         Sequence LoadSequence = DOTween.Sequence();
         LoadSequence.AppendInterval(ButtonDropdownWaitTime);
-        LoadSequence.Append(QuitButtonSequence);
-        LoadSequence.Join(HowToPlayButtonSequence);
-        LoadSequence.Join(PlayButtonSequence);
-        LoadSequence.Join(TitleSequence);
+        // LoadSequence.Join(TitleSequence);
         LoadSequence.Play();
+        yield return null;
+    }
+
+    private IEnumerator PlayUILoop()
+    {
+        while(true)
+        {
+            // PlayButton.DOMoveY()
+        }
         yield return null;
     }
 }

@@ -15,6 +15,8 @@ public class FighterCore : MonoBehaviour
 
     //FighterActions InputActions Map found in Assets/Input
     FighterActions fighterAction;
+    [SerializeField]
+    private int PlayerNum = 0;
     
     //Horizontal movement value
     float axisValue;
@@ -26,6 +28,11 @@ public class FighterCore : MonoBehaviour
     public FighterActions GetInputActions()
     {
         return fighterAction;
+    }
+
+    public void SetPlayerNum(int newNum)
+    {
+        PlayerNum = newNum;
     }
 
     private void Awake()
@@ -42,7 +49,8 @@ public class FighterCore : MonoBehaviour
             }
             
         }
-      
+
+        //SetUpInput();
 
         ChangeState(attachedStates[FighterStates.Default]);
     }
@@ -103,9 +111,113 @@ public class FighterCore : MonoBehaviour
         Debug.LogWarning("HELLO TEST " + spec + " " + gameObject.name);
     }
 
-    public void SetUpInput(FighterActions fighterActions)
+    public void BasicAttackInputEvent(int playerNum, InputAction.CallbackContext ctx)
     {
-        fighterAction = fighterActions;
+        if (playerNum == PlayerNum)
+        {
+            if (AttackStateCancellable() || CurrentState.GetFighterState() == FighterStates.Default)
+            {
+                ChangeState(attachedStates[FighterStates.Attack]);
+                CurrentState.BasicAttackInput();
+            }
+        }
+    }
+
+    public void SpecialAttackInputEvent(int playerNum, InputAction.CallbackContext ctx)
+    {
+        if (playerNum == PlayerNum)
+        {
+            if (AttackStateCancellable() || CurrentState.GetFighterState() == FighterStates.Default)
+            {
+                ChangeState(attachedStates[FighterStates.Attack]);
+                CurrentState.SpecialAttackInput();
+            }
+        }
+    }
+
+    public void FallThroughInputEvent(int playerNum, InputAction.CallbackContext ctx)
+    {
+        if (playerNum == PlayerNum)
+        {
+            CurrentState.FallThroughPlatformInput();
+        }
+    }
+
+    public void DodgeLeftInputEvent(int playerNum, InputAction.CallbackContext ctx)
+    {
+        if (playerNum == PlayerNum)
+        {
+            CurrentState.DodgeInput(true);
+        }
+    }
+
+    public void DodgeRightInputEvent(int playerNum, InputAction.CallbackContext ctx)
+    {
+        if (playerNum == PlayerNum)
+        {
+            CurrentState.DodgeInput(false);
+        }
+    }
+
+    public void MovementEvent(int playerNum, InputAction.CallbackContext ctx)
+    {
+        if (playerNum == PlayerNum)
+        {
+            axisValue = ctx.ReadValue<float>();                          
+        }
+    }
+
+    public void BlockEvent(int playerNum, InputAction.CallbackContext ctx)
+    {
+        if (playerNum == PlayerNum)
+        {
+            if (AttackStateCancellable() || CurrentState.GetFighterState() == FighterStates.Default)
+            {                
+                ChangeState(attachedStates[FighterStates.Default]);
+                CurrentState.BlockInput(ctx.action);
+            }
+        }
+    }
+
+    public void JumpEvent(int playerNum, InputAction.CallbackContext ctx)
+    {
+        if (playerNum == PlayerNum)
+        {
+            if (AttackStateCancellable() || CurrentState.GetFighterState() == FighterStates.Default)
+            {
+                Debug.Log("jump");
+                ChangeState(attachedStates[FighterStates.Default]);
+                CurrentState.JumpInput(ctx.action);
+            }
+        }
+    }
+
+    private void OnEnable()
+    {
+        EventHandler.PlayerBasicAttackEvent += BasicAttackInputEvent;
+        EventHandler.PlayerSpecialAttackEvent += SpecialAttackInputEvent;
+        EventHandler.PlayerFallThroughEvent += FallThroughInputEvent;
+        EventHandler.PlayerDodgeLeftEvent += DodgeLeftInputEvent;
+        EventHandler.PlayerDodgeRightEvent += DodgeRightInputEvent;
+        EventHandler.PlayerMovementEvent += MovementEvent;
+        EventHandler.PlayerBlockEvent += BlockEvent;
+        EventHandler.PlayerJumpEvent += JumpEvent;
+    }
+
+    private void OnDisable()
+    {
+        EventHandler.PlayerBasicAttackEvent -= BasicAttackInputEvent;
+        EventHandler.PlayerSpecialAttackEvent -= SpecialAttackInputEvent;
+        EventHandler.PlayerFallThroughEvent -= FallThroughInputEvent;
+        EventHandler.PlayerDodgeLeftEvent -= DodgeLeftInputEvent;
+        EventHandler.PlayerDodgeRightEvent -= DodgeRightInputEvent;
+        EventHandler.PlayerMovementEvent -= MovementEvent;
+        EventHandler.PlayerBlockEvent -= BlockEvent;
+        EventHandler.PlayerJumpEvent -= JumpEvent;
+    }
+
+    public void SetUpInput()
+    { 
 
         fighterAction.Enable();
 
@@ -145,15 +257,6 @@ public class FighterCore : MonoBehaviour
             CurrentState.FallThroughPlatformInput();
         };
 
-        fighterAction.Base.DodgeLeft.performed += ctx =>
-        {
-            CurrentState.DodgeInput(true);
-        };
-
-        fighterAction.Base.DodgeRight.performed += ctx =>
-        {
-            CurrentState.DodgeInput(false);
-        };
 
         fighterAction.Base.Movement.performed += ctx =>
         {

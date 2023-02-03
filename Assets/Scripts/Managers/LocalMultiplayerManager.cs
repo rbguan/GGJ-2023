@@ -10,8 +10,6 @@ public class LocalMultiplayerManager : MonoBehaviour
 {
     public GameObject Tetrisprefab;
     private bool executingGameplay = false;
-
-    [SerializeField] Camera camera;
     FighterActions Controls;
 
     [SerializeField] int MaxPlayers = 2;
@@ -63,7 +61,7 @@ public class LocalMultiplayerManager : MonoBehaviour
         // store the InputUser so you can unpair later
         tetris.user = user;
         // initialize your script with the new controls
-        tetris.SetUpInput(controlsForThisUser);
+        //tetris.SetUpInput(controlsForThisUser);
 
         // You cannot do things like set the parent transform in this callback, so
         // add the game object to a list of new players for processing in Update()
