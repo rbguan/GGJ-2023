@@ -23,6 +23,11 @@ public class CharSelectToMatchTransition : MonoBehaviour
     public void ExitCharSelectAnimation()
     {
         _animator.SetTrigger("ExitChar");
+        
+    }
+
+    public void StartFight()
+    {
         SceneManager.LoadScene("SeanScene2");
     }
     public void EnterFightAnimation()
