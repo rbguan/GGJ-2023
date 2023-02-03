@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Users;
 public class FighterCore : MonoBehaviour
 {
-    
+    public InputUser user;
+
     private FighterState _currentState;//Starts as Default
     public FighterState CurrentState { get { return _currentState; } set { _currentState = value; } }
     
@@ -40,11 +42,7 @@ public class FighterCore : MonoBehaviour
             }
             
         }
-
-       
-        fighterAction = new FighterActions();
-        fighterAction.Enable();
-        SetUpInput();
+      
 
         ChangeState(attachedStates[FighterStates.Default]);
     }
@@ -63,6 +61,12 @@ public class FighterCore : MonoBehaviour
         CurrentState.OnStateEnter();
 
     }
+
+    private void OnDestroy()
+    {
+        user.UnpairDevices();
+    }
+
 
     //Check if the Attack in AttackState is currently cancellable, and if it is and we are in AttackState, interrupt the attack
     public bool AttackStateCancellable()
@@ -93,8 +97,18 @@ public class FighterCore : MonoBehaviour
         attachedStates[CurrentState.GetFighterState()].FighterStateUpdate(axisValue);
     }
 
-    private void SetUpInput()
+
+    public void SENDTESTJUMP(string spec)
     {
+        Debug.LogWarning("HELLO TEST " + spec + " " + gameObject.name);
+    }
+
+    public void SetUpInput(FighterActions fighterActions)
+    {
+        fighterAction = fighterActions;
+
+        fighterAction.Enable();
+
         fighterAction.Base.BasicAttack.performed += ctx =>
         {
             if (AttackStateCancellable() || CurrentState.GetFighterState() == FighterStates.Default)

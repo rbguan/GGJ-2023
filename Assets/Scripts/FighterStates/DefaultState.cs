@@ -18,6 +18,9 @@ public class DefaultState : FighterState
     // Update is called once per frame
     public override void FighterStateUpdate(float axisValue)
     {
+        if (fighterActions == null)
+            return;
+
         base.FighterStateUpdate(axisValue);
 
         if (fighterActions.Base.Jump.WasPerformedThisFrame())

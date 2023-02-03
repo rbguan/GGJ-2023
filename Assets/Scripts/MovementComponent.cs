@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class MovementComponent : MonoBehaviour
 {
-    [SerializeField] AnimatorController _animController;
+    [SerializeField] Animator _animController;
     [SerializeField] Rigidbody2D _rb;
     [SerializeField] BoxCollider2D _collisionBox;
 

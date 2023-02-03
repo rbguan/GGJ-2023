@@ -72,6 +72,6 @@ public class CharacterSelectUITweens : MonoBehaviour
         _CharacterSelectUIAnimator.enabled = true;
         _CharacterSelectUIAnimator.SetTrigger("LoadFightLevel");
         yield return new WaitForSeconds(.92f);
-        _sceneTransitioner.ExitCharSelectAnimation();
+        CharSelectToMatchTransition.Instance.ExitCharSelectAnimation();
     }
 }

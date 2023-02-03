@@ -24,6 +24,151 @@ public partial class @FighterActions : IInputActionCollection2, IDisposable
     ""name"": ""FighterActions"",
     ""maps"": [
         {
+            ""name"": ""Menu"",
+            ""id"": ""79e1a5e5-2a9f-4efe-ab1d-4d834656e43d"",
+            ""actions"": [
+                {
+                    ""name"": ""ChangeCharacter"",
+                    ""type"": ""Value"",
+                    ""id"": ""38d7db63-3171-4350-903d-05496a3dc091"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SelectCharacter"",
+                    ""type"": ""Button"",
+                    ""id"": ""745368fb-21e3-4d88-9733-be9cfab14c35"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DeselectCharacter"",
+                    ""type"": ""Button"",
+                    ""id"": ""114afdd5-e126-4e9f-99e7-6d963faa7515"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""91846fb9-700a-4d6d-a140-758f668d7c12"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeCharacter"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""b8240fe7-d6c1-462f-9485-4becf9dc1cad"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeCharacter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""e122f09b-59df-46c0-baeb-59ccb8d16a94"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""ChangeCharacter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""c0b20d24-4d9b-46ac-8ed9-7b9f8b1f4875"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeCharacter"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""d90069bb-0b13-4d74-8555-2593335989ca"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ChangeCharacter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""dcf58b02-610a-4976-97a7-6bb7b4017ff5"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ChangeCharacter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""27cff6e1-5f95-4b44-9efc-0ea869796cf5"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""SelectCharacter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""710cc53b-975d-40f7-ac2d-4e5b0204b5e2"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""SelectCharacter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""41f6fb35-2f7b-4145-902a-c721f3d7adea"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""DeselectCharacter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f437e101-be12-4f83-8d44-e5669625d99b"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""DeselectCharacter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
             ""name"": ""Base"",
             ""id"": ""a9a8cfc4-d1c2-4622-b71f-32dcb19b275b"",
             ""actions"": [
@@ -125,11 +270,11 @@ public partial class @FighterActions : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""3c0a13ae-9622-466a-bd00-89043a90b645"",
-                    ""path"": ""<DualShockGamepad>/buttonSouth"",
+                    ""id"": ""cdf73527-bc79-4d68-aa95-13e7628fdf2b"",
+                    ""path"": ""<DualSenseGamepadHID>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -324,7 +469,7 @@ public partial class @FighterActions : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""7b770331-7c41-4ea3-a0fd-81a52babf511"",
-                    ""path"": ""<Keyboard>/s"",
+                    ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -371,6 +516,11 @@ public partial class @FighterActions : IInputActionCollection2, IDisposable
         }
     ]
 }");
+        // Menu
+        m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
+        m_Menu_ChangeCharacter = m_Menu.FindAction("ChangeCharacter", throwIfNotFound: true);
+        m_Menu_SelectCharacter = m_Menu.FindAction("SelectCharacter", throwIfNotFound: true);
+        m_Menu_DeselectCharacter = m_Menu.FindAction("DeselectCharacter", throwIfNotFound: true);
         // Base
         m_Base = asset.FindActionMap("Base", throwIfNotFound: true);
         m_Base_Jump = m_Base.FindAction("Jump", throwIfNotFound: true);
@@ -436,6 +586,55 @@ public partial class @FighterActions : IInputActionCollection2, IDisposable
     {
         return asset.FindBinding(bindingMask, out action);
     }
+
+    // Menu
+    private readonly InputActionMap m_Menu;
+    private IMenuActions m_MenuActionsCallbackInterface;
+    private readonly InputAction m_Menu_ChangeCharacter;
+    private readonly InputAction m_Menu_SelectCharacter;
+    private readonly InputAction m_Menu_DeselectCharacter;
+    public struct MenuActions
+    {
+        private @FighterActions m_Wrapper;
+        public MenuActions(@FighterActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ChangeCharacter => m_Wrapper.m_Menu_ChangeCharacter;
+        public InputAction @SelectCharacter => m_Wrapper.m_Menu_SelectCharacter;
+        public InputAction @DeselectCharacter => m_Wrapper.m_Menu_DeselectCharacter;
+        public InputActionMap Get() { return m_Wrapper.m_Menu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuActions set) { return set.Get(); }
+        public void SetCallbacks(IMenuActions instance)
+        {
+            if (m_Wrapper.m_MenuActionsCallbackInterface != null)
+            {
+                @ChangeCharacter.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnChangeCharacter;
+                @ChangeCharacter.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnChangeCharacter;
+                @ChangeCharacter.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnChangeCharacter;
+                @SelectCharacter.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnSelectCharacter;
+                @SelectCharacter.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnSelectCharacter;
+                @SelectCharacter.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnSelectCharacter;
+                @DeselectCharacter.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnDeselectCharacter;
+                @DeselectCharacter.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnDeselectCharacter;
+                @DeselectCharacter.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnDeselectCharacter;
+            }
+            m_Wrapper.m_MenuActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @ChangeCharacter.started += instance.OnChangeCharacter;
+                @ChangeCharacter.performed += instance.OnChangeCharacter;
+                @ChangeCharacter.canceled += instance.OnChangeCharacter;
+                @SelectCharacter.started += instance.OnSelectCharacter;
+                @SelectCharacter.performed += instance.OnSelectCharacter;
+                @SelectCharacter.canceled += instance.OnSelectCharacter;
+                @DeselectCharacter.started += instance.OnDeselectCharacter;
+                @DeselectCharacter.performed += instance.OnDeselectCharacter;
+                @DeselectCharacter.canceled += instance.OnDeselectCharacter;
+            }
+        }
+    }
+    public MenuActions @Menu => new MenuActions(this);
 
     // Base
     private readonly InputActionMap m_Base;
@@ -542,6 +741,12 @@ public partial class @FighterActions : IInputActionCollection2, IDisposable
             if (m_GamepadSchemeIndex == -1) m_GamepadSchemeIndex = asset.FindControlSchemeIndex("Gamepad");
             return asset.controlSchemes[m_GamepadSchemeIndex];
         }
+    }
+    public interface IMenuActions
+    {
+        void OnChangeCharacter(InputAction.CallbackContext context);
+        void OnSelectCharacter(InputAction.CallbackContext context);
+        void OnDeselectCharacter(InputAction.CallbackContext context);
     }
     public interface IBaseActions
     {
