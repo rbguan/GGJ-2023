@@ -17,7 +17,10 @@ public class FighterCore : MonoBehaviour
     FighterActions fighterAction;
     [SerializeField]
     private int PlayerNum = 0;
-    
+
+    [SerializeField]
+    GameObject playerGraphics;
+
     //Horizontal movement value
     float axisValue;
 
@@ -33,6 +36,40 @@ public class FighterCore : MonoBehaviour
     public void SetPlayerNum(int newNum)
     {
         PlayerNum = newNum;
+        if (PlayerNum == 1)
+            gameObject.layer = LayerMask.NameToLayer("Player1");
+        else if (PlayerNum == 2)
+            gameObject.layer = LayerMask.NameToLayer("Player2");
+    }
+
+    public int GetPlayerNum()
+    {
+        return PlayerNum;
+    }
+
+
+    Vector3 localScale;
+    public bool isLeft = true;
+    public void FlipRight()
+    {
+        if (isLeft)
+        {
+            localScale = playerGraphics.transform.localScale;
+            localScale.x *= -1;
+            playerGraphics.transform.localScale = localScale;
+            isLeft = false;
+        }
+    }
+
+    public void FlipLeft()
+    {
+        if (!isLeft)
+        {
+            localScale = playerGraphics.transform.localScale;
+            localScale.x *= -1;
+            playerGraphics.transform.localScale = localScale;
+            isLeft = true;
+        }
     }
 
     private void Awake()
@@ -46,11 +83,8 @@ public class FighterCore : MonoBehaviour
                 {
                     attachedStates.Add((FighterStates)i, fighterStates[y]);
                 }
-            }
-            
+            }            
         }
-
-        //SetUpInput();
 
         ChangeState(attachedStates[FighterStates.Default]);
     }
@@ -103,12 +137,6 @@ public class FighterCore : MonoBehaviour
         }
 
         attachedStates[CurrentState.GetFighterState()].FighterStateUpdate(axisValue);
-    }
-
-
-    public void SENDTESTJUMP(string spec)
-    {
-        Debug.LogWarning("HELLO TEST " + spec + " " + gameObject.name);
     }
 
     public void BasicAttackInputEvent(int playerNum, InputAction.CallbackContext ctx)
@@ -216,55 +244,5 @@ public class FighterCore : MonoBehaviour
         EventHandler.PlayerJumpEvent -= JumpEvent;
     }
 
-    public void SetUpInput()
-    { 
-
-        fighterAction.Enable();
-
-        fighterAction.Base.BasicAttack.performed += ctx =>
-        {
-            if (AttackStateCancellable() || CurrentState.GetFighterState() == FighterStates.Default)
-            {
-                ChangeState(attachedStates[FighterStates.Attack]);
-                CurrentState.BasicAttackInput();
-            }
-        };
-        fighterAction.Base.SpecialAttack.performed += ctx => 
-        {
-            if (AttackStateCancellable() || CurrentState.GetFighterState() == FighterStates.Default)
-            {
-                ChangeState(attachedStates[FighterStates.Attack]);
-                CurrentState.SpecialAttackInput();
-            }
-        };
-        fighterAction.Base.Jump.performed += ctx => 
-        {
-            if (AttackStateCancellable())
-            {               
-                ChangeState(attachedStates[FighterStates.Default]);
-            }            
-        };
-        fighterAction.Base.Block.performed += ctx =>
-        {
-            if (AttackStateCancellable())
-            {
-                ChangeState(attachedStates[FighterStates.Default]);
-            }
-        };
-
-        fighterAction.Base.FallThroughPlatform.performed += ctx =>
-        {
-            CurrentState.FallThroughPlatformInput();
-        };
-
-
-        fighterAction.Base.Movement.performed += ctx =>
-        {
-            axisValue = ctx.ReadValue<float>();
-        };
-        fighterAction.Base.Movement.canceled += ctx =>
-        {
-            axisValue = ctx.ReadValue<float>();//should be 0
-        };
-    }
+    
 }

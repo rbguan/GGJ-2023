@@ -7,6 +7,7 @@ public class FightStageManager : MonoBehaviour
     [SerializeField]
     Transform[] spawnPos = new Transform[2];
 
+
     [SerializeField]
     List<GameObject> fighters = new List<GameObject>();//root toot shoot
 
@@ -16,9 +17,11 @@ public class FightStageManager : MonoBehaviour
     [SerializeField]
     Dictionary<Fighters, GameObject> fighterList = new Dictionary<Fighters, GameObject>();
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
-        CharSelectToMatchTransition.Instance.EnterFightAnimation();
+        if (CharSelectToMatchTransition.Instance != null)
+            CharSelectToMatchTransition.Instance.EnterFightAnimation();
+
 
         for (int i = 0; i < fighters.Count; i++)
         {
@@ -26,7 +29,7 @@ public class FightStageManager : MonoBehaviour
         }
 
 
-        if (PersistentInputHolder.Instance != null)
+        if (PersistentInputHolder.Instance != null && PersistentInputHolder.Instance.MenuFighters.Count >= 2)
         {
             for (int i = 0; i < PersistentInputHolder.Instance.GetInputs().Length; i++)
             {

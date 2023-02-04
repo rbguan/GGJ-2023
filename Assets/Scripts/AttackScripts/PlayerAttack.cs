@@ -21,6 +21,11 @@ public abstract class PlayerAttack : MonoBehaviour
 
     }
 
+    public virtual void StartSpecialAttack()
+    {
+
+    }
+
 
     public virtual void EnableInputInterrupts()
     {
@@ -41,8 +46,9 @@ public abstract class PlayerAttack : MonoBehaviour
         {
             playerAnimator.SetTrigger(Settings.cancelTrigger);
         }
-        
-        hitBox.enabled = false;
+
+        if (hitBox != null)
+            hitBox.enabled = false;
 
     }
 
@@ -52,12 +58,14 @@ public abstract class PlayerAttack : MonoBehaviour
     */
     public virtual void EnableHitBox()
     {
-        hitBox.enabled = true;
+        if (hitBox != null)
+            hitBox.enabled = true;
     }
 
     public virtual void EndAttack()
     {
-        hitBox.enabled = false;
+        if (hitBox != null)
+            hitBox.enabled = false;
         attachedAtackState.FinishAttack();
     }
 
