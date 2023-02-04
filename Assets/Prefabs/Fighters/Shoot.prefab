@@ -28,7 +28,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1249837617240425447}
   m_Father: {fileID: 1249837616543565509}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -103,7 +104,7 @@ GameObject:
   - component: {fileID: 1249837616543565500}
   m_Layer: 0
   m_Name: Shoot
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,7 +122,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1249837616462373390}
-  - {fileID: 1249837617240425447}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -211,8 +211,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9c7868058facd408e70e69bfb93647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerNum: 0
+  playerGraphics: {fileID: 1249837616462373391}
   _isGrounded: 0
   _collisionBox: {fileID: 1249837616543565510}
+  isLeft: 1
 --- !u!114 &1249837616543565499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,6 +231,7 @@ MonoBehaviour:
   fighterState: 1
   attackCancellable: 0
   fighterBasicAttack: {fileID: 1249837616543565497}
+  fighterSpecialAttack: {fileID: 0}
 --- !u!114 &1249837616543565496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,13 +295,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1249837617240425445}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1249837616543565509}
-  m_RootOrder: 1
+  m_Father: {fileID: 1249837616462373390}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1249837617240425444
 BoxCollider2D:

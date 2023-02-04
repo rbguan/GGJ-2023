@@ -58,6 +58,8 @@ public class MenuFighterActions : MonoBehaviour
             if (ctx.started)
             {
                 Debug.Log("SELECT ACTION" + this.gameObject.name);
+
+
                 if (TitleGameManager.Instance.isOnTitle || !playerInit)
                 {
 
@@ -67,7 +69,7 @@ public class MenuFighterActions : MonoBehaviour
                     }
                     if (!playerInit)
                     {
-                   
+
                         InitalizePlayer();
                     }
                     //initalize 2nd player if it exists
@@ -76,6 +78,8 @@ public class MenuFighterActions : MonoBehaviour
                 {
                     CharacterSelectGameManager.Instance.SelectFighter(this);
                 }
+            
+
             }
         
     }

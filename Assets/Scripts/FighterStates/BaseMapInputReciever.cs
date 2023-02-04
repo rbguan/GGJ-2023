@@ -16,7 +16,7 @@ public class BaseMapInputReciever : MonoBehaviour
     public void SpecialAttackInput(InputAction.CallbackContext ctx)
     {
         if (ctx.performed)
-            EventHandler.CallPlayerBasicAttackEvent(menuActions.GetFighterNum(), ctx);
+            EventHandler.CallPlayerSpecialAttackEvent(menuActions.GetFighterNum(), ctx);
     }
 
     public void DropDownInput(InputAction.CallbackContext ctx)

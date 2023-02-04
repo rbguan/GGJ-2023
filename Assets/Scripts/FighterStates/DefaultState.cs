@@ -32,7 +32,7 @@ public class DefaultState : FighterState
 
             if (jumpActive && jumpCTX.IsPressed())
             {
-                Debug.Log("JUMP BEING HELD");
+                Debug.Log("JUMP BEING HELD");//update logic for jump
             }
         }
 
@@ -40,7 +40,7 @@ public class DefaultState : FighterState
         {
             if (blockActive && blockCTX.IsPressed())
             {
-                Debug.Log("BLOCK BEING HELD");
+                Debug.Log("BLOCK BEING HELD");//update logic for block
             }
 
             if (blockCTX.WasPerformedThisFrame())
@@ -50,6 +50,7 @@ public class DefaultState : FighterState
 
         HandleInputs(ref _frameForce);
 
+        //HandleMovementComponent
        
         // transform.position += new Vector3(_frameForce.x, _frameForce.y, 0f) * Time.deltaTime;
         // transform.position += Gravity * Time.deltaTime;

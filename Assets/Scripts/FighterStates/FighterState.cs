@@ -6,7 +6,6 @@ public class FighterState : MonoBehaviour
 {
     public FighterStates fighterState;
     protected FighterCore coreObject;
-    protected FighterActions fighterActions;
     private void Awake()
     {
         coreObject = GetComponent<FighterCore>();
@@ -14,7 +13,6 @@ public class FighterState : MonoBehaviour
 
     private void Start()
     {
-        fighterActions = coreObject.GetInputActions();
     }
     public virtual FighterStates GetFighterState()
     {
@@ -72,5 +70,14 @@ public class FighterState : MonoBehaviour
     {
         RaycastHit2D groundHit = Physics2D.Raycast(transform.position, -Vector2.up * coreObject._collisionBox.size.y * 0.5f);
         coreObject._isGrounded = (groundHit.collider != null); // #TODO collision tags for platforms/players
+
+        if (axisValue < 0)
+        {
+            coreObject.FlipLeft();
+        }
+        else if (axisValue > 0)
+        {
+            coreObject.FlipRight();
+        }
     }
 }
