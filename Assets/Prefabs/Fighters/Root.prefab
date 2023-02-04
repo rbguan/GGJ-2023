@@ -178,6 +178,9 @@ MonoBehaviour:
   hitBox: {fileID: 0}
   fighterCore: {fileID: 1249837616543565498}
   graphics: {fileID: 1249837616462373391}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1
   spikePrefab: {fileID: 630965392204549904, guid: 1068a1c7233f10e448173062a5e74dfc,
     type: 3}
 --- !u!61 &1249837616543565510

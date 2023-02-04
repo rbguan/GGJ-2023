@@ -44,17 +44,24 @@ public class SpecialAttack : PlayerAttack
         StartCoroutine(SpawnSpikePrefab(3, timeToWait, radius, spawnPosition, side));
 
     }
-
+    [SerializeField]
+    LayerMask groundLayer;
     public IEnumerator SpawnSpikePrefab(int iterations, float timeToWait, float radius, Vector3 spawnPos, Vector3 side)
     {
         yield return new WaitForSeconds(timeToWait);
-        GameObject newPrefab = Instantiate(spikePrefab, spawnPos, Quaternion.identity);
-        newPrefab.GetComponent<SpikeDestroyScript>().SetUp(this);
-        if (fighterCore.GetPlayerNum() == 1)
-            Debug.Log("CHANGE TO PLAYER 1 LAYER");//newPrefab.layer 
-        else if (fighterCore.GetPlayerNum() == 2)
-            Debug.Log("CHANGE TO PLAYER 2 LAYER");
 
+        RaycastHit2D hit = Physics2D.Raycast(spawnPos, Vector2.down, 6f, groundLayer);
+
+        if (hit.collider != null)
+        {
+            spawnPos = hit.point;
+            GameObject newPrefab = Instantiate(spikePrefab, spawnPos, Quaternion.identity);
+            newPrefab.GetComponent<SpikeDestroyScript>().SetUp(this);
+            if (fighterCore.GetPlayerNum() == 1)
+                newPrefab.layer = LayerMask.NameToLayer("Player1");
+            else if (fighterCore.GetPlayerNum() == 2)
+                newPrefab.layer = LayerMask.NameToLayer("Player2");
+        }
         spawnPos += side * (radius * 2);
         iterations--;
         if (iterations > 0)
