@@ -12,24 +12,21 @@ public class MovementComponent : MonoBehaviour
     [Header("Movement Parameters")]
     public float HorizontalSpeed = 1f; // units per second
     public float DodgeSpeed = 2f;
-    public float JumpSpeed = 1f;
-    public Vector3 Gravity = new Vector3(0f, -0.5f, 0f);
+    public float DodgeTime = 2f;
+    public float JumpSpeed = 200f;
+    public float JumpTime = 0.5f;
+    public float FallThroughTime = 2f;
+    // public Vector3 Gravity = new Vector3(0f, -0.5f, 0f);
 
-    [Header("Input Parameters")]
-    public float DoubleTapTime = 0.5f;
+    private FighterCore coreObject;
 
-    private GGJ2023 _inputActions;
-    private bool _isGrounded = false;
-    private Dictionary<InputAction, float> _timesSinceLastPressed = new Dictionary<InputAction, float>(); 
+    public bool IsActionable { get; private set; } = true;
+    public bool IsFallingThrough { get; private set; } = false;
+    private bool _canDodge = true;
 
     private void Awake()
     {
-        _inputActions = new GGJ2023();
-        _inputActions.Enable();
-
-        _timesSinceLastPressed.Add(_inputActions.Player.Left, 0f);
-        _timesSinceLastPressed.Add(_inputActions.Player.Right, 0f);
-        _timesSinceLastPressed.Add(_inputActions.Player.Down, 0f);
+        coreObject = GetComponent<FighterCore>();
     }
 
     // Start is called before the first frame update
@@ -41,71 +38,88 @@ public class MovementComponent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Check if character is grounded this frame
-        RaycastHit2D groundHit = Physics2D.Raycast(transform.position, -Vector2.up * _collisionBox.size.y * 0.5f);
-        _isGrounded = (groundHit.collider != null); // #TODO collision tags for platforms/players
 
-        Vector2 _frameForce = new Vector2(0f, 0f);
-
-        // Inputs
-        HandleInputs(ref _frameForce);
-
-        // transform.position += new Vector3(_frameForce.x, _frameForce.y, 0f) * Time.deltaTime;
-        // transform.position += Gravity * Time.deltaTime;
-        _rb.AddForce(_frameForce);
-
-        // Update input time tracking dictionary
-        _timesSinceLastPressed[_inputActions.Player.Left] += Time.deltaTime;    
-        _timesSinceLastPressed[_inputActions.Player.Right] += Time.deltaTime;    
-        _timesSinceLastPressed[_inputActions.Player.Down] += Time.deltaTime;    
     }
 
-    // Check inputs for movement and double tap actions
-    private void HandleInputs(ref Vector2 currentVelocity)
+    public void ApplyHorizontalForce(float xAxisValue)
     {
-        if (_inputActions.Player.Left.WasPerformedThisFrame())
+        _rb.AddForce(new Vector2(HorizontalSpeed * xAxisValue, 0f));
+    }
+
+    public void ApplyDodgeForce(float xAxisValue)
+    {
+        if (!_canDodge)
+            return;
+
+        _rb.velocity = Vector2.zero;
+        _rb.AddForce(new Vector2(DodgeSpeed * xAxisValue, 0f));
+        StartCoroutine(DodgeCooldownTimer());
+    }
+
+    public void ApplyVerticalForce()
+    {
+        _rb.velocity = new Vector2(_rb.velocity.x, 0f);
+        _rb.AddForce(new Vector2(0f, JumpSpeed));
+
+        // Can remove gravity scale stuff if it feels too floaty
+        StopCoroutine(DisableGravityForJump());
+        _rb.gravityScale = 1f;
+
+        StartCoroutine(DisableGravityForJump());
+    }
+
+    public void ApplyKnockback(Vector2 force, float time)
+    {
+        _rb.AddForce(force);
+        StartCoroutine(InactionableTimer(time));
+    }
+
+    public void ApplyForcedForce(Vector2 dir, float mag, float inactionableTime)
+    {
+        _rb.AddForce(dir * mag);
+
+        if (inactionableTime > 0f)
         {
-            if (_timesSinceLastPressed[_inputActions.Player.Left] < DoubleTapTime)
-            {
-                Debug.Log("Dodge Left"); // #TODO isDodging bool
-            }
-
-            _timesSinceLastPressed[_inputActions.Player.Left] = 0f;
+            StartCoroutine(InactionableTimer(inactionableTime));
         }
+    }
 
-        if (_inputActions.Player.Left.IsPressed())
-        {
-            currentVelocity += new Vector2(-HorizontalSpeed, 0f);
-        }
+    public void ApplyFallThrough()
+    {
+        StartCoroutine(ChangeFallThroughLayers());
+    }
 
-        if (_inputActions.Player.Right.WasPerformedThisFrame())
-        {
-            if (_timesSinceLastPressed[_inputActions.Player.Right] < DoubleTapTime)
-            {
-                Debug.Log("Dodge Right"); // #TODO isDodging bool
-            }
+    // inactionable timer
+    private IEnumerator InactionableTimer(float time)
+    {
+        IsActionable = false;
+        yield return new WaitForSeconds(time);
+        IsActionable = true;
+    }
 
-            _timesSinceLastPressed[_inputActions.Player.Right] = 0f;
-        }
+    // fallthrough timer
+    private IEnumerator ChangeFallThroughLayers()
+    {
+        coreObject.SwapPlayerLayer();
+        IsFallingThrough = true;
+        yield return new WaitForSeconds(FallThroughTime);
+        IsFallingThrough = false;
+        coreObject.SwapPlayerLayer();
+    }
 
-        if (_inputActions.Player.Right.IsPressed())
-        {
-            currentVelocity += new Vector2(HorizontalSpeed, 0f);
-        }
+    // jump gravity scale timer
+    private IEnumerator DisableGravityForJump()
+    {
+        _rb.gravityScale = 0f;
+        yield return new WaitForSeconds(JumpTime);
+        _rb.gravityScale = 1f;
+    }
 
-        if (_inputActions.Player.Up.IsPressed())
-        {
-            currentVelocity += new Vector2(0f, JumpSpeed);
-        }
-
-        if (_inputActions.Player.Down.WasPerformedThisFrame())
-        {
-            if (_timesSinceLastPressed[_inputActions.Player.Down] < DoubleTapTime && _isGrounded)
-            {
-                Debug.Log("Fall Through");
-            }
-
-            _timesSinceLastPressed[_inputActions.Player.Down] = 0f;
-        }
+    // dodge cooldown
+    private IEnumerator DodgeCooldownTimer()
+    {
+        _canDodge = false;
+        yield return new WaitForSeconds(DodgeTime);
+        _canDodge = true;
     }
 }

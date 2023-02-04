@@ -4,31 +4,37 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class DefaultState : FighterState
 {
-
-    [SerializeField] Rigidbody2D _rb;
-
-    [Header("Movement Parameters")]
-    public float HorizontalSpeed = 1f; // units per second
-    public float DodgeSpeed = 2f;
-    public float JumpSpeed = 1f;
-    public Vector3 Gravity = new Vector3(0f, -0.5f, 0f);
-
-
     InputAction jumpCTX;
     InputAction blockCTX;
 
     bool jumpActive = false;
+    bool doubleJumpConsumed = false;
     bool blockActive = false;
+
     // Update is called once per frame
     public override void FighterStateUpdate(float axisValue)
     {
-
         base.FighterStateUpdate(axisValue);
+
+        if (coreObject.IsGrounded)
+        {
+            doubleJumpConsumed = false;
+        }
 
         if (jumpCTX != null)
         {
             if (jumpCTX.WasPerformedThisFrame())
-                jumpActive = true;
+            {
+                if (coreObject.IsGrounded)
+                {
+                    movComp.ApplyVerticalForce();
+                }
+                else if (!doubleJumpConsumed)
+                {
+                    doubleJumpConsumed = true;
+                    movComp.ApplyVerticalForce();
+                }
+            }
 
             if (jumpActive && jumpCTX.IsPressed())
             {
@@ -45,26 +51,13 @@ public class DefaultState : FighterState
 
             if (blockCTX.WasPerformedThisFrame())
                 blockActive = true;
+
+            if (blockCTX.WasReleasedThisFrame())
+                blockActive = false;
         }
-        Vector2 _frameForce = new Vector2(axisValue, 0f);
-
-        HandleInputs(ref _frameForce);
-
-        //HandleMovementComponent
-       
-        // transform.position += new Vector3(_frameForce.x, _frameForce.y, 0f) * Time.deltaTime;
-        // transform.position += Gravity * Time.deltaTime;
-        _rb.AddForce(_frameForce);
-
-
-      
-
-       
-    }
-
-    void HandleInputs(ref Vector2 currentVelocity)
-    {
-        currentVelocity += new Vector2(HorizontalSpeed * currentVelocity.x, 0f);
+        
+        if (!blockActive)
+            movComp.ApplyHorizontalForce(axisValue);
     }
 
     public override void BlockInput(InputAction blockCTX)
@@ -82,6 +75,7 @@ public class DefaultState : FighterState
         if (blockActive)
             blockActive = false;
 
+        movComp.ApplyFallThrough();
         Debug.Log("FallthroughPlatformPerformed");
     }
 
@@ -95,12 +89,16 @@ public class DefaultState : FighterState
         {
             Debug.Log("Dodge Right");
         }
+
+        float xAxisValue = left ? -1f : 1f;
+        movComp.ApplyDodgeForce(xAxisValue);
     }
 
     public override void OnStateExit()
     {
         base.OnStateExit();
         jumpActive = false;
+        doubleJumpConsumed = false;
         blockActive = false;
     }
 }

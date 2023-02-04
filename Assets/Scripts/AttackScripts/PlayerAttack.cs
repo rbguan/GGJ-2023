@@ -6,10 +6,16 @@ public abstract class PlayerAttack : MonoBehaviour
 {
 
     public Animator playerAnimator;
-    public int attackDamage;
     public BoxCollider2D hitBox;
     AttackState attachedAtackState;
 
+    [Header("Attack Params")]
+    public int attackDamage;
+    public float ShieldDamage;
+    public float KnockbackForce;
+    public float KnockbackTime;
+    public float SelfPushbackForce = 0f;
+    public float SelfPushbackTime = 0f;
 
     private void Awake()
     {
@@ -78,4 +84,14 @@ public abstract class PlayerAttack : MonoBehaviour
         playerAnimator.SetTrigger(trigger);
     }
 
+    public virtual void OnHit(FighterCore opponent, Vector2 collisionVec)
+    {
+        opponent.ApplyAttackValues(attackDamage, ShieldDamage, KnockbackForce * collisionVec, KnockbackTime);
+
+        // Apply self pushback if not 0
+        if (SelfPushbackForce > 0f)
+        {
+            GetComponent<MovementComponent>().ApplyKnockback(SelfPushbackForce * -collisionVec, SelfPushbackTime);
+        }
+    }
 }
