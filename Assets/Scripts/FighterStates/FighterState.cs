@@ -6,9 +6,11 @@ public class FighterState : MonoBehaviour
 {
     public FighterStates fighterState;
     protected FighterCore coreObject;
+    protected MovementComponent movComp;
     private void Awake()
     {
         coreObject = GetComponent<FighterCore>();
+        movComp = GetComponent<MovementComponent>();
     }
 
     private void Start()
@@ -68,8 +70,10 @@ public class FighterState : MonoBehaviour
     //Override this method to call updates for this state: This occurs during FighterCore's update cycle;
     public virtual void FighterStateUpdate(float axisValue)
     {
-        RaycastHit2D groundHit = Physics2D.Raycast(transform.position, -Vector2.up * coreObject._collisionBox.size.y * 0.5f);
-        coreObject._isGrounded = (groundHit.collider != null); // #TODO collision tags for platforms/players
+        Vector2 basePoint = UtilityFunctionLibrary.GetVec3AsVec2(transform.position) + Vector2.down * coreObject._collisionBox.size.y * 0.5f;
+        RaycastHit2D groundHit = Physics2D.Raycast(basePoint, Vector2.down, coreObject._collisionBox.size.y * 0.1f);
+        coreObject.IsGrounded = (groundHit.collider != null)
+            && !movComp.IsFallingThrough;
 
         if (axisValue < 0)
         {
