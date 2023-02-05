@@ -20,9 +20,25 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -468731337, guid: a6dc29d15da551c49bd3761849641be1, type: 3}
+      value: {fileID: 1779363683, guid: ae92627b93f84c047a57604bcd928475, type: 3}
+    - time: 0.5
+      value: {fileID: 1385749978, guid: ae92627b93f84c047a57604bcd928475, type: 3}
+    - time: 0.98333335
+      value: {fileID: 1973458916, guid: ae92627b93f84c047a57604bcd928475, type: 3}
+    - time: 1.4833333
+      value: {fileID: -1013202150, guid: ae92627b93f84c047a57604bcd928475, type: 3}
+    - time: 1.9666667
+      value: {fileID: 42151146, guid: ae92627b93f84c047a57604bcd928475, type: 3}
+    - time: 2.4666667
+      value: {fileID: -556430628, guid: ae92627b93f84c047a57604bcd928475, type: 3}
+    - time: 2.7166667
+      value: {fileID: 1870241872, guid: ae92627b93f84c047a57604bcd928475, type: 3}
+    - time: 2.8333333
+      value: {fileID: 1823552139, guid: ae92627b93f84c047a57604bcd928475, type: 3}
+    - time: 2.95
+      value: {fileID: 1278003316, guid: ae92627b93f84c047a57604bcd928475, type: 3}
     - time: 3
-      value: {fileID: -892264202, guid: 3065231458d071a4aaa6d335b1bc8910, type: 3}
+      value: {fileID: 1652869572, guid: ae92627b93f84c047a57604bcd928475, type: 3}
     attribute: m_Sprite
     path: TokkenArt
     classID: 212
@@ -42,8 +58,16 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -468731337, guid: a6dc29d15da551c49bd3761849641be1, type: 3}
-    - {fileID: -892264202, guid: 3065231458d071a4aaa6d335b1bc8910, type: 3}
+    - {fileID: 1779363683, guid: ae92627b93f84c047a57604bcd928475, type: 3}
+    - {fileID: 1385749978, guid: ae92627b93f84c047a57604bcd928475, type: 3}
+    - {fileID: 1973458916, guid: ae92627b93f84c047a57604bcd928475, type: 3}
+    - {fileID: -1013202150, guid: ae92627b93f84c047a57604bcd928475, type: 3}
+    - {fileID: 42151146, guid: ae92627b93f84c047a57604bcd928475, type: 3}
+    - {fileID: -556430628, guid: ae92627b93f84c047a57604bcd928475, type: 3}
+    - {fileID: 1870241872, guid: ae92627b93f84c047a57604bcd928475, type: 3}
+    - {fileID: 1823552139, guid: ae92627b93f84c047a57604bcd928475, type: 3}
+    - {fileID: 1278003316, guid: ae92627b93f84c047a57604bcd928475, type: 3}
+    - {fileID: 1652869572, guid: ae92627b93f84c047a57604bcd928475, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -68,4 +92,18 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 2.7
+    functionName: EnableHitBox
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 2.9833333
+    functionName: EndAttack
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

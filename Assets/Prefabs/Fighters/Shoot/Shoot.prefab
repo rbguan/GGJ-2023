@@ -528,7 +528,7 @@ MonoBehaviour:
   KnockbackTime: 2
   SelfPushbackForce: 100
   SelfPushbackTime: 0.5
-  knockOutProjectile: {fileID: 5777557940677311430, guid: 9512f52786d81e047bceeed11a484698,
+  knockOutProjectile: {fileID: 5777557940677311430, guid: c754a98a9d3773d4fb5507162cf8a168,
     type: 3}
   spawnPoint: {fileID: 2187765278290479465}
   graphics: {fileID: 1249837616462373391}
