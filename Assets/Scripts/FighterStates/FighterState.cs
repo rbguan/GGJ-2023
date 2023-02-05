@@ -74,6 +74,8 @@ public class FighterState : MonoBehaviour
         RaycastHit2D groundHit = Physics2D.Raycast(basePoint, Vector2.down, coreObject._collisionBox.size.y * 0.1f);
         coreObject.IsGrounded = (groundHit.collider != null)
             && !movComp.IsFallingThrough;
+        coreObject.attachedAnimator.SetBool("Grounded", coreObject.IsGrounded);
+        Debug.Log("Any Grounders in chat" + coreObject.IsGrounded);
 
         if (axisValue < 0)
         {

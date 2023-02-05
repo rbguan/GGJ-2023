@@ -32,6 +32,7 @@ public class DefaultState : FighterState
                 else if (!doubleJumpConsumed)
                 {
                     doubleJumpConsumed = true;
+                    GetComponent<Animator>().SetTrigger(Settings.cancelTrigger);
                     movComp.ApplyVerticalForce();
                 }
             }

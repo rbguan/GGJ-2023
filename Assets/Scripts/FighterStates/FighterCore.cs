@@ -184,11 +184,13 @@ public class FighterCore : MonoBehaviour
             return false;
     }
 
+    [SerializeField]
+    public Animator attachedAnimator;
     // Calls the current States's update method
     void Update()
     {
         ExecuteStateUpdate();
-
+        attachedAnimator.SetFloat("yVelocity", GetComponent<Rigidbody2D>().velocity.y);
         UpdateBlock();
     }
 
@@ -254,7 +256,8 @@ public class FighterCore : MonoBehaviour
     {
         if (playerNum == PlayerNum && movComp.IsActionable)
         {
-            axisValue = ctx.ReadValue<float>();                          
+            axisValue = ctx.ReadValue<float>();
+            attachedAnimator.SetFloat("xVelocity", axisValue);
         }
     }
 
