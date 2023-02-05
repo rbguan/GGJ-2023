@@ -388,10 +388,14 @@ public class FighterCore : MonoBehaviour
     {
         if (IsBlocking)
         {
+            BlockVfx.SetActive(true);
             _currentShield = Mathf.Clamp(_currentShield - shieldLoss, 0f, MaxShield);
+            float percentage = _currentShield / MaxShield;
+            BlockVfx.transform.localScale = (Vector3.one * shieldCurve.Evaluate(percentage));
 
-            if(_currentShield == 0f)
+            if (_currentShield == 0f)
             {
+                BlockVfx.SetActive(false);
                 StartCoroutine(StartDaze());
             }
         }
@@ -464,24 +468,35 @@ public class FighterCore : MonoBehaviour
         _currentStamina = MaxStamina;
         playerStaminaSlider.value = _currentStamina;
         _currentShield = MaxShield;
+        float percentage = _currentShield / MaxShield;
+        BlockVfx.transform.localScale = (Vector3.one * shieldCurve.Evaluate(percentage));
 
         // Respawn audio
         AudioClip respawnClip = UtilityFunctionLibrary.RandomBool() ? RespawnSfx1 : RespawnSfx2;
         AudioSrc.PlayOneShot(respawnClip);
     }
 
+    [SerializeField]
+    GameObject BlockVfx;
+    [SerializeField]
+    AnimationCurve shieldCurve;
     public void UpdateBlock()
     {
         if (IsBlocking)
         {
-            _currentShield = Mathf.Clamp(_currentShield - ShieldDecayRate * Time.deltaTime, 0f, MaxShield);
+            _currentShield = Mathf.Clamp((_currentShield - ShieldDecayRate * Time.deltaTime), 0f, MaxShield);
+            float percentage = _currentShield / MaxShield;
+            BlockVfx.SetActive(true);
+            BlockVfx.transform.localScale = ((Vector3.one * 2) * shieldCurve.Evaluate(percentage));
+            Debug.Log(percentage + " ujwghuvbwduivbd " + ((Vector3.one * 2) * shieldCurve.Evaluate(percentage)));
             if (_currentShield == 0f)
             {
                 StartCoroutine(StartDaze());
             }
         }
         else 
-        { 
+        {
+            BlockVfx.SetActive(false);
             _currentShield = Mathf.Clamp(_currentShield + ShieldRechargeRate * Time.deltaTime, 0f, MaxShield);            
         }
     }

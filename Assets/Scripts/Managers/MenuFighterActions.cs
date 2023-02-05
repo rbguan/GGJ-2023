@@ -16,6 +16,8 @@ public class MenuFighterActions : MonoBehaviour
     {
         return GetComponent<PlayerInput>(); ;
     }
+
+
     public void SetCurrentFighter(Fighters newFighter)
     {
         currentFighter = newFighter;
@@ -58,6 +60,11 @@ public class MenuFighterActions : MonoBehaviour
     {
             if (ctx.started)
             {
+                if (VictoryScreenManager.Instance != null)
+                {
+                VictoryScreenManager.Instance.ReturnToTitle();
+                }
+
                 Debug.Log("SELECT ACTION" + this.gameObject.name);
 
 
@@ -67,11 +74,26 @@ public class MenuFighterActions : MonoBehaviour
                     if (TitleGameManager.Instance.isOnTitle)
                     {
                         TitleGameManager.Instance.DisableTitle();
-                    }
+                        if (playerInit)
+                        {
+                        InitalizePlayer();
+                        if (playerNum == 1) {
+
+                            
+                            PersistentInputHolder.Instance.MenuFighters[1].InitalizePlayer();
+                            }
+                            else if (playerNum == 2) 
+                            {
+                            PersistentInputHolder.Instance.MenuFighters[0].InitalizePlayer();
+                            }
+                        }
+                    currentFighter = Fighters.Count;
+                }
                     if (!playerInit)
                     {
 
                         InitalizePlayer();
+                       
                     }
                     //initalize 2nd player if it exists
                 }

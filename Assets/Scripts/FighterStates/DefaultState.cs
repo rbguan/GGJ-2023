@@ -11,6 +11,8 @@ public class DefaultState : FighterState
     bool doubleJumpConsumed = false;
     bool blockActive = false;
 
+
+
     // Update is called once per frame
     public override void FighterStateUpdate(float axisValue)
     {

@@ -62,7 +62,7 @@ public class FightStageManager : MonoBehaviour
                 characterNames[i].text = newfigther.name;
                 if (i == 0)
                     newfigther.GetComponent<FighterCore>().SetPlayerStockBar(p1StockItems);
-                if (i == 0)
+                if (i == 1)
                     newfigther.GetComponent<FighterCore>().SetPlayerStockBar(p2StockItems);
                 newfigther.GetComponent<FighterCore>().SetPlayerHealthBar(characterHealthBar[i]);
 
@@ -84,11 +84,12 @@ public class FightStageManager : MonoBehaviour
     public void GoToVictoryScreen(FighterCore losingPlayer)
     {
         PersistentInputHolder.Instance.SetLoser(losingPlayer.GetPlayerNum());
-        SceneManager.LoadScene("");
+        SceneManager.LoadScene("VictoryScene");
     }
 
     public void ResetPositionToSpawnPoint(FighterCore core)
     {
+        Debug.Log("CALLED THE SPAWN FUN");
         core.transform.position = spawnPos[core.GetPlayerNum() - 1].position;
     }
 

@@ -13,11 +13,13 @@ public class CharSelectToMatchTransition : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            
         }
         else
         {
-            Destroy(this);
+            Destroy(Instance.gameObject);
+            Instance = this;
+            DontDestroyOnLoad(this.gameObject);
         }
     }
     public void ExitCharSelectAnimation()
