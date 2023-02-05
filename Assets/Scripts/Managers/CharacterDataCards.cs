@@ -9,10 +9,21 @@ public class CharacterDataCards : MonoBehaviour
 
     public GameObject playerOneSelectionImage;
     public GameObject playerTwoSelectionImage;
-
+    public Sprite characterImage;
+    public Sprite tempSelectionImage;
     public Fighters GetFighterAttached()
     {
         return attachedFighter;
+    }
+
+    public Sprite GetCharacterImage()
+    {
+        return characterImage;
+    }
+
+    public Sprite GetTempImage()
+    {
+        return tempSelectionImage;
     }
 
 }

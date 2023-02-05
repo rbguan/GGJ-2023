@@ -59,7 +59,7 @@ public class FightStageManager : MonoBehaviour
                 GameObject newfigther = Instantiate(fighterList[PersistentInputHolder.Instance.GetInputs()[i]], spawnPos[i].position, Quaternion.identity);
                 newfigther.GetComponent<FighterCore>().SetPlayerNum(i + 1);
                 characterUIImages[i].sprite = characterSprites[(int)PersistentInputHolder.Instance.GetInputs()[i]];
-                characterNames[i].text = newfigther.name;
+                characterNames[i].text = PersistentInputHolder.Instance.GetInputs()[i].ToString();
                 if (i == 0)
                     newfigther.GetComponent<FighterCore>().SetPlayerStockBar(p1StockItems);
                 if (i == 1)

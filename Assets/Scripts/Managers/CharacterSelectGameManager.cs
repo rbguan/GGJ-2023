@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using TMPro;
 public class CharacterSelectGameManager : MonoBehaviour
 {
     public static CharacterSelectGameManager Instance { get; private set; }
@@ -25,7 +26,9 @@ public class CharacterSelectGameManager : MonoBehaviour
     float timerBase = 5;
     float currentTime;
     [SerializeField] private Transform _player1PortraitTransform;
+    [SerializeField] private TextMeshProUGUI _player1Name;
     [SerializeField] private Transform _player2PortraitTransform;
+    [SerializeField] private TextMeshProUGUI _player2Name;
     private void Awake()
     {
         Instance = this;
@@ -69,12 +72,16 @@ public class CharacterSelectGameManager : MonoBehaviour
         {
             playerOneIndex = 0;
             characterDataCards[playerOneIndex].playerOneSelectionImage.SetActive(true);
+            _player1PortraitTransform.GetComponent<Image>().sprite = characterDataCards[playerOneIndex].GetTempImage();
+            _player1Name.text = "Press Enter / Face Button Down";
             Debug.Log("P1 ON CARD NUMBER 0");
         }
         else if (currentPlayer.GetFighterNum() == 2)
         {
             playerTwoIndex = 0;
             characterDataCards[playerTwoIndex].playerTwoSelectionImage.SetActive(true);
+            _player2PortraitTransform.GetComponent<Image>().sprite = characterDataCards[playerTwoIndex].GetTempImage();
+            _player2Name.text = "Press Enter / Face Button Down";
             Debug.Log("P2 ON CARD NUMBER 0");
         }
 
@@ -89,6 +96,8 @@ public class CharacterSelectGameManager : MonoBehaviour
                 return;
 
             currentPlayer.SetCurrentFighter(characterDataCards[playerOneIndex].GetFighterAttached());
+            _player1PortraitTransform.GetComponent<Image>().sprite = characterDataCards[playerOneIndex].GetCharacterImage();
+            _player1Name.text = characterDataCards[playerOneIndex].GetFighterAttached().ToString();
             playerOneSelected = true;           
         }
         else if (currentPlayer.GetFighterNum() == 2)
@@ -97,6 +106,8 @@ public class CharacterSelectGameManager : MonoBehaviour
                 return;
             
             currentPlayer.SetCurrentFighter(characterDataCards[playerTwoIndex].GetFighterAttached());
+            _player2PortraitTransform.GetComponent<Image>().sprite = characterDataCards[playerTwoIndex].GetCharacterImage();
+            _player2Name.text = characterDataCards[playerTwoIndex].GetFighterAttached().ToString();
             playerTwoSelected = true;           
         }
 
@@ -117,12 +128,20 @@ public class CharacterSelectGameManager : MonoBehaviour
     public void DeselectFighter(MenuFighterActions currentPlayer)
     {
         currentPlayer.SetCurrentFighter(Fighters.Count);
-        
-        
+
+
         if (currentPlayer.GetFighterNum() == 1)
+        {
             playerOneSelected = false;
+            _player1Name.text = "Press Enter / Face Button Down";
+            _player1PortraitTransform.GetComponent<Image>().sprite = characterDataCards[playerOneIndex].GetTempImage();
+        }
         else if (currentPlayer.GetFighterNum() == 2)
+        {
             playerTwoSelected = false;
+            _player2Name.text = "Press Enter / Face Button Down";
+            _player2PortraitTransform.GetComponent<Image>().sprite = characterDataCards[playerTwoIndex].GetTempImage();
+        }
 
         timerCountDown = false;
 
@@ -139,6 +158,8 @@ public class CharacterSelectGameManager : MonoBehaviour
             characterDataCards[playerOneIndex].playerOneSelectionImage.SetActive(false);
             playerOneIndex = ChangeIndex(axis, playerOneIndex);
             characterDataCards[playerOneIndex].playerOneSelectionImage.SetActive(true);
+            _player1PortraitTransform.GetComponent<Image>().sprite = characterDataCards[playerOneIndex].GetTempImage();
+            _player1Name.text = "Press Enter / Face Button Down";
             Debug.Log("P1 new index is " + playerOneIndex);
         }
         else if (currentFighter.GetFighterNum() == 2)
@@ -146,6 +167,8 @@ public class CharacterSelectGameManager : MonoBehaviour
             characterDataCards[playerTwoIndex].playerTwoSelectionImage.SetActive(false);
             playerTwoIndex = ChangeIndex(axis, playerTwoIndex);
             characterDataCards[playerTwoIndex].playerTwoSelectionImage.SetActive(true);
+            _player2PortraitTransform.GetComponent<Image>().sprite = characterDataCards[playerTwoIndex].GetTempImage();
+            _player2Name.text = "Press Enter / Face Button Down";
             Debug.Log("P2 new index is " + playerTwoIndex);
         }
     }
