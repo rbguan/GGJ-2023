@@ -802,7 +802,7 @@ PrefabInstance:
         type: 3}
       propertyPath: fighters.Array.data[1]
       value: 
-      objectReference: {fileID: 1249837616543565506, guid: 944d591f46e608d41a2f7557ffc20d4b,
+      objectReference: {fileID: 1249837616543565506, guid: 9944c06ea32ce2843bb4436fd1cb97ca,
         type: 3}
     - target: {fileID: 2592234023652717935, guid: 860865ffde9247948afbac211346a774,
         type: 3}

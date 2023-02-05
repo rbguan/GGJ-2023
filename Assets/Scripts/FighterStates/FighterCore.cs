@@ -325,6 +325,7 @@ public class FighterCore : MonoBehaviour
         }
         else if (CurrentState.fighterState == FighterStates.Dazed)
         {
+            ChangeState(FighterStates.Default);
             StopCoroutine(StartDaze());
             StartCoroutine(HitstunTimer(knockbackTime));
             movComp.ApplyKnockback(knockbackVec, knockbackTime);

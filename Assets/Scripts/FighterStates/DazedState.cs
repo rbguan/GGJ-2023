@@ -21,15 +21,17 @@ public class DazedState : FighterState
             Destroy(currentDazeVFX);
         }
 
-        currentDazeVFX = Instantiate(dazeVFX, transform.position, Quaternion.identity);
+        currentDazeVFX = Instantiate(dazeVFX, transform.position, Quaternion.identity, transform);
 
-        GetComponent<Animator>().SetBool(Settings.dazeString, true);
+        GetComponent<Animator>().SetBool("Dazed", true);
     }
+
 
     public override void OnStateExit()
     {
         base.OnStateExit();
         Destroy(currentDazeVFX);
+        GetComponent<Animator>().SetBool("Dazed", false);
         coreObject.PostDazeReset();
     }
 }
