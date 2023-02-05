@@ -86,15 +86,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _R_BaseColor:
-        m_Texture: {fileID: 2800000, guid: 9c2bc94f5a03ff540aaeac458e78a12a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 88d1887ce6380d44ea01825efa24c7a7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _R_MODS:
-        m_Texture: {fileID: 2800000, guid: 1c063f96b7aa915488bdb5c6ca2e6306, type: 3}
+        m_Texture: {fileID: 2800000, guid: a5985a958b3ec2b438c42bb29c106fbc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _R_Normal:
-        m_Texture: {fileID: 2800000, guid: aa90b269617e57148b0498a32ae99e6d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 71824b8a884e1774dac11505c164f07e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
