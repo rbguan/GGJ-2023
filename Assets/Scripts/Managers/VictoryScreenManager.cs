@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using DG.Tweening;
 public class VictoryScreenManager : MonoBehaviour
 {
     public static VictoryScreenManager Instance { get; private set; }
@@ -23,6 +25,14 @@ public class VictoryScreenManager : MonoBehaviour
 
     [SerializeField]
     AudioClip[] FighterWinClips;
+    [Header("UI Drop In Values")]
+    [SerializeField] private float _dropInTime;
+    [SerializeField] private float _startScaleX;
+    [SerializeField] private AnimationCurve _scaleXCurve;
+    [SerializeField] private float _bounceInTime;
+    [SerializeField] private AnimationCurve _bounceInScaleCurve;
+    [SerializeField] private AnimationCurve _alphaCurve;
+
 
     private void Awake()
     {
@@ -31,19 +41,19 @@ public class VictoryScreenManager : MonoBehaviour
     void Start()
     {
 
+        StartCoroutine(LoadInUITweens());
+        // if (PersistentInputHolder.Instance.GetWinningPlayerNum() == 1)
+        // {
+        //     playerText[0].SetActive(true);
 
-        if (PersistentInputHolder.Instance.GetWinningPlayerNum() == 1)
-        {
-            playerText[0].SetActive(true);
+        // }
+        // else if (PersistentInputHolder.Instance.GetWinningPlayerNum() == 2)
+        // {
+        //     playerText[1].SetActive(true);
+        // }
 
-        }
-        else if (PersistentInputHolder.Instance.GetWinningPlayerNum() == 2)
-        {
-            playerText[1].SetActive(true);
-        }
-
-        winningPlayerGraphic[(int)PersistentInputHolder.Instance.GetWinningFighter()].SetActive(true);
-        losingPlayerGraphic[(int)PersistentInputHolder.Instance.GetLosingFighter()].SetActive(true);
+        // winningPlayerGraphic[(int)PersistentInputHolder.Instance.GetWinningFighter()].SetActive(true);
+        // losingPlayerGraphic[(int)PersistentInputHolder.Instance.GetLosingFighter()].SetActive(true);
 
         if (PersistentInputHolder.Instance != null && PersistentInputHolder.Instance.MenuFighters.Count >= 2)
         {
@@ -66,7 +76,34 @@ public class VictoryScreenManager : MonoBehaviour
         StartCoroutine(PlayVO(PersistentInputHolder.Instance.GetWinningFighter()));
 
     }
+    private IEnumerator LoadInUITweens()
+    {
+        int playerTextIndex = 0;
+        if (PersistentInputHolder.Instance.GetWinningPlayerNum() == 1)
+        {
+            playerTextIndex = 0;
+            playerText[0].SetActive(true);
 
+        }
+        else if (PersistentInputHolder.Instance.GetWinningPlayerNum() == 2)
+        {
+            playerTextIndex = 1;
+            playerText[1].SetActive(true);
+        }
+        playerTextIndex=0;
+        playerText[playerTextIndex].SetActive(true);
+        playerText[playerTextIndex].transform.DOScaleX(_startScaleX, _dropInTime).From().SetEase(_scaleXCurve);
+        playerText[playerTextIndex].GetComponent<Image>().DOFade(0, _dropInTime).From().SetEase(_alphaCurve);
+        
+        winningPlayerGraphic[(int)PersistentInputHolder.Instance.GetWinningFighter()].SetActive(true);
+        winningPlayerGraphic[(int)PersistentInputHolder.Instance.GetWinningFighter()].GetComponent<Image>().transform.DOScale(0, _bounceInTime).From().SetEase(_bounceInScaleCurve);
+        winningPlayerGraphic[(int)PersistentInputHolder.Instance.GetWinningFighter()].GetComponent<Image>().DOFade(0, _bounceInTime).From().SetEase(_alphaCurve);
+        
+        losingPlayerGraphic[(int)PersistentInputHolder.Instance.GetLosingFighter()].SetActive(true);
+        losingPlayerGraphic[(int)PersistentInputHolder.Instance.GetLosingFighter()].GetComponent<Image>().transform.DOScale(0, _bounceInTime).From().SetEase(_bounceInScaleCurve);
+        losingPlayerGraphic[(int)PersistentInputHolder.Instance.GetLosingFighter()].GetComponent<Image>().DOFade(0, _bounceInTime).From().SetEase(_alphaCurve);
+        yield return null;
+    }
     private void OnDisable()
     {
     }
