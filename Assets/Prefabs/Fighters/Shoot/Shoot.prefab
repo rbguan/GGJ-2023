@@ -306,21 +306,21 @@ MonoBehaviour:
   IsGrounded: 0
   _collisionBox: {fileID: 1249837616543565510}
   AudioSrc: {fileID: -8949784418758858212}
-  AerialAttackSfx: {fileID: 8300000, guid: 580f697cae637144192f04c4581a9dac, type: 3}
-  BasicAttackSfx: {fileID: 8300000, guid: df1171af21e5d694881185c55c469092, type: 3}
-  CombatSfx1: {fileID: 8300000, guid: 87c362f372903384fac595531843bbbe, type: 3}
-  CombatSfx2: {fileID: 8300000, guid: 64979f61b9502354aad5968cbb5fc0dd, type: 3}
-  DodgeSfx: {fileID: 8300000, guid: e192a0edac123ef458f808ae5ae9c47e, type: 3}
-  JumpSfx1: {fileID: 8300000, guid: 5be25ecab30f60941b6eb4ba6c67f9f7, type: 3}
-  JumpSfx2: {fileID: 8300000, guid: 5be25ecab30f60941b6eb4ba6c67f9f7, type: 3}
-  KOAttackSfx1: {fileID: 8300000, guid: 91c7fb2a9352a7d46951eea561a3e450, type: 3}
-  KOAttackSfx2: {fileID: 8300000, guid: 770e9d9aedacd4a4d908487af6103b71, type: 3}
-  RespawnSfx1: {fileID: 8300000, guid: b0a6898e7d777644293796bf326a087a, type: 3}
-  RespawnSfx2: {fileID: 8300000, guid: 925db3bfbd4be7a40a152bf92494d31a, type: 3}
-  SpecialClipSfx1: {fileID: 8300000, guid: 81305f62b0281bb4581554adbd73f8e6, type: 3}
-  SpecialClipSfx2: {fileID: 8300000, guid: 6e3de18ecdb99ec489394370bf1536f9, type: 3}
-  StartSfx1: {fileID: 8300000, guid: 8afed0fc1eb309a4ebc765c2e4719c78, type: 3}
-  StartSfx2: {fileID: 8300000, guid: 294bb0bbcb6851148b0b243b0cf776a8, type: 3}
+  AerialAttackSfx: {fileID: 8300000, guid: aa61919e28c58f741b4019ababd806b9, type: 3}
+  BasicAttackSfx: {fileID: 8300000, guid: ad936cc005d339f4a9bbf9355a0b3da9, type: 3}
+  CombatSfx1: {fileID: 8300000, guid: ce446c69f02c78b49b81764f73473e53, type: 3}
+  CombatSfx2: {fileID: 8300000, guid: 8618dbba8d394194294f5a62d609ca73, type: 3}
+  DodgeSfx: {fileID: 8300000, guid: e2f08fb6f8a6ca947b3c3d4ddafe0f2d, type: 3}
+  JumpSfx1: {fileID: 8300000, guid: ca25c9681c7937942aa5f6e28c4013f8, type: 3}
+  JumpSfx2: {fileID: 8300000, guid: ca25c9681c7937942aa5f6e28c4013f8, type: 3}
+  KOAttackSfx1: {fileID: 8300000, guid: 485f21fb62b080647a049b01a9fa8941, type: 3}
+  KOAttackSfx2: {fileID: 8300000, guid: 28309910cdd8e494a8a7a8e9a7188662, type: 3}
+  RespawnSfx1: {fileID: 8300000, guid: a1784795e40a08549b3d26f2458f220a, type: 3}
+  RespawnSfx2: {fileID: 8300000, guid: ec7b540b142820f40842e81706ed210b, type: 3}
+  SpecialClipSfx1: {fileID: 8300000, guid: 002f5f6be6f8c7544b8465f779bea139, type: 3}
+  SpecialClipSfx2: {fileID: 8300000, guid: 3c60a0c6b822d1145b6120d9fb6afc7f, type: 3}
+  StartSfx1: {fileID: 8300000, guid: bc3e8f02574c4544a905958ee6a6ec96, type: 3}
+  StartSfx2: {fileID: 8300000, guid: 9959835aa5b1e3a4f8df868bf2826fe9, type: 3}
   NumStocks: 3
   MaxStamina: 20
   PostDazeStamina: 5
