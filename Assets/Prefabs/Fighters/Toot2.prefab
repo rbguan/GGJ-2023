@@ -261,7 +261,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &3518125622449916534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,7 +299,7 @@ MonoBehaviour:
   hitBox: {fileID: 9217964302368651251}
   attackDamage: 3
   ShieldDamage: 5
-  KnockbackForce: 6
+  KnockbackForce: 250
   KnockbackTime: 0.5
   SelfPushbackForce: 250
   SelfPushbackTime: 0.5

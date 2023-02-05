@@ -45,6 +45,7 @@ public class TootSpecial : PlayerAttack
         {
             if (!GetHasDealtDamage())
             {
+                other.gameObject.GetComponent<FighterCore>().ApplyAttackValues(attackDamage, ShieldDamage, KnockbackForce * side, KnockbackTime);
                 Debug.Log("Hit");
                 DamageDealt();
             }
