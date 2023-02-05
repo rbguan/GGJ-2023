@@ -62,7 +62,7 @@ public class MenuButtonTweening : MonoBehaviour
 
     private IEnumerator PlayUILoop()
     {
-        PlayButton.DOMoveY(PlayButtonY, PlayButtonHoverPeriod).SetLoops(-1).SetEase(PlayButtonHoverCurve);
+        PlayButton.DOMoveY(Screen.height * PlayButtonY, PlayButtonHoverPeriod).From().SetLoops(-1).SetEase(PlayButtonHoverCurve);
         PlayButton.transform.GetComponent<Image>().DOFade(0, PlayButtonFadePeriod).From().SetLoops(-1).SetEase(PlayButtonFadeCurve);
         Title.transform.DOScale(TitlePulseScale, TitlePulsePeriod).SetLoops(-1).SetEase(TitlePulseCurve);
         TitleSpark.transform.DOScale(TitlePulseScale, TitlePulsePeriod).SetLoops(-1).SetEase(TitlePulseCurve);
