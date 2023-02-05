@@ -89,6 +89,11 @@ public class MovementComponent : MonoBehaviour
         StartCoroutine(ChangeFallThroughLayers());
     }
 
+    public void ZeroVelocity()
+    {
+        _rb.velocity = Vector2.zero;
+    }
+
     // inactionable timer
     private IEnumerator InactionableTimer(float time)
     {
