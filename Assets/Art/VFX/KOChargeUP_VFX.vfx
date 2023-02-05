@@ -17677,7 +17677,7 @@ MonoBehaviour:
   - {fileID: 8926484042661616085}
   m_ExposedName: Cone Height
   m_Exposed: 1
-  m_Order: 12
+  m_Order: 13
   m_Category: 
   m_Min:
     m_Type:
@@ -17757,7 +17757,7 @@ MonoBehaviour:
   - {fileID: 8926484042661616087}
   m_ExposedName: Cone Lifetime
   m_Exposed: 1
-  m_Order: 12
+  m_Order: 14
   m_Category: 
   m_Min:
     m_Type:

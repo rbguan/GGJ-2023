@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 public class CharacterSelectGameManager : MonoBehaviour
 {
     public static CharacterSelectGameManager Instance { get; private set; }
@@ -23,7 +24,8 @@ public class CharacterSelectGameManager : MonoBehaviour
     [SerializeField]
     float timerBase = 5;
     float currentTime;
-
+    [SerializeField] private Transform _player1PortraitTransform;
+    [SerializeField] private Transform _player2PortraitTransform;
     private void Awake()
     {
         Instance = this;
@@ -101,6 +103,17 @@ public class CharacterSelectGameManager : MonoBehaviour
         Debug.Log("SELECTEDFIGHTER IS " + currentPlayer.GetCurrentFighter().ToString() + " " + currentPlayer.name);
     }
 
+    public void SetupSelectedFighterUI(int currentPlayerNum, Fighters currentFighter)
+    {
+        if(currentPlayerNum == 1)
+        {
+            // _player1PortraitTransform.GetComponent<Image>() = currentFighter.
+        }
+        else
+        {
+
+        }
+    }
     public void DeselectFighter(MenuFighterActions currentPlayer)
     {
         currentPlayer.SetCurrentFighter(Fighters.Count);
