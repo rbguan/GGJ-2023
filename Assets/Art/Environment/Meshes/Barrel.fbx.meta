@@ -3,7 +3,17 @@ guid: 2ab33e596d531ac49a5f8fed7bd3b2fb
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Planks
+    second: {fileID: 2100000, guid: 67849916fca6b8d4ea935c9e290cad43, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TrimA
+    second: {fileID: 2100000, guid: f8832ebbf97132a46a3302594f7a7a84, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
