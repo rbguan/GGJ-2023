@@ -29,6 +29,16 @@ public class CharacterSelectGameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _player1Name;
     [SerializeField] private Transform _player2PortraitTransform;
     [SerializeField] private TextMeshProUGUI _player2Name;
+
+    [Header("Audio")]
+    [SerializeField] private AudioSource VOSrc;
+    [SerializeField] private AudioClip RootSelectVO1;
+    [SerializeField] private AudioClip RootSelectVO2;
+    [SerializeField] private AudioClip TootSelectVO1;
+    [SerializeField] private AudioClip TootSelectVO2;
+    [SerializeField] private AudioClip ShootSelectVO1;
+    [SerializeField] private AudioClip ShootSelectVO2;
+
     private void Awake()
     {
         Instance = this;
@@ -118,6 +128,7 @@ public class CharacterSelectGameManager : MonoBehaviour
         }
 
         Debug.Log("SELECTEDFIGHTER IS " + currentPlayer.GetCurrentFighter().ToString() + " " + currentPlayer.name);
+        PlaySelectVO(currentPlayer.GetCurrentFighter());
     }
 
     public void SetupSelectedFighterUI(int currentPlayerNum, Fighters currentFighter)
@@ -222,6 +233,37 @@ public class CharacterSelectGameManager : MonoBehaviour
             }
 
         }
+    }
+
+    private void PlaySelectVO(Fighters fighter)
+    {
+        AudioClip selectClip;
+
+        switch (fighter)
+        {
+            case Fighters.Root:
+            {
+                selectClip = UtilityFunctionLibrary.RandomBool() ? RootSelectVO1 : RootSelectVO2;
+                break;
+            }
+            case Fighters.Toot:
+            {
+                selectClip = UtilityFunctionLibrary.RandomBool() ? TootSelectVO1 : TootSelectVO2;
+                break;
+            }
+            case Fighters.Shoot:
+            {
+                selectClip = UtilityFunctionLibrary.RandomBool() ? ShootSelectVO1 : ShootSelectVO2;
+                break;
+            }
+            default:
+            {
+                selectClip = RootSelectVO1;
+                break;
+            }
+        }
+
+        VOSrc.PlayOneShot(selectClip);
     }
 }
 

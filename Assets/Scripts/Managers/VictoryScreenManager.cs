@@ -16,6 +16,14 @@ public class VictoryScreenManager : MonoBehaviour
     [SerializeField]
     GameObject[] losingPlayerGraphic;
 
+    [SerializeField] AudioSource VOSrc;
+
+    [SerializeField]
+    AudioClip[] AnnouncerClips;
+
+    [SerializeField]
+    AudioClip[] FighterWinClips;
+
     private void Awake()
     {
         Instance = this;
@@ -54,8 +62,8 @@ public class VictoryScreenManager : MonoBehaviour
             }
         }
 
-   
 
+        StartCoroutine(PlayVO(PersistentInputHolder.Instance.GetWinningFighter()));
 
     }
 
@@ -75,5 +83,12 @@ public class VictoryScreenManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    private IEnumerator PlayVO(Fighters winningFighter)
+    {
+        yield return new WaitForSeconds(5f);
+        VOSrc.PlayOneShot(AnnouncerClips[(int)winningFighter]);
+        yield return new WaitForSeconds(4f);
+        VOSrc.PlayOneShot(FighterWinClips[(int)winningFighter]);
+    }
 
 }
