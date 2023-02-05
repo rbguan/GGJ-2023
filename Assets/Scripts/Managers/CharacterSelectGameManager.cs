@@ -96,8 +96,11 @@ public class CharacterSelectGameManager : MonoBehaviour
                 return;
 
             currentPlayer.SetCurrentFighter(characterDataCards[playerOneIndex].GetFighterAttached());
-            _player1PortraitTransform.GetComponent<Image>().sprite = characterDataCards[playerOneIndex].GetCharacterImage();
-            _player1Name.text = characterDataCards[playerOneIndex].GetFighterAttached().ToString();
+            if (_player1PortraitTransform != null)
+            {
+                _player1PortraitTransform.GetComponent<Image>().sprite = characterDataCards[playerOneIndex].GetCharacterImage();
+                _player1Name.text = characterDataCards[playerOneIndex].GetFighterAttached().ToString();
+            }
             playerOneSelected = true;           
         }
         else if (currentPlayer.GetFighterNum() == 2)
@@ -106,8 +109,11 @@ public class CharacterSelectGameManager : MonoBehaviour
                 return;
             
             currentPlayer.SetCurrentFighter(characterDataCards[playerTwoIndex].GetFighterAttached());
-            _player2PortraitTransform.GetComponent<Image>().sprite = characterDataCards[playerTwoIndex].GetCharacterImage();
-            _player2Name.text = characterDataCards[playerTwoIndex].GetFighterAttached().ToString();
+            if (_player2PortraitTransform != null)
+            {
+                _player2PortraitTransform.GetComponent<Image>().sprite = characterDataCards[playerTwoIndex].GetCharacterImage();
+                _player2Name.text = characterDataCards[playerTwoIndex].GetFighterAttached().ToString();
+            }
             playerTwoSelected = true;           
         }
 
