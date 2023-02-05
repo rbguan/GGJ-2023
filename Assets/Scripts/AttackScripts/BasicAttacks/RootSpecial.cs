@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpecialAttack : PlayerAttack
+public class RootSpecial : PlayerAttack
 {
     public override void PeformAttack()
     {
@@ -14,17 +14,15 @@ public class SpecialAttack : PlayerAttack
     }
 
     [SerializeField]
-    FighterCore fighterCore;
-    [SerializeField]
     GameObject graphics;
-    
+
 
     float timeToWait = .4f;
     public override void StartSpecialAttack()
     {
         Debug.Log("SPECIAL ATTACK PERFORMED");
         Vector3 side;
-        if (fighterCore.isLeft)
+        if (attachedFighterCore.isLeft)
             side = -graphics.transform.right;
         else
             side = graphics.transform.right;
@@ -49,9 +47,9 @@ public class SpecialAttack : PlayerAttack
             spawnPos = hit.point;
             GameObject newPrefab = Instantiate(spikePrefab, spawnPos, Quaternion.identity);
             newPrefab.GetComponent<SpikeDestroyScript>().SetUp(this);
-            if (fighterCore.GetPlayerNum() == 1)
+            if (attachedFighterCore.GetPlayerNum() == 1)
                 newPrefab.layer = LayerMask.NameToLayer("Player1");
-            else if (fighterCore.GetPlayerNum() == 2)
+            else if (attachedFighterCore.GetPlayerNum() == 2)
                 newPrefab.layer = LayerMask.NameToLayer("Player2");
         }
         spawnPos += side * (radius * 2);
@@ -67,5 +65,5 @@ public class SpecialAttack : PlayerAttack
     }
 
     [SerializeField]
-    GameObject spikePrefab;    
+    GameObject spikePrefab;
 }

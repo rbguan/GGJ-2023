@@ -24,15 +24,19 @@ public class BasicAttack : PlayerAttack
         base.TriggerAnimation(Settings.basicAnimationTrigger);
     }
 
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (base.attachedAtackState.GetCurrentAttack() == this && other.gameObject.tag == "Player")
         {
-            Debug.Log("Hit");
-
-            Vector2 hitBoxPos = UtilityFunctionLibrary.GetVec3AsVec2(hitBox.transform.position);
-            Vector2 collisonDirection = other.ClosestPoint(hitBoxPos) - hitBoxPos;
-            OnHit(gameObject.GetComponent<FighterCore>(), collisonDirection);
+            if (!GetHasDealtDamage())
+            {
+                Debug.Log("Hit");
+                Vector2 hitBoxPos = UtilityFunctionLibrary.GetVec3AsVec2(hitBox.transform.position);
+                Vector2 collisonDirection = other.ClosestPoint(hitBoxPos) - hitBoxPos;
+                OnHit(gameObject.GetComponent<FighterCore>(), collisonDirection);
+                DamageDealt();
+            }
         }
-    }
+    }   
 }
