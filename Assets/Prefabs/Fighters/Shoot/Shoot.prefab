@@ -508,7 +508,7 @@ MonoBehaviour:
   hitBox: {fileID: 9217964302368651251}
   attackDamage: 3
   ShieldDamage: 5
-  KnockbackForce: 90
+  KnockbackForce: 110
   KnockbackTime: 1
   SelfPushbackForce: 0
   SelfPushbackTime: 0
