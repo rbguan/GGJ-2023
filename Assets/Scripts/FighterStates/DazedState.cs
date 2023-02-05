@@ -8,4 +8,11 @@ public class DazedState : FighterState
     {
         base.FighterStateUpdate(0f);
     }
+
+    public override void OnStateExit()
+    {
+        base.OnStateExit();
+
+        coreObject.PostDazeReset();
+    }
 }
