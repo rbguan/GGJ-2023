@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: -8432862666369420623}
   - component: {fileID: -9165368102968323892}
   m_Layer: 0
-  m_Name: Toot2 1
+  m_Name: Toot
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

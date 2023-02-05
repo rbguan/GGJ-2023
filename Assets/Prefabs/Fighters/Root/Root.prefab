@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -749746816, guid: 299d084303445c646a6f03990ad56090, type: 3}
+  m_Sprite: {fileID: 1551903146, guid: 82ba62e7cb3ec314d9f5f1d5f7b4f8bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,7 +102,6 @@ GameObject:
   - component: {fileID: 1249837616543565496}
   - component: {fileID: 1249837616543565500}
   - component: {fileID: 3518125622449916534}
-  - component: {fileID: 5538379879967147972}
   - component: {fileID: 310088913466764205}
   - component: {fileID: -8432862666369420623}
   - component: {fileID: -9165368102968323892}
@@ -163,7 +162,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.008332372, y: -0.23326844}
+  m_Offset: {x: 0.008332372, y: -0.45012468}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -174,7 +173,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6341646, y: 1.3623728}
+  m_Size: {x: 0.6341646, y: 1.5936681}
   m_EdgeRadius: 0
 --- !u!114 &1249837616543565501
 MonoBehaviour:
@@ -235,7 +234,7 @@ MonoBehaviour:
     type: 3}
   attackCancellable: 0
   fighterBasicAttack: {fileID: 1249837616543565497}
-  fighterSpecialAttack: {fileID: 5538379879967147972}
+  fighterSpecialAttack: {fileID: 3798799950536082267}
   knockOutAttack: {fileID: 3798799950536082267}
 --- !u!114 &1249837616543565496
 MonoBehaviour:
@@ -297,27 +296,6 @@ MonoBehaviour:
   FallThroughTime: 2
   MaxVelocity: 10
   dashVFX: {fileID: 6534696287886038150, guid: c823501bc586b864e8406ebcb176f694, type: 3}
---- !u!114 &5538379879967147972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1249837616543565506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c66279da366b5ff4c9de04da9635cd7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerAnimator: {fileID: 310088913466764205}
-  hitBox: {fileID: 9217964302368651251}
-  attackDamage: 3
-  ShieldDamage: 5
-  KnockbackForce: 250
-  KnockbackTime: 0.5
-  SelfPushbackForce: 250
-  SelfPushbackTime: 0.5
-  graphics: {fileID: 1249837616462373391}
 --- !u!95 &310088913466764205
 Animator:
   serializedVersion: 4
@@ -390,14 +368,15 @@ MonoBehaviour:
   hitBox: {fileID: 0}
   attackDamage: 3
   ShieldDamage: 3
-  KnockbackForce: 3
-  KnockbackTime: 3
+  KnockbackForce: 60
+  KnockbackTime: 0.3
   SelfPushbackForce: 0
   SelfPushbackTime: 0
   graphics: {fileID: 1249837616462373391}
+  isLeft: 0
   groundLayer:
     serializedVersion: 2
-    m_Bits: 2113
+    m_Bits: 2112
   spikePrefab: {fileID: 630965392204549904, guid: 1068a1c7233f10e448173062a5e74dfc,
     type: 3}
 --- !u!1 &1249837617240425445
