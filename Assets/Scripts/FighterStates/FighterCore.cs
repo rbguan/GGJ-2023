@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Users;
+using UnityEngine.UI;
 public class FighterCore : MonoBehaviour
 {
-    public InputUser user;
 
     private MovementComponent movComp;
 
@@ -44,6 +44,11 @@ public class FighterCore : MonoBehaviour
 
     public bool IsBlocking = false;
 
+    
+
+    List<GameObject> stock = new List<GameObject>();
+    Slider playerStaminaSlider;
+
     public FighterActions GetInputActions()
     {
         return fighterAction;
@@ -56,6 +61,22 @@ public class FighterCore : MonoBehaviour
             gameObject.layer = LayerMask.NameToLayer("Player1");
         else if (PlayerNum == 2)
             gameObject.layer = LayerMask.NameToLayer("Player2");
+    }
+
+    public void SetPlayerStockBar(List<GameObject> stockBar)
+    {
+        foreach (GameObject stockItem in stockBar)
+        {
+            stock.Add(stockItem);
+        }
+    }
+
+    public void SetPlayerHealthBar(Slider slider)
+    {
+        playerStaminaSlider = slider;
+        playerStaminaSlider.maxValue = MaxStamina;
+        playerStaminaSlider.minValue = 0;
+        playerStaminaSlider.value = MaxStamina;
     }
 
     public void SwapPlayerLayer()
@@ -157,11 +178,6 @@ public class FighterCore : MonoBehaviour
         CurrentState = fighterState;
         CurrentState.OnStateEnter();
 
-    }
-
-    private void OnDestroy()
-    {
-        user.UnpairDevices();
     }
 
     // Change state using enum
@@ -347,9 +363,11 @@ public class FighterCore : MonoBehaviour
         }
         else
         {
-            GetComponent<AttackState>().GetCurrentAttack().InterruptAtack(true);
+            if (CurrentState.fighterState == FighterStates.Attack)
+                GetComponent<AttackState>().GetCurrentAttack().InterruptAtack(true);
 
             _currentStamina = Mathf.Clamp(_currentStamina - staminaLoss, 0, MaxStamina);
+            playerStaminaSlider.value = _currentStamina;
 
             if (_currentStamina == 0f)
             {
@@ -392,12 +410,18 @@ public class FighterCore : MonoBehaviour
     public void OnKill()
     {
         NumStocks--;
+        GameObject stockToDestory = stock[0];
+        stock.RemoveAt(0);
+        Destroy(stockToDestory);
+
         if (NumStocks == 0)
         {
+            FindObjectOfType<FightStageManager>().GoToVictoryScreen(this);
             // Game over
         }
 
         _currentStamina = MaxStamina;
+        playerStaminaSlider.value = _currentStamina;
         _currentShield = MaxShield;
     }
 
@@ -420,6 +444,7 @@ public class FighterCore : MonoBehaviour
     public void PostDazeReset()
     {
         _currentStamina = PostDazeStamina;
+        playerStaminaSlider.value = _currentStamina;
         _currentShield = MaxShield;
     }
 }

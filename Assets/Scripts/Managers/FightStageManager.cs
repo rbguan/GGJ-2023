@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using TMPro;
 public class FightStageManager : MonoBehaviour
 {
     [SerializeField]
@@ -9,6 +11,18 @@ public class FightStageManager : MonoBehaviour
 
     [SerializeField]
     Image[] characterUIImages;
+
+    [SerializeField]
+    List<GameObject> p1StockItems;
+
+    [SerializeField]
+    List<GameObject> p2StockItems;
+
+    [SerializeField]
+    TextMeshProUGUI[] characterNames;
+
+    [SerializeField]
+    Slider[] characterHealthBar;
 
     [SerializeField]
     List<GameObject> fighters = new List<GameObject>();//root toot shoot
@@ -45,6 +59,12 @@ public class FightStageManager : MonoBehaviour
                 GameObject newfigther = Instantiate(fighterList[PersistentInputHolder.Instance.GetInputs()[i]], spawnPos[i].position, Quaternion.identity);
                 newfigther.GetComponent<FighterCore>().SetPlayerNum(i + 1);
                 characterUIImages[i].sprite = characterSprites[(int)PersistentInputHolder.Instance.GetInputs()[i]];
+                characterNames[i].text = newfigther.name;
+                if (i == 0)
+                    newfigther.GetComponent<FighterCore>().SetPlayerStockBar(p1StockItems);
+                if (i == 0)
+                    newfigther.GetComponent<FighterCore>().SetPlayerStockBar(p2StockItems);
+                newfigther.GetComponent<FighterCore>().SetPlayerHealthBar(characterHealthBar[i]);
 
                 foreach (MenuFighterActions menuFighter in PersistentInputHolder.Instance.MenuFighters)
                 {
@@ -60,10 +80,11 @@ public class FightStageManager : MonoBehaviour
         }       
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void GoToVictoryScreen(FighterCore losingPlayer)
     {
-        
+        PersistentInputHolder.Instance.SetLoser(losingPlayer.GetPlayerNum());
+        SceneManager.LoadScene("");
     }
 
     public void ResetPositionToSpawnPoint(FighterCore core)
