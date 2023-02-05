@@ -16,6 +16,7 @@ public class RootSpecial : PlayerAttack
     [SerializeField]
     GameObject graphics;
 
+    public bool isLeft = false;
 
     float timeToWait = .4f;
     public override void StartSpecialAttack()
@@ -23,9 +24,15 @@ public class RootSpecial : PlayerAttack
         Debug.Log("SPECIAL ATTACK PERFORMED");
         Vector3 side;
         if (attachedFighterCore.isLeft)
+        {
             side = -graphics.transform.right;
+            isLeft = false;
+        }
         else
+        {
             side = graphics.transform.right;
+            isLeft = true;
+        }
 
         float radius = spikePrefab.GetComponent<BoxCollider2D>().size.x / 2;
         Vector3 spawnPosition = graphics.transform.position;
