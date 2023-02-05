@@ -1,0 +1,1 @@
+root_spritesheet.png,1830,1141,81

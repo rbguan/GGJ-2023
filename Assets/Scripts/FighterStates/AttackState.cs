@@ -10,6 +10,8 @@ public class AttackState : FighterState
     BasicAttack fighterBasicAttack;
     [SerializeField]
     PlayerAttack fighterSpecialAttack;
+    [SerializeField]
+    PlayerAttack knockOutAttack;
     PlayerAttack currentAttack;
 
     public override void OnStateEnter()
@@ -63,6 +65,16 @@ public class AttackState : FighterState
             Debug.Log("SpecialAttack");
             currentAttack = fighterSpecialAttack;
             fighterSpecialAttack.PeformAttack();
+        }
+    }
+
+    public override void KnockOutInput()
+    {
+        if (coreObject.CurrentState == this)
+        {
+            Debug.Log("KnockOut");
+            currentAttack = knockOutAttack;
+            knockOutAttack.PeformAttack();
         }
     }
 

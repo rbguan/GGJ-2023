@@ -243,6 +243,15 @@ public partial class @FighterActions : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""KnockOut"",
+                    ""type"": ""Button"",
+                    ""id"": ""1cc28190-64e7-457f-afa2-2e7839feea71"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -498,6 +507,28 @@ public partial class @FighterActions : IInputActionCollection2, IDisposable
                     ""action"": ""Block"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6c9cb2fd-41c2-4ad3-9a42-02ac86e05fa9"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""KnockOut"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0a1c4644-4fef-4642-ad91-31a97fdad6bb"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""KnockOut"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -542,6 +573,7 @@ public partial class @FighterActions : IInputActionCollection2, IDisposable
         m_Base_FallThroughPlatform = m_Base.FindAction("FallThroughPlatform", throwIfNotFound: true);
         m_Base_SpecialAttack = m_Base.FindAction("SpecialAttack", throwIfNotFound: true);
         m_Base_Block = m_Base.FindAction("Block", throwIfNotFound: true);
+        m_Base_KnockOut = m_Base.FindAction("KnockOut", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -658,6 +690,7 @@ public partial class @FighterActions : IInputActionCollection2, IDisposable
     private readonly InputAction m_Base_FallThroughPlatform;
     private readonly InputAction m_Base_SpecialAttack;
     private readonly InputAction m_Base_Block;
+    private readonly InputAction m_Base_KnockOut;
     public struct BaseActions
     {
         private @FighterActions m_Wrapper;
@@ -670,6 +703,7 @@ public partial class @FighterActions : IInputActionCollection2, IDisposable
         public InputAction @FallThroughPlatform => m_Wrapper.m_Base_FallThroughPlatform;
         public InputAction @SpecialAttack => m_Wrapper.m_Base_SpecialAttack;
         public InputAction @Block => m_Wrapper.m_Base_Block;
+        public InputAction @KnockOut => m_Wrapper.m_Base_KnockOut;
         public InputActionMap Get() { return m_Wrapper.m_Base; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -703,6 +737,9 @@ public partial class @FighterActions : IInputActionCollection2, IDisposable
                 @Block.started -= m_Wrapper.m_BaseActionsCallbackInterface.OnBlock;
                 @Block.performed -= m_Wrapper.m_BaseActionsCallbackInterface.OnBlock;
                 @Block.canceled -= m_Wrapper.m_BaseActionsCallbackInterface.OnBlock;
+                @KnockOut.started -= m_Wrapper.m_BaseActionsCallbackInterface.OnKnockOut;
+                @KnockOut.performed -= m_Wrapper.m_BaseActionsCallbackInterface.OnKnockOut;
+                @KnockOut.canceled -= m_Wrapper.m_BaseActionsCallbackInterface.OnKnockOut;
             }
             m_Wrapper.m_BaseActionsCallbackInterface = instance;
             if (instance != null)
@@ -731,6 +768,9 @@ public partial class @FighterActions : IInputActionCollection2, IDisposable
                 @Block.started += instance.OnBlock;
                 @Block.performed += instance.OnBlock;
                 @Block.canceled += instance.OnBlock;
+                @KnockOut.started += instance.OnKnockOut;
+                @KnockOut.performed += instance.OnKnockOut;
+                @KnockOut.canceled += instance.OnKnockOut;
             }
         }
     }
@@ -769,5 +809,6 @@ public partial class @FighterActions : IInputActionCollection2, IDisposable
         void OnFallThroughPlatform(InputAction.CallbackContext context);
         void OnSpecialAttack(InputAction.CallbackContext context);
         void OnBlock(InputAction.CallbackContext context);
+        void OnKnockOut(InputAction.CallbackContext context);
     }
 }

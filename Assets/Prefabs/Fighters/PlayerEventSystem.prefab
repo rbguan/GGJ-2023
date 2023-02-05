@@ -236,6 +236,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c06dd848-7078-4ca7-8a80-d111add4943a
     m_ActionName: Base/Block[/Keyboard/downArrow,/DualShock4GamepadHID/dpad/down,/DualShock4GamepadHID1/dpad/down,/DualShock4GamepadHID2/dpad/down,/DualShock4GamepadHID3/dpad/down,/DualSenseGamepadHID/dpad/down]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -3640188685179484675}
+        m_TargetAssemblyTypeName: BaseMapInputReciever, Assembly-CSharp
+        m_MethodName: KnockBackInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1cc28190-64e7-457f-afa2-2e7839feea71
+    m_ActionName: Base/KnockOut[/XInputControllerWindows/buttonEast,/Keyboard/c]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Menu

@@ -62,7 +62,7 @@ public abstract class PlayerAttack : MonoBehaviour
     {
         if (damageTaken)
         {
-            playerAnimator.SetTrigger(Settings.hitStunTrigger);
+            //playerAnimator.SetTrigger(Settings.hitStunTrigger);
         }
         else
         {

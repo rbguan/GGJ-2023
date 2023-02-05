@@ -34,7 +34,7 @@ public class BasicAttack : PlayerAttack
                 Debug.Log("Hit");
                 Vector2 hitBoxPos = UtilityFunctionLibrary.GetVec3AsVec2(hitBox.transform.position);
                 Vector2 collisonDirection = other.ClosestPoint(hitBoxPos) - hitBoxPos;
-                OnHit(gameObject.GetComponent<FighterCore>(), collisonDirection);
+                OnHit(other.gameObject.GetComponent<FighterCore>(), collisonDirection);
                 DamageDealt();
             }
         }

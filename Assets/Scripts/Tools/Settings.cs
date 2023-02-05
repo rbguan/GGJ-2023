@@ -10,6 +10,8 @@ public class Settings
     public const string cancelTrigger = "Cancel";
     public const string dodgeTrigger = "Dodge";
     public const string blockString = "Block";
+    public const string dazeString = "Dazed";
+    public const string knockOutString = "KnockOut";
 }
 
 

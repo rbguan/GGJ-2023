@@ -35,7 +35,10 @@ public class TootSpecial : PlayerAttack
         if (attachedAtackState.GetCurrentAttack() == this)
         {
             base.EnableHitBox();
-            GetComponent<MovementComponent>().ApplyKnockback(SelfPushbackForce * -side, SelfPushbackTime);
+
+            MovementComponent movementComp = GetComponent<MovementComponent>();
+            movementComp.ZeroVelocity(true, false);
+            movementComp.ApplyKnockback(SelfPushbackForce * -side, SelfPushbackTime);
         }
     }
 

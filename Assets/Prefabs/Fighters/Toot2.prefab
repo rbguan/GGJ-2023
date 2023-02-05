@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 3518125622449916534}
   - component: {fileID: 5538379879967147972}
   - component: {fileID: 310088913466764205}
+  - component: {fileID: -5248135214777666736}
   m_Layer: 0
   m_Name: Toot2
   m_TagString: Player
@@ -142,9 +143,9 @@ MonoBehaviour:
   playerAnimator: {fileID: 310088913466764205}
   hitBox: {fileID: 1249837617240425444}
   attackDamage: 2
-  ShieldDamage: 0
-  KnockbackForce: 0
-  KnockbackTime: 0
+  ShieldDamage: 3
+  KnockbackForce: 75
+  KnockbackTime: 0.2
   SelfPushbackForce: 0
   SelfPushbackTime: 0
 --- !u!61 &1249837616543565510
@@ -188,6 +189,7 @@ MonoBehaviour:
   fighterState: 2
   jumpDustVfX: {fileID: 6093318836390733219, guid: ecdf9765f424df74ebf06fead15ececf,
     type: 3}
+  hitVFX: {fileID: 791474790081933350, guid: b947c978310a38e41bfcd59c62cf615d, type: 3}
 --- !u!114 &1249837616543565498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,9 +210,9 @@ MonoBehaviour:
   MaxStamina: 20
   PostDazeStamina: 5
   MaxShield: 20
-  ShieldDecayRate: 0
-  ShieldRechargeRate: 0
-  DazeTime: 0
+  ShieldDecayRate: 2
+  ShieldRechargeRate: 1
+  DazeTime: 3
   IsBlocking: 0
   isLeft: 1
   attachedAnimator: {fileID: 310088913466764205}
@@ -283,12 +285,14 @@ MonoBehaviour:
   _animController: {fileID: 310088913466764205}
   _rb: {fileID: 1249837616543565500}
   _collisionBox: {fileID: 1249837616543565510}
-  HorizontalSpeed: 1
-  DodgeSpeed: 200
-  DodgeTime: 2
-  JumpSpeed: 200
+  HorizontalSpeed: 5
+  DodgeSpeed: 500
+  DodgeTime: 0.5
+  DodgeCooldown: 1.2
+  JumpSpeed: 300
   JumpTime: 0.2
   FallThroughTime: 2
+  MaxVelocity: 10
   dashVFX: {fileID: 6534696287886038150, guid: c823501bc586b864e8406ebcb176f694, type: 3}
 --- !u!114 &5538379879967147972
 MonoBehaviour:
@@ -331,6 +335,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-5248135214777666736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249837616543565506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b66beec42b060d4aaac3c2cad32dfcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fighterState: 3
+  jumpDustVfX: {fileID: 6093318836390733219, guid: ecdf9765f424df74ebf06fead15ececf,
+    type: 3}
+  dazeVFX: {fileID: 3777920917345991192, guid: f46d838653918604c8c25361ae3e3c96, type: 3}
 --- !u!1 &1249837617240425445
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,7 +397,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.08714867, y: -0.40445846}
+  m_Offset: {x: -1.2222856, y: -0.28343505}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -388,7 +408,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.31621933, y: 0.19108307}
+  m_Size: {x: 1.3645515, y: 0.9428307}
   m_EdgeRadius: 0
 --- !u!61 &9217964302368651251
 BoxCollider2D:
