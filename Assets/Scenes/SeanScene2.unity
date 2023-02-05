@@ -24093,19 +24093,19 @@ PrefabInstance:
         type: 3}
       propertyPath: characterSprites.Array.data[0]
       value: 
-      objectReference: {fileID: 21300000, guid: dae33700bd23f76409a80bf78fdb8a42,
+      objectReference: {fileID: 21300000, guid: 3f3f7bb8a366a7d439b3a0ea719b8bf8,
         type: 3}
     - target: {fileID: 2592234023652717935, guid: 860865ffde9247948afbac211346a774,
         type: 3}
       propertyPath: characterSprites.Array.data[1]
       value: 
-      objectReference: {fileID: -749746816, guid: 299d084303445c646a6f03990ad56090,
+      objectReference: {fileID: 21300000, guid: bbea366632e8796469986a655dabe6fe,
         type: 3}
     - target: {fileID: 2592234023652717935, guid: 860865ffde9247948afbac211346a774,
         type: 3}
       propertyPath: characterSprites.Array.data[2]
       value: 
-      objectReference: {fileID: 21300000, guid: f8c9467a892580344bb697526dac0d13,
+      objectReference: {fileID: 21300000, guid: 26f7bf11de109b54888f3479e4142419,
         type: 3}
     - target: {fileID: 2592234023652717935, guid: 860865ffde9247948afbac211346a774,
         type: 3}

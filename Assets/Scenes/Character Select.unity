@@ -356,6 +356,18 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!114 &599614519 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3924893350337625473, guid: f0560cf63257f3c4e92e227a609f9ef5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2458003955946811103}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,6 +417,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!224 &1055920408 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3924893350307518807, guid: f0560cf63257f3c4e92e227a609f9ef5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2458003955946811103}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1061177510
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -500,6 +518,26 @@ MonoBehaviour:
   attachedFighter: 1
   playerOneSelectionImage: {fileID: 2458003955946811106}
   playerTwoSelectionImage: {fileID: 2458003955946811105}
+  characterImage: {fileID: 21300000, guid: 13966c103ad902542a52dee1b5df7ee2, type: 3}
+  tempSelectionImage: {fileID: 21300000, guid: c904a5320ffe72f42ab5cc8d88ed2c03, type: 3}
+--- !u!224 &1491673553 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2458003956692485381, guid: f0560cf63257f3c4e92e227a609f9ef5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2458003955946811103}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1714416813 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2458003956729438675, guid: f0560cf63257f3c4e92e227a609f9ef5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2458003955946811103}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1900303991
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -759,6 +797,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 549999823650000957, guid: f0560cf63257f3c4e92e227a609f9ef5,
+        type: 3}
+      propertyPath: m_text
+      value: P2
+      objectReference: {fileID: 0}
     - target: {fileID: 1526318791744867906, guid: f0560cf63257f3c4e92e227a609f9ef5,
         type: 3}
       propertyPath: m_Color.b
@@ -893,6 +936,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2458003955823052591, guid: f0560cf63257f3c4e92e227a609f9ef5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2458003956692485380, guid: f0560cf63257f3c4e92e227a609f9ef5,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2458003956692485382, guid: f0560cf63257f3c4e92e227a609f9ef5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2458003956729438675, guid: f0560cf63257f3c4e92e227a609f9ef5,
+        type: 3}
+      propertyPath: m_text
+      value: Press Enter / Face Button Down
+      objectReference: {fileID: 0}
+    - target: {fileID: 2458003956729438675, guid: f0560cf63257f3c4e92e227a609f9ef5,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 37.65
       objectReference: {fileID: 0}
     - target: {fileID: 2458003956847901522, guid: f0560cf63257f3c4e92e227a609f9ef5,
         type: 3}
@@ -1329,6 +1397,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -29.877636
       objectReference: {fileID: 0}
+    - target: {fileID: 3924893350307518806, guid: f0560cf63257f3c4e92e227a609f9ef5,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924893350307518806, guid: f0560cf63257f3c4e92e227a609f9ef5,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924893350337625473, guid: f0560cf63257f3c4e92e227a609f9ef5,
+        type: 3}
+      propertyPath: m_text
+      value: Press Enter / Face Button Down
+      objectReference: {fileID: 0}
+    - target: {fileID: 3924893350337625473, guid: f0560cf63257f3c4e92e227a609f9ef5,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 37.65
+      objectReference: {fileID: 0}
     - target: {fileID: 3924893352115362684, guid: f0560cf63257f3c4e92e227a609f9ef5,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1510,6 +1598,8 @@ MonoBehaviour:
   attachedFighter: 2
   playerOneSelectionImage: {fileID: 2458003955946811111}
   playerTwoSelectionImage: {fileID: 2458003955946811104}
+  characterImage: {fileID: 21300000, guid: ff1edd29195073348884689aeb07aef3, type: 3}
+  tempSelectionImage: {fileID: 21300000, guid: 859830fa95ea47b43b035be044db5d46, type: 3}
 --- !u!114 &2458003955946811114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1525,6 +1615,8 @@ MonoBehaviour:
   attachedFighter: 0
   playerOneSelectionImage: {fileID: 2458003955946811109}
   playerTwoSelectionImage: {fileID: 2458003955946811108}
+  characterImage: {fileID: 21300000, guid: b7170cd022dbde34da0d7b39180fb935, type: 3}
+  tempSelectionImage: {fileID: 21300000, guid: a8bba25403647a24c82eb8a34d61fd90, type: 3}
 --- !u!1001 &5164140553999273656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1629,8 +1721,10 @@ MonoBehaviour:
   playerOneSelected: 0
   playerTwoSelected: 0
   timerBase: 1
-  _player1PortraitTransform: {fileID: 0}
-  _player2PortraitTransform: {fileID: 0}
+  _player1PortraitTransform: {fileID: 1491673553}
+  _player1Name: {fileID: 1714416813}
+  _player2PortraitTransform: {fileID: 1055920408}
+  _player2Name: {fileID: 599614519}
 --- !u!1 &7005872916354193410
 GameObject:
   m_ObjectHideFlags: 0
