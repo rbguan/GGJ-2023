@@ -9,7 +9,7 @@ public class AttackState : FighterState
     [SerializeField]
     BasicAttack fighterBasicAttack;
     [SerializeField]
-    SpecialAttack fighterSpecialAttack;
+    PlayerAttack fighterSpecialAttack;
     PlayerAttack currentAttack;
 
     public override void OnStateEnter()
@@ -17,6 +17,11 @@ public class AttackState : FighterState
         base.OnStateEnter();
         attackCancellable = false;
         attackInterrupted = false;
+    }
+
+    public PlayerAttack GetCurrentAttack()
+    {
+        return currentAttack;
     }
 
     public override void FighterStateUpdate(float axisValue)

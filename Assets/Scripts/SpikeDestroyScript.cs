@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpikeDestroyScript : MonoBehaviour
 {
-    public SpecialAttack attachedSpecialAttack;
+    public PlayerAttack attachedSpecialAttack;
     // Start is called before the first frame update
     void Start()
     {
@@ -12,7 +12,7 @@ public class SpikeDestroyScript : MonoBehaviour
     }
 
 
-    public void SetUp(SpecialAttack sp)
+    public void SetUp(PlayerAttack sp)
     {
         attachedSpecialAttack = sp;
         StartCoroutine(DestroyObj());
@@ -25,9 +25,15 @@ public class SpikeDestroyScript : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if (other.gameObject.tag == "Player")
+        {
+            if (!attachedSpecialAttack.GetHasDealtDamage())
+            {
+                Debug.Log("Hit");
+                attachedSpecialAttack.DamageDealt();
+            }
+        }
     }
 }
