@@ -12,7 +12,8 @@ public class FighterCore : MonoBehaviour
     private FighterState _currentState;//Starts as Default
     public FighterState CurrentState { get { return _currentState; } set { _currentState = value; } }
     
-    [HideInInspector]//Dictionary that contains all attached componets that inherit from FighterState 
+    //Dictionary that contains all attached componets that inherit from FighterState 
+    [HideInInspector]
     public Dictionary<FighterStates, FighterState> attachedStates = new Dictionary<FighterStates, FighterState>();
 
     //FighterActions InputActions Map found in Assets/Input
@@ -31,9 +32,12 @@ public class FighterCore : MonoBehaviour
     [SerializeField]
     public BoxCollider2D _collisionBox;
 
+    public int NumStocks = 3;
     public int MaxStamina;
+    public int PostDazeStamina;
     public float MaxShield;
     public float DodgeTime;
+    public float DazeTime;
     public float FastFallTime;
     private int _currentStamina;
     private float _currentShield;
@@ -301,7 +305,7 @@ public class FighterCore : MonoBehaviour
 
     public void ApplyAttackValues(int staminaLoss, float shieldLoss, Vector2 knockbackVec, float knockbackTime)
     {
-        if(_isBlocking)
+        if (_isBlocking)
         {
             _currentShield = Mathf.Clamp(_currentShield - shieldLoss, 0f, MaxShield);
 
@@ -310,22 +314,44 @@ public class FighterCore : MonoBehaviour
                 // TODO what do when shield gon
             }
         }
+        else if (CurrentState.fighterState == FighterStates.Dazed)
+        {
+            StopCoroutine(StartDaze());
+            ChangeState(FighterStates.HitStun);
+            movComp.ApplyKnockback(knockbackVec, knockbackTime);
+        }
         else
         {
             _currentStamina = Mathf.Clamp(_currentStamina - staminaLoss, 0, MaxStamina);
 
             if (_currentStamina == 0f)
             {
-                ChangeState(FighterStates.Dazed);
-                return;
+                StartCoroutine(StartDaze());
             }
             else
             {
                 ChangeState(FighterStates.HitStun);
             }
 
-            // TODO Apply knockback
-            GetComponent<MovementComponent>().ApplyKnockback(knockbackVec, knockbackTime);
+            movComp.ApplyKnockback(knockbackVec, knockbackTime);
         }
+    }
+
+    private IEnumerator StartDaze()
+    {
+        ChangeState(FighterStates.Dazed);
+        yield return new WaitForSeconds(DazeTime);
+        ChangeState(FighterStates.Default);
+    }
+
+    public void OnKill()
+    {
+        NumStocks--;
+        if (NumStocks == 0)
+        {
+            // Game over
+        }
+
+        _currentStamina = MaxStamina;
     }
 }

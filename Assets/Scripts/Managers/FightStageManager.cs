@@ -55,4 +55,9 @@ public class FightStageManager : MonoBehaviour
     {
         
     }
+
+    public void ResetPositionToSpawnPoint(FighterCore core)
+    {
+        core.transform.position = spawnPos[core.GetPlayerNum() - 1].position;
+    }
 }
