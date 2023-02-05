@@ -12,16 +12,19 @@ public class MovementComponent : MonoBehaviour
     [Header("Movement Parameters")]
     public float HorizontalSpeed = 1f; // units per second
     public float DodgeSpeed = 2f;
-    public float DodgeTime = 2f;
+    public float DodgeTime = 0.5f;
+    public float DodgeCooldown = 1.2f;
     public float JumpSpeed = 200f;
     public float JumpTime = 0.5f;
     public float FallThroughTime = 2f;
+    public float MaxVelocity;
     // public Vector3 Gravity = new Vector3(0f, -0.5f, 0f);
 
     private FighterCore coreObject;
 
     public bool IsActionable { get; private set; } = true;
     public bool IsFallingThrough { get; private set; } = false;
+    private bool _isDodging = false;
     private bool _canDodge = true;
 
     private void Awake()
@@ -32,18 +35,35 @@ public class MovementComponent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    
+        _rb.inertia = 0f;
+        _rb.drag = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+   
     }
 
     public void ApplyHorizontalForce(float xAxisValue)
     {
+        if (_isDodging)
+        {
+            return;
+        }
+
+        if (xAxisValue == 0f && coreObject.IsGrounded)
+        {
+            ZeroVelocity(true, false);
+            return;
+        }
+
         _rb.AddForce(new Vector2(HorizontalSpeed * xAxisValue, 0f));
+
+        if (_rb.velocity.x > MaxVelocity)
+        {
+            _rb.velocity = new Vector3(MaxVelocity, _rb.velocity.y);
+        }
     }
 
     [SerializeField]
@@ -62,7 +82,7 @@ public class MovementComponent : MonoBehaviour
 
     public void ApplyVerticalForce()
     {
-        _rb.velocity = new Vector2(_rb.velocity.x, 0f);
+        ZeroVelocity(false, true);
         _rb.AddForce(new Vector2(0f, JumpSpeed));
 
         // Can remove gravity scale stuff if it feels too floaty
@@ -94,9 +114,17 @@ public class MovementComponent : MonoBehaviour
         StartCoroutine(ChangeFallThroughLayers());
     }
 
-    public void ZeroVelocity()
+    public void ZeroVelocity(bool x, bool y)
     {
-        _rb.velocity = Vector2.zero;
+        if (x)
+        {
+            _rb.velocity = new Vector2(0f, _rb.velocity.y);
+        }
+
+        if (y)
+        {
+            _rb.velocity = new Vector2(_rb.velocity.x, 0f);
+        }
     }
 
     // inactionable timer
@@ -128,8 +156,13 @@ public class MovementComponent : MonoBehaviour
     // dodge cooldown
     private IEnumerator DodgeCooldownTimer()
     {
+        _isDodging = true;
         _canDodge = false;
         yield return new WaitForSeconds(DodgeTime);
+        _isDodging = false;
+        if (coreObject.IsGrounded)
+            ZeroVelocity(true, false);
+        yield return new WaitForSeconds(DodgeCooldown - DodgeTime);
         _canDodge = true;
     }
 }
