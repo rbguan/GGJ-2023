@@ -3,7 +3,27 @@ guid: 7f49a39f58de6b7409a7fcca6d25d54a
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BluePlanks
+    second: {fileID: 2100000, guid: d9831ee497abbb946a30d92fab0df147, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Planks
+    second: {fileID: 2100000, guid: 212d105de23f65a4b8a0d167752206b3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Signs
+    second: {fileID: 2100000, guid: 8126a04e9461f4249895b59a42d9a792, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TrimA
+    second: {fileID: 2100000, guid: f8832ebbf97132a46a3302594f7a7a84, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
