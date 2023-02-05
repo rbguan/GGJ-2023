@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 0.92
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1745347, g: 0.21829696, b: 0.3005457, a: 1}
+  m_IndirectSpecularColor: {r: 0.18291456, g: 0.2286084, b: 0.30689424, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: b6d4a7b565177bc4aaf3a17118ba559b,
+    type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -143,7 +144,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 448fd6e0cd91b004da8d17927526448e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7
+      value: 0.51
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 448fd6e0cd91b004da8d17927526448e,
         type: 3}
@@ -212,7 +213,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 2ab33e596d531ac49a5f8fed7bd3b2fb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.19800001
+      value: -0.08
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2ab33e596d531ac49a5f8fed7bd3b2fb,
         type: 3}
@@ -281,7 +282,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 8e99852ceab590a4585688c5809cb034,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.11
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8e99852ceab590a4585688c5809cb034,
         type: 3}
@@ -350,7 +351,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7f49a39f58de6b7409a7fcca6d25d54a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.18
+      value: -0.06
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f49a39f58de6b7409a7fcca6d25d54a,
         type: 3}
@@ -448,8 +449,8 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0.9433962, g: 0.8920016, b: 0.7965468, a: 1}
+  m_Intensity: 1.21
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -506,14 +507,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 679793747}
-  m_LocalRotation: {x: 0.6185596, y: -0.15097088, z: 0.0044496045, w: 0.77108496}
+  m_LocalRotation: {x: 0.39068326, y: -0.05188544, z: -0.36087438, w: 0.84524804}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 72.798, y: -50.231, z: -37.468}
+  m_LocalEulerAnglesHint: {x: 38.536, y: -28.204, z: -56.277}
 --- !u!1 &835175939
 GameObject:
   m_ObjectHideFlags: 0
@@ -740,7 +741,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 448fd6e0cd91b004da8d17927526448e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.73
+      value: 0.48
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 448fd6e0cd91b004da8d17927526448e,
         type: 3}
@@ -840,7 +841,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 031f5c3516a6923459486688192a4bc0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.20999998
+      value: -0.06800002
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 031f5c3516a6923459486688192a4bc0,
         type: 3}
@@ -909,7 +910,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b44c311f9130102419e3c19b70cbe9af,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.19
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b44c311f9130102419e3c19b70cbe9af,
         type: 3}
@@ -951,10 +952,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2010318130166929961, guid: b44c311f9130102419e3c19b70cbe9af,
+        type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1120989108687609925, guid: b44c311f9130102419e3c19b70cbe9af,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c496ab2009039d54cb2072462d2fcf7f, type: 2}
     - target: {fileID: 919132149155446097, guid: b44c311f9130102419e3c19b70cbe9af,
         type: 3}
       propertyPath: m_Name
       value: Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 1314859354918401304, guid: b44c311f9130102419e3c19b70cbe9af,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4597166786079801509, guid: b44c311f9130102419e3c19b70cbe9af,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b44c311f9130102419e3c19b70cbe9af, type: 3}
@@ -978,7 +999,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: c842d77a829ad364295fc324c541e1d8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.21000004
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c842d77a829ad364295fc324c541e1d8,
         type: 3}
