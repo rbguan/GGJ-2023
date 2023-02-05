@@ -3,7 +3,22 @@ guid: c842d77a829ad364295fc324c541e1d8
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: AdobeBrickBlend
+    second: {fileID: 2100000, guid: c99b5941a0303b140933f8b69ebd509e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Signs
+    second: {fileID: 2100000, guid: 8126a04e9461f4249895b59a42d9a792, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TrimA
+    second: {fileID: 2100000, guid: f8832ebbf97132a46a3302594f7a7a84, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

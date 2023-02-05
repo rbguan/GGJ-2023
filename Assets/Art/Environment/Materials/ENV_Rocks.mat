@@ -121,7 +121,7 @@ Material:
     - _GlossyReflections: 0
     - _Metallic: 0
     - _Mode: 0
-    - _Normal_Intensity: 1.25
+    - _Normal_Intensity: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
@@ -136,9 +136,9 @@ Material:
     - _UseTextureNormals: 1
     - _WorkflowMode: 1
     - _ZTest: 4
-    - _ZUpHeight: -9.17
+    - _ZUpHeight: -10
     - _ZUpMossHeight: -5.31
-    - _ZUpSmoothness: 0.84
+    - _ZUpSmoothness: 0.64
     - _ZWrite: 1
     - _ZWriteControl: 0
     m_Colors:
