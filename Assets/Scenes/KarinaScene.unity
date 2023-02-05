@@ -396,11 +396,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 568872991438901018, guid: bbb0497a55444cb4c89a3c14bd5a87ce,
-        type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 698431319763146364, guid: bbb0497a55444cb4c89a3c14bd5a87ce,
         type: 3}
       propertyPath: m_AnchorMax.x
