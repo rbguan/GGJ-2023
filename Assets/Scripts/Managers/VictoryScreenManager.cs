@@ -90,7 +90,6 @@ public class VictoryScreenManager : MonoBehaviour
             playerTextIndex = 1;
             playerText[1].SetActive(true);
         }
-        playerTextIndex=0;
         playerText[playerTextIndex].SetActive(true);
         playerText[playerTextIndex].transform.DOScaleX(_startScaleX, _dropInTime).From().SetEase(_scaleXCurve);
         playerText[playerTextIndex].GetComponent<Image>().DOFade(0, _dropInTime).From().SetEase(_alphaCurve);
