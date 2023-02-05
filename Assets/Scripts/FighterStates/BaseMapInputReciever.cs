@@ -49,6 +49,12 @@ public class BaseMapInputReciever : MonoBehaviour
             EventHandler.CallPlayerBlockEvent(menuActions.GetFighterNum(), ctx);
     }
 
+    public void KnockBackInput(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+            EventHandler.CallPlayerKnockBackEvent(menuActions.GetFighterNum(), ctx);
+    }
+
     public void JumpInput(InputAction.CallbackContext ctx)
     {
         if (ctx.performed)

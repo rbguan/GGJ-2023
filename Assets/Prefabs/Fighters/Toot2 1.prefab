@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 5538379879967147972}
   - component: {fileID: 310088913466764205}
   - component: {fileID: -8432862666369420623}
+  - component: {fileID: -9165368102968323892}
   m_Layer: 0
   m_Name: Toot2 1
   m_TagString: Player
@@ -234,6 +235,7 @@ MonoBehaviour:
   attackCancellable: 0
   fighterBasicAttack: {fileID: 1249837616543565497}
   fighterSpecialAttack: {fileID: 5538379879967147972}
+  knockOutAttack: {fileID: 0}
 --- !u!114 &1249837616543565496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,6 +353,26 @@ MonoBehaviour:
   jumpDustVfX: {fileID: 6093318836390733219, guid: ecdf9765f424df74ebf06fead15ececf,
     type: 3}
   dazeVFX: {fileID: 3777920917345991192, guid: f46d838653918604c8c25361ae3e3c96, type: 3}
+--- !u!114 &-9165368102968323892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249837616543565506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6af33413dd390cc46b1f4201917109ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAnimator: {fileID: 310088913466764205}
+  hitBox: {fileID: 0}
+  attackDamage: 100
+  ShieldDamage: 30
+  KnockbackForce: 5
+  KnockbackTime: 2
+  SelfPushbackForce: 100
+  SelfPushbackTime: 0.5
 --- !u!1 &1249837617240425445
 GameObject:
   m_ObjectHideFlags: 0

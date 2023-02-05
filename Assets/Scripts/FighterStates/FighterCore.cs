@@ -288,6 +288,19 @@ public class FighterCore : MonoBehaviour
         }
     }
 
+
+    public void KnockOutInputEvent(int playerNum, InputAction.CallbackContext ctx)
+    {
+        if (playerNum == PlayerNum && movComp.IsActionable)
+        {
+            if (AttackStateCancellable() || CurrentState.GetFighterState() == FighterStates.Default)
+            {
+                ChangeState(attachedStates[FighterStates.Attack]);
+                CurrentState.KnockOutInput();
+            }
+        }
+    }
+
     private void OnEnable()
     {
         EventHandler.PlayerBasicAttackEvent += BasicAttackInputEvent;
@@ -298,6 +311,7 @@ public class FighterCore : MonoBehaviour
         EventHandler.PlayerMovementEvent += MovementEvent;
         EventHandler.PlayerBlockEvent += BlockEvent;
         EventHandler.PlayerJumpEvent += JumpEvent;
+        EventHandler.PlayerKnockOutEvent += KnockOutInputEvent;
     }
 
     private void OnDisable()
@@ -310,6 +324,7 @@ public class FighterCore : MonoBehaviour
         EventHandler.PlayerMovementEvent -= MovementEvent;
         EventHandler.PlayerBlockEvent -= BlockEvent;
         EventHandler.PlayerJumpEvent -= JumpEvent;
+        EventHandler.PlayerKnockOutEvent -= KnockOutInputEvent;
     }
 
     public void ApplyAttackValues(int staminaLoss, float shieldLoss, Vector2 knockbackVec, float knockbackTime)
@@ -332,6 +347,8 @@ public class FighterCore : MonoBehaviour
         }
         else
         {
+            GetComponent<AttackState>().GetCurrentAttack().InterruptAtack(true);
+
             _currentStamina = Mathf.Clamp(_currentStamina - staminaLoss, 0, MaxStamina);
 
             if (_currentStamina == 0f)
@@ -364,6 +381,13 @@ public class FighterCore : MonoBehaviour
         yield return new WaitForSeconds(hitstuntime);
         ChangeState(FighterStates.Default);
     }    
+
+
+    public void KnockOut()
+    {
+
+        OnKill();
+    }
 
     public void OnKill()
     {

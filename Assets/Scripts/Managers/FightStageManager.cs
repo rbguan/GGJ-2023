@@ -1,18 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class FightStageManager : MonoBehaviour
 {
     [SerializeField]
     Transform[] spawnPos = new Transform[2];
 
+    [SerializeField]
+    Image[] characterUIImages;
 
     [SerializeField]
     List<GameObject> fighters = new List<GameObject>();//root toot shoot
 
     [SerializeField]
     List<Fighters> fighterEnum = new List<Fighters>();
+
+
+    [Tooltip("Order is Root Toot Shoot")] [SerializeField]
+    Sprite[] characterSprites;
 
     [SerializeField]
     Dictionary<Fighters, GameObject> fighterList = new Dictionary<Fighters, GameObject>();
@@ -38,6 +44,7 @@ public class FightStageManager : MonoBehaviour
             {
                 GameObject newfigther = Instantiate(fighterList[PersistentInputHolder.Instance.GetInputs()[i]], spawnPos[i].position, Quaternion.identity);
                 newfigther.GetComponent<FighterCore>().SetPlayerNum(i + 1);
+                characterUIImages[i].sprite = characterSprites[(int)PersistentInputHolder.Instance.GetInputs()[i]];
 
                 foreach (MenuFighterActions menuFighter in PersistentInputHolder.Instance.MenuFighters)
                 {

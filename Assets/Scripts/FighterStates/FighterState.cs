@@ -45,6 +45,10 @@ public class FighterState : MonoBehaviour
 
     }
 
+    public virtual void KnockOutInput()
+    {
+
+    }
     public virtual void SpecialAttackInput()
     {
 
