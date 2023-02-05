@@ -59,7 +59,7 @@ public class LocalMultiplayerManager : MonoBehaviour
         GameObject go = Instantiate(Tetrisprefab);
         FighterCore tetris = go.GetComponent<FighterCore>();
         // store the InputUser so you can unpair later
-        tetris.user = user;
+        //tetris.user = user;
         // initialize your script with the new controls
         //tetris.SetUpInput(controlsForThisUser);
 

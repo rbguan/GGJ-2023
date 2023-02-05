@@ -15,6 +15,17 @@ public static class EventHandler
         }
     }
 
+    public static event Action<int, InputAction.CallbackContext> PlayerKnockOutEvent;
+
+    //When a player char inventory is updated (Location of inventory (marth, convoy, draug, etc) and the list of items itself (Marth's falchion)
+    public static void CallPlayerKnockBackEvent(int player, InputAction.CallbackContext ctx)
+    {
+        if (PlayerKnockOutEvent != null)
+        {
+            PlayerKnockOutEvent(player, ctx);
+        }
+    }
+
 
     public static event Action<int, InputAction.CallbackContext> PlayerSpecialAttackEvent;
 

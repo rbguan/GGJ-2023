@@ -28,14 +28,14 @@ public class PersistentInputHolder : MonoBehaviour
         }
     }
 
-    public void SetWinner(int playerNum)
+    public void SetLoser(int playerNum)
     {
-        winningPlayerNum = playerNum;
+        losingPlayerNum = playerNum;
 
-        if (winningPlayerNum == 1)
-            losingPlayerNum = 2;
-        else if (winningPlayerNum == 2)
-            losingPlayerNum = 1;
+        if (losingPlayerNum == 1)
+            winningPlayerNum = 2;
+        else if (losingPlayerNum == 2)
+            winningPlayerNum = 1;
 
 
     }
