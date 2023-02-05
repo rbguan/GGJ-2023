@@ -407,7 +407,7 @@ MonoBehaviour:
   DodgeCooldown: 1.2
   JumpSpeed: 300
   JumpTime: 0.2
-  FallThroughTime: 2
+  FallThroughTime: 1
   MaxVelocity: 500
   dashVFX: {fileID: 6534696287886038150, guid: c823501bc586b864e8406ebcb176f694, type: 3}
 --- !u!95 &310088913466764205

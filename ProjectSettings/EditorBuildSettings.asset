@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SeanScene2.unity
     guid: 39ed89be7b5b08c4e9bfa5a4f0e446a6
+  - enabled: 1
+    path: Assets/Scenes/VictoryScene.unity
+    guid: 5a7719efa0688f04f99d93114c2aae25
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 819d847d408725546ba274eb1deffb02,
       type: 2}
