@@ -356,7 +356,9 @@ public class FighterCore : MonoBehaviour
 
     private IEnumerator HitstunTimer(float hitstuntime)
     {
+
         FindObjectOfType<FightStageManager>().ScreenShakeSmall();
+        Debug.Log("HIT STUN TIMER");
         ChangeState(FighterStates.HitStun);
         yield return new WaitForSeconds(hitstuntime);
         ChangeState(FighterStates.Default);

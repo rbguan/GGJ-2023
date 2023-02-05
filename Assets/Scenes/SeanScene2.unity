@@ -797,7 +797,7 @@ PrefabInstance:
         type: 3}
       propertyPath: ScreenShake
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2592234023343905723}
     - target: {fileID: 2592234023652717935, guid: 860865ffde9247948afbac211346a774,
         type: 3}
       propertyPath: fighters.Array.data[1]
@@ -822,12 +822,38 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 2592234023343905720}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2592234023343905722}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e902cb512f3151478f3f6feb804cf49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2592234023343905722 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2592234023652717933, guid: 860865ffde9247948afbac211346a774,
+    type: 3}
+  m_PrefabInstance: {fileID: 2592234023343905720}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2592234023343905723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2592234023343905722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dd7b698f2025284d82cebb932622995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SmallTime: 1
+  SmallStrength: 1
+  SmallVibrato: 1
+  SmallRandom: 1
+  BigTime: 1
+  BigStrength: 1
+  BigVibrato: 1
+  BigRandom: 1
 --- !u!1001 &4489927772700466196
 PrefabInstance:
   m_ObjectHideFlags: 0

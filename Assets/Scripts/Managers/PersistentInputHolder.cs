@@ -8,6 +8,8 @@ public class PersistentInputHolder : MonoBehaviour
     PlayerInputManager pim;
     [SerializeField]
     Fighters[] playerInputs = new Fighters[2];
+    int winningPlayerNum = -1; //either 1 or p1 or 2 for p2
+    int losingPlayerNum = -1;
 
     public List<MenuFighterActions> MenuFighters = new List<MenuFighterActions>();
 
@@ -26,6 +28,37 @@ public class PersistentInputHolder : MonoBehaviour
         }
     }
 
+    public void SetWinner(int playerNum)
+    {
+        winningPlayerNum = playerNum;
+
+        if (winningPlayerNum == 1)
+            losingPlayerNum = 2;
+        else if (winningPlayerNum == 2)
+            losingPlayerNum = 1;
+
+
+    }
+
+    public int GetWinningPlayerNum()
+    {
+        return winningPlayerNum;
+    }
+
+    public int GetLosingPlayerNum()
+    {
+        return losingPlayerNum;
+    }
+
+    public Fighters GetWinningFighter()
+    {
+        return playerInputs[winningPlayerNum - 1];
+    }
+
+    public Fighters GetLosingFighter()
+    {
+        return playerInputs[losingPlayerNum - 1];
+    }
 
     public void SetInputs(Fighters player1, Fighters player2)
     {
