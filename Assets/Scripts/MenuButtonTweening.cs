@@ -11,11 +11,13 @@ public class MenuButtonTweening : MonoBehaviour
     [SerializeField][Range(0,2)] private float ButtonDropdownTime;
     [SerializeField][Range(0,2)] private float ButtonDropdownWaitTime;
     [SerializeField][Range(0,2)] private float TimeGapBetweenEachDrop;
+    [SerializeField][Range(0,5)] private float PlayButtonHoverPeriod;
     [SerializeField] private AnimationCurve ButtonDropdownCurve;
     [SerializeField][Range(0,1)] private float ButtonDropdownSquashFactor;
+    [SerializeField][Range(0,1)] private float PlayButtonY;
     [SerializeField] private AnimationCurve ButtonDropdownScaleCurve;
- 
     [SerializeField] private AnimationCurve ButtonHoverScaleCurve;
+    [SerializeField] private AnimationCurve PlayButtonHoverCurve;
     [SerializeField] private RectTransform Title;
     [SerializeField] private RectTransform PlayButton;
     [SerializeField] private RectTransform HowToPlayButton;
@@ -53,15 +55,17 @@ public class MenuButtonTweening : MonoBehaviour
         LoadSequence.AppendInterval(ButtonDropdownWaitTime);
         // LoadSequence.Join(TitleSequence);
         LoadSequence.Play();
+        StartCoroutine(PlayUILoop());
         yield return null;
     }
 
     private IEnumerator PlayUILoop()
     {
-        while(true)
-        {
-            // PlayButton.DOMoveY()
-        }
+        PlayButton.DOMoveY(Screen.height * PlayButtonY, PlayButtonHoverPeriod).From().SetLoops(-1).SetEase(PlayButtonHoverCurve);
         yield return null;
+        // while(true)
+        // {
+        //     yield return null;
+        // }
     }
 }

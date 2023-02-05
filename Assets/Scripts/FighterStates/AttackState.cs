@@ -8,6 +8,8 @@ public class AttackState : FighterState
     bool attackInterrupted = false;
     [SerializeField]
     BasicAttack fighterBasicAttack;
+    [SerializeField]
+    PlayerAttack fighterSpecialAttack;
     PlayerAttack currentAttack;
 
     public override void OnStateEnter()
@@ -15,6 +17,11 @@ public class AttackState : FighterState
         base.OnStateEnter();
         attackCancellable = false;
         attackInterrupted = false;
+    }
+
+    public PlayerAttack GetCurrentAttack()
+    {
+        return currentAttack;
     }
 
     public override void FighterStateUpdate(float axisValue)
@@ -48,4 +55,15 @@ public class AttackState : FighterState
             fighterBasicAttack.PeformAttack();
         }
     }
+
+    public override void SpecialAttackInput()
+    {
+        if (coreObject.CurrentState == this)
+        {
+            Debug.Log("SpecialAttack");
+            currentAttack = fighterSpecialAttack;
+            fighterSpecialAttack.PeformAttack();
+        }
+    }
+
 }

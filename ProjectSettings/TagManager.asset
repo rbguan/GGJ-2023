@@ -11,13 +11,13 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Platform
+  - Player1
+  - Player2
+  - Player1NoPlatform
+  - Player2NoPlatform
+  - MainStage
+  - Invulnerable
   - 
   - 
   - 

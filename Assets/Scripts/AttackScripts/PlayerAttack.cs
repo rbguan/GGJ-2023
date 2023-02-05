@@ -5,18 +5,42 @@ using UnityEngine.InputSystem;
 public abstract class PlayerAttack : MonoBehaviour
 {
 
-    public Animator playerAnimator;
-    public int attackDamage;
+    public Animator playerAnimator;    
     public BoxCollider2D hitBox;
-    AttackState attachedAtackState;
+    bool hasDealtDamage;
+    protected AttackState attachedAtackState;
+    protected FighterCore attachedFighterCore;
 
+    [Header("Attack Params")]
+    public int attackDamage;
+    public float ShieldDamage;
+    public float KnockbackForce;
+    public float KnockbackTime;
+    public float SelfPushbackForce = 0f;
+    public float SelfPushbackTime = 0f;
 
     private void Awake()
     {
         attachedAtackState = GetComponent<AttackState>();
+        attachedFighterCore = GetComponent<FighterCore>();
+    }
+
+    public void DamageDealt()
+    {
+        hasDealtDamage = true;
+    }
+
+    public bool GetHasDealtDamage()
+    {
+        return hasDealtDamage;
     }
 
     public virtual void PeformAttack()
+    {
+        hasDealtDamage = false;
+    }
+
+    public virtual void StartSpecialAttack()
     {
 
     }
@@ -41,8 +65,9 @@ public abstract class PlayerAttack : MonoBehaviour
         {
             playerAnimator.SetTrigger(Settings.cancelTrigger);
         }
-        
-        hitBox.enabled = false;
+
+        if (hitBox != null)
+            hitBox.enabled = false;
 
     }
 
@@ -52,12 +77,25 @@ public abstract class PlayerAttack : MonoBehaviour
     */
     public virtual void EnableHitBox()
     {
-        hitBox.enabled = true;
+        if (hitBox != null)
+            hitBox.enabled = true;
     }
 
+    public virtual void OnHit(FighterCore opponent, Vector2 collisionVec)
+    {
+        opponent.ApplyAttackValues(attackDamage, ShieldDamage, KnockbackForce * collisionVec, KnockbackTime);
+
+        //Apply self pushback if not 0
+        if (SelfPushbackForce > 0)
+        {
+            GetComponent<MovementComponent>().ApplyKnockback(SelfPushbackForce * -collisionVec, SelfPushbackTime);
+        }
+    }
+    
     public virtual void EndAttack()
     {
-        hitBox.enabled = false;
+        if (hitBox != null)
+            hitBox.enabled = false;
         attachedAtackState.FinishAttack();
     }
 

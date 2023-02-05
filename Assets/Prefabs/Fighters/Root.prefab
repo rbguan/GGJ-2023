@@ -28,7 +28,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1249837617240425447}
   m_Father: {fileID: 1249837616543565509}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -95,15 +96,17 @@ GameObject:
   - component: {fileID: 1249837616543565509}
   - component: {fileID: 1249837616543565508}
   - component: {fileID: 1249837616543565497}
+  - component: {fileID: 1159114403569394424}
   - component: {fileID: 1249837616543565510}
   - component: {fileID: 1249837616543565501}
   - component: {fileID: 1249837616543565498}
   - component: {fileID: 1249837616543565499}
   - component: {fileID: 1249837616543565496}
   - component: {fileID: 1249837616543565500}
+  - component: {fileID: 3518125622449916534}
   m_Layer: 0
   m_Name: Root
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,7 +124,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1249837616462373390}
-  - {fileID: 1249837617240425447}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -158,8 +160,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerAnimator: {fileID: 1249837616543565508}
-  attackDamage: 2
   hitBox: {fileID: 1249837617240425444}
+  attackDamage: 2
+  ShieldDamage: 0
+  KnockbackForce: 0
+  KnockbackTime: 0
+  SelfPushbackForce: 0
+  SelfPushbackTime: 0
+--- !u!114 &1159114403569394424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249837616543565506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ac06ce6bd9200045874f9d3e65ee097, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAnimator: {fileID: 1249837616543565508}
+  hitBox: {fileID: 1249837617240425444}
+  attackDamage: 3
+  ShieldDamage: 0
+  KnockbackForce: 0
+  KnockbackTime: 0
+  SelfPushbackForce: 0
+  SelfPushbackTime: 0
+  fighterCore: {fileID: 1249837616543565498}
+  graphics: {fileID: 1249837616462373391}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  spikePrefab: {fileID: 630965392204549904, guid: 1068a1c7233f10e448173062a5e74dfc,
+    type: 3}
 --- !u!61 &1249837616543565510
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -211,8 +245,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9c7868058facd408e70e69bfb93647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isGrounded: 0
+  PlayerNum: 0
+  playerGraphics: {fileID: 1249837616462373391}
+  IsGrounded: 0
   _collisionBox: {fileID: 1249837616543565510}
+  MaxStamina: 20
+  MaxShield: 20
+  DodgeTime: 0
+  FastFallTime: 0
+  isLeft: 1
 --- !u!114 &1249837616543565499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,6 +269,7 @@ MonoBehaviour:
   fighterState: 1
   attackCancellable: 0
   fighterBasicAttack: {fileID: 1249837616543565497}
+  fighterSpecialAttack: {fileID: 1159114403569394424}
 --- !u!114 &1249837616543565496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,11 +283,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fighterState: 0
-  _rb: {fileID: 1249837616543565500}
-  HorizontalSpeed: 1
-  DodgeSpeed: 2
-  JumpSpeed: 1
-  Gravity: {x: 0, y: -0.5, z: 0}
 --- !u!50 &1249837616543565500
 Rigidbody2D:
   serializedVersion: 4
@@ -267,6 +304,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3518125622449916534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249837616543565506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41989a4ed9d810349ac3f0f412679c22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animController: {fileID: 1249837616543565508}
+  _rb: {fileID: 1249837616543565500}
+  _collisionBox: {fileID: 1249837616543565510}
+  HorizontalSpeed: 1
+  DodgeSpeed: 200
+  JumpSpeed: 200
+  JumpTime: 0.2
+  FallThroughTime: 2
+  DoubleTapTime: 0.5
 --- !u!1 &1249837617240425445
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,13 +349,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1249837617240425445}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1249837616543565509}
-  m_RootOrder: 1
+  m_Father: {fileID: 1249837616462373390}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1249837617240425444
 BoxCollider2D:

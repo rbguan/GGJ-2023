@@ -7,24 +7,42 @@ public class FighterCore : MonoBehaviour
 {
     public InputUser user;
 
+    private MovementComponent movComp;
+
     private FighterState _currentState;//Starts as Default
     public FighterState CurrentState { get { return _currentState; } set { _currentState = value; } }
     
-    [HideInInspector]//Dictionary that contains all attached componets that inherit from FighterState 
+    //Dictionary that contains all attached componets that inherit from FighterState 
+    [HideInInspector]
     public Dictionary<FighterStates, FighterState> attachedStates = new Dictionary<FighterStates, FighterState>();
 
     //FighterActions InputActions Map found in Assets/Input
     FighterActions fighterAction;
     [SerializeField]
     private int PlayerNum = 0;
-    
+
+    [SerializeField]
+    GameObject playerGraphics;
+
     //Horizontal movement value
     float axisValue;
 
     [HideInInspector]
-    public bool _isGrounded = false;
+    public bool IsGrounded = false;
     [SerializeField]
     public BoxCollider2D _collisionBox;
+
+    public int NumStocks = 3;
+    public int MaxStamina;
+    public int PostDazeStamina;
+    public float MaxShield;
+    public float DodgeTime;
+    public float DazeTime;
+    public float FastFallTime;
+    private int _currentStamina;
+    private float _currentShield;
+    private bool _isBlocking;
+
     public FighterActions GetInputActions()
     {
         return fighterAction;
@@ -33,10 +51,80 @@ public class FighterCore : MonoBehaviour
     public void SetPlayerNum(int newNum)
     {
         PlayerNum = newNum;
+        if (PlayerNum == 1)
+            gameObject.layer = LayerMask.NameToLayer("Player1");
+        else if (PlayerNum == 2)
+            gameObject.layer = LayerMask.NameToLayer("Player2");
+    }
+
+    public void SwapPlayerLayer()
+    {
+        string newLayerName = "";
+
+        switch (LayerMask.LayerToName(gameObject.layer))
+        {
+            case "Player1":
+            {
+                newLayerName = "Player1NoPlatform";
+                break;
+            }
+            case "Player2":
+            {
+                newLayerName = "Player2NoPlatform";
+                break;
+            }
+            case "Player1NoPlatform":
+            {
+                newLayerName = "Player1";
+                break;
+            }
+            case "Player2NoPlatform":
+            {
+                newLayerName = "Player2";
+                break;
+            }
+        }
+
+        if (!newLayerName.Equals(""))
+        {
+            gameObject.layer = LayerMask.NameToLayer(newLayerName);
+        }
+    }
+
+    public int GetPlayerNum()
+    {
+        return PlayerNum;
+    }
+
+
+    Vector3 localScale;
+    public bool isLeft = true;
+    public void FlipRight()
+    {
+        if (isLeft)
+        {
+            localScale = playerGraphics.transform.localScale;
+            localScale.x *= -1;
+            playerGraphics.transform.localScale = localScale;
+            isLeft = false;
+        }
+    }
+
+    public void FlipLeft()
+    {
+        if (!isLeft)
+        {
+            localScale = playerGraphics.transform.localScale;
+            localScale.x *= -1;
+            playerGraphics.transform.localScale = localScale;
+            isLeft = true;
+        }
     }
 
     private void Awake()
     {
+        movComp = GetComponent<MovementComponent>();
+
         FighterState[] fighterStates = GetComponents<FighterState>();
         for (int i = 0; i < (int)FighterStates.Count; i++)
         {
@@ -46,16 +134,13 @@ public class FighterCore : MonoBehaviour
                 {
                     attachedStates.Add((FighterStates)i, fighterStates[y]);
                 }
-            }
-            
+            }            
         }
-
-        //SetUpInput();
 
         ChangeState(attachedStates[FighterStates.Default]);
     }
 
-    //Changes a state to a new one (Example: From AttackState to HitStun state)
+    // Changes a state to a new one (Example: From AttackState to HitStun state)
     public void ChangeState(FighterState fighterState)
     {
         //Perform OnStateExit if the fighter is currently in a state
@@ -75,6 +160,12 @@ public class FighterCore : MonoBehaviour
         user.UnpairDevices();
     }
 
+    // Change state using enum
+    public void ChangeState(FighterStates fighterStateEnum)
+    {
+        FighterState fighterState = attachedStates[fighterStateEnum];
+        ChangeState(fighterState);
+    }
 
     //Check if the Attack in AttackState is currently cancellable, and if it is and we are in AttackState, interrupt the attack
     public bool AttackStateCancellable()
@@ -105,15 +196,9 @@ public class FighterCore : MonoBehaviour
         attachedStates[CurrentState.GetFighterState()].FighterStateUpdate(axisValue);
     }
 
-
-    public void SENDTESTJUMP(string spec)
-    {
-        Debug.LogWarning("HELLO TEST " + spec + " " + gameObject.name);
-    }
-
     public void BasicAttackInputEvent(int playerNum, InputAction.CallbackContext ctx)
     {
-        if (playerNum == PlayerNum)
+        if (playerNum == PlayerNum && movComp.IsActionable)
         {
             if (AttackStateCancellable() || CurrentState.GetFighterState() == FighterStates.Default)
             {
@@ -125,7 +210,7 @@ public class FighterCore : MonoBehaviour
 
     public void SpecialAttackInputEvent(int playerNum, InputAction.CallbackContext ctx)
     {
-        if (playerNum == PlayerNum)
+        if (playerNum == PlayerNum && movComp.IsActionable)
         {
             if (AttackStateCancellable() || CurrentState.GetFighterState() == FighterStates.Default)
             {
@@ -137,7 +222,7 @@ public class FighterCore : MonoBehaviour
 
     public void FallThroughInputEvent(int playerNum, InputAction.CallbackContext ctx)
     {
-        if (playerNum == PlayerNum)
+        if (playerNum == PlayerNum && movComp.IsActionable)
         {
             CurrentState.FallThroughPlatformInput();
         }
@@ -145,7 +230,7 @@ public class FighterCore : MonoBehaviour
 
     public void DodgeLeftInputEvent(int playerNum, InputAction.CallbackContext ctx)
     {
-        if (playerNum == PlayerNum)
+        if (playerNum == PlayerNum && movComp.IsActionable)
         {
             CurrentState.DodgeInput(true);
         }
@@ -153,7 +238,7 @@ public class FighterCore : MonoBehaviour
 
     public void DodgeRightInputEvent(int playerNum, InputAction.CallbackContext ctx)
     {
-        if (playerNum == PlayerNum)
+        if (playerNum == PlayerNum && movComp.IsActionable)
         {
             CurrentState.DodgeInput(false);
         }
@@ -161,7 +246,7 @@ public class FighterCore : MonoBehaviour
 
     public void MovementEvent(int playerNum, InputAction.CallbackContext ctx)
     {
-        if (playerNum == PlayerNum)
+        if (playerNum == PlayerNum && movComp.IsActionable)
         {
             axisValue = ctx.ReadValue<float>();                          
         }
@@ -169,7 +254,7 @@ public class FighterCore : MonoBehaviour
 
     public void BlockEvent(int playerNum, InputAction.CallbackContext ctx)
     {
-        if (playerNum == PlayerNum)
+        if (playerNum == PlayerNum && movComp.IsActionable)
         {
             if (AttackStateCancellable() || CurrentState.GetFighterState() == FighterStates.Default)
             {                
@@ -181,12 +266,14 @@ public class FighterCore : MonoBehaviour
 
     public void JumpEvent(int playerNum, InputAction.CallbackContext ctx)
     {
-        if (playerNum == PlayerNum)
+        if (playerNum == PlayerNum && movComp.IsActionable)
         {
             if (AttackStateCancellable() || CurrentState.GetFighterState() == FighterStates.Default)
             {
-                Debug.Log("jump");
-                ChangeState(attachedStates[FighterStates.Default]);
+                if (CurrentState.GetFighterState() != FighterStates.Default)
+                {
+                    ChangeState(attachedStates[FighterStates.Default]);
+                }
                 CurrentState.JumpInput(ctx.action);
             }
         }
@@ -216,55 +303,55 @@ public class FighterCore : MonoBehaviour
         EventHandler.PlayerJumpEvent -= JumpEvent;
     }
 
-    public void SetUpInput()
-    { 
-
-        fighterAction.Enable();
-
-        fighterAction.Base.BasicAttack.performed += ctx =>
+    public void ApplyAttackValues(int staminaLoss, float shieldLoss, Vector2 knockbackVec, float knockbackTime)
+    {
+        if (_isBlocking)
         {
-            if (AttackStateCancellable() || CurrentState.GetFighterState() == FighterStates.Default)
+            _currentShield = Mathf.Clamp(_currentShield - shieldLoss, 0f, MaxShield);
+
+            if(_currentShield == 0f)
             {
-                ChangeState(attachedStates[FighterStates.Attack]);
-                CurrentState.BasicAttackInput();
+                // TODO what do when shield gon
             }
-        };
-        fighterAction.Base.SpecialAttack.performed += ctx => 
+        }
+        else if (CurrentState.fighterState == FighterStates.Dazed)
         {
-            if (AttackStateCancellable() || CurrentState.GetFighterState() == FighterStates.Default)
+            StopCoroutine(StartDaze());
+            ChangeState(FighterStates.HitStun);
+            movComp.ApplyKnockback(knockbackVec, knockbackTime);
+        }
+        else
+        {
+            _currentStamina = Mathf.Clamp(_currentStamina - staminaLoss, 0, MaxStamina);
+
+            if (_currentStamina == 0f)
             {
-                ChangeState(attachedStates[FighterStates.Attack]);
-                CurrentState.SpecialAttackInput();
+                StartCoroutine(StartDaze());
             }
-        };
-        fighterAction.Base.Jump.performed += ctx => 
-        {
-            if (AttackStateCancellable())
-            {               
-                ChangeState(attachedStates[FighterStates.Default]);
-            }            
-        };
-        fighterAction.Base.Block.performed += ctx =>
-        {
-            if (AttackStateCancellable())
+            else
             {
-                ChangeState(attachedStates[FighterStates.Default]);
+                ChangeState(FighterStates.HitStun);
             }
-        };
 
-        fighterAction.Base.FallThroughPlatform.performed += ctx =>
-        {
-            CurrentState.FallThroughPlatformInput();
-        };
+            movComp.ApplyKnockback(knockbackVec, knockbackTime);
+        }
+    }
 
+    private IEnumerator StartDaze()
+    {
+        ChangeState(FighterStates.Dazed);
+        yield return new WaitForSeconds(DazeTime);
+        ChangeState(FighterStates.Default);
+    }
 
-        fighterAction.Base.Movement.performed += ctx =>
+    public void OnKill()
+    {
+        NumStocks--;
+        if (NumStocks == 0)
         {
-            axisValue = ctx.ReadValue<float>();
-        };
-        fighterAction.Base.Movement.canceled += ctx =>
-        {
-            axisValue = ctx.ReadValue<float>();//should be 0
-        };
+            // Game over
+        }
+
+        _currentStamina = MaxStamina;
     }
 }

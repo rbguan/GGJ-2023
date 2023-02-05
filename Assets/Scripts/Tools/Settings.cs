@@ -16,5 +16,6 @@ public enum FighterStates
     Default,
     Attack,
     HitStun,
+    Dazed,
     Count
 }

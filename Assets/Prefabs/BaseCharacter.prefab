@@ -196,10 +196,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6485792546391010946}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64e46e68db79cdf4eb9faf14671a4317, type: 3}
+  m_Script: {fileID: 11500000, guid: 41989a4ed9d810349ac3f0f412679c22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animController: {fileID: 0}
+  _animController: {fileID: 6485792546391010949}
   _rb: {fileID: 6485792546391010936}
   _collisionBox: {fileID: 6485792546391010951}
   HorizontalSpeed: 1
