@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 1249837616543565496}
   - component: {fileID: 1249837616543565500}
   - component: {fileID: 3518125622449916534}
+  - component: {fileID: -3339674344626658842}
   m_Layer: 0
   m_Name: Root
   m_TagString: Player
@@ -162,9 +163,9 @@ MonoBehaviour:
   playerAnimator: {fileID: 1249837616543565508}
   hitBox: {fileID: 1249837617240425444}
   attackDamage: 2
-  ShieldDamage: 0
+  ShieldDamage: 1
   KnockbackForce: 0
-  KnockbackTime: 0
+  KnockbackTime: 0.5
   SelfPushbackForce: 0
   SelfPushbackTime: 0
 --- !u!114 &1159114403569394424
@@ -249,10 +250,14 @@ MonoBehaviour:
   playerGraphics: {fileID: 1249837616462373391}
   IsGrounded: 0
   _collisionBox: {fileID: 1249837616543565510}
+  NumStocks: 3
   MaxStamina: 20
+  PostDazeStamina: 15
   MaxShield: 20
-  DodgeTime: 0
-  FastFallTime: 0
+  ShieldDecayRate: 0
+  ShieldRechargeRate: 0
+  DazeTime: 5
+  IsBlocking: 0
   isLeft: 1
 --- !u!114 &1249837616543565499
 MonoBehaviour:
@@ -321,10 +326,23 @@ MonoBehaviour:
   _collisionBox: {fileID: 1249837616543565510}
   HorizontalSpeed: 1
   DodgeSpeed: 200
+  DodgeTime: 2
   JumpSpeed: 200
   JumpTime: 0.2
   FallThroughTime: 2
-  DoubleTapTime: 0.5
+--- !u!114 &-3339674344626658842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249837616543565506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b66beec42b060d4aaac3c2cad32dfcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fighterState: 3
 --- !u!1 &1249837617240425445
 GameObject:
   m_ObjectHideFlags: 0

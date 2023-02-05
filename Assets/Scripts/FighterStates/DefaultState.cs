@@ -50,10 +50,16 @@ public class DefaultState : FighterState
             }
 
             if (blockCTX.WasPerformedThisFrame())
+            {
                 blockActive = true;
+                coreObject.IsBlocking = true;
+            }
 
             if (blockCTX.WasReleasedThisFrame())
+            {
                 blockActive = false;
+                coreObject.IsBlocking = false;
+            }
         }
         
         if (!blockActive)
@@ -100,5 +106,6 @@ public class DefaultState : FighterState
         jumpActive = false;
         doubleJumpConsumed = false;
         blockActive = false;
+        coreObject.IsBlocking = false;
     }
 }
