@@ -88,6 +88,8 @@ public class DefaultState : FighterState
         Debug.Log("FallthroughPlatformPerformed");
     }
 
+
+
     public override void DodgeInput(bool left)
     {
         if (left)

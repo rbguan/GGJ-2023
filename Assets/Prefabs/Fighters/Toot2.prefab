@@ -186,6 +186,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fighterState: 2
+  jumpDustVfX: {fileID: 6093318836390733219, guid: ecdf9765f424df74ebf06fead15ececf,
+    type: 3}
 --- !u!114 &1249837616543565498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,7 +206,7 @@ MonoBehaviour:
   _collisionBox: {fileID: 1249837616543565510}
   NumStocks: 3
   MaxStamina: 20
-  PostDazeStamina: 0
+  PostDazeStamina: 5
   MaxShield: 20
   ShieldDecayRate: 0
   ShieldRechargeRate: 0
@@ -225,6 +227,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fighterState: 1
+  jumpDustVfX: {fileID: 6093318836390733219, guid: ecdf9765f424df74ebf06fead15ececf,
+    type: 3}
   attackCancellable: 0
   fighterBasicAttack: {fileID: 1249837616543565497}
   fighterSpecialAttack: {fileID: 5538379879967147972}
@@ -241,6 +245,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fighterState: 0
+  jumpDustVfX: {fileID: 6093318836390733219, guid: ecdf9765f424df74ebf06fead15ececf,
+    type: 3}
 --- !u!50 &1249837616543565500
 Rigidbody2D:
   serializedVersion: 4
@@ -283,6 +289,7 @@ MonoBehaviour:
   JumpSpeed: 200
   JumpTime: 0.2
   FallThroughTime: 2
+  dashVFX: {fileID: 6534696287886038150, guid: c823501bc586b864e8406ebcb176f694, type: 3}
 --- !u!114 &5538379879967147972
 MonoBehaviour:
   m_ObjectHideFlags: 0
