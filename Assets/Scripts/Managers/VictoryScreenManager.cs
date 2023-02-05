@@ -20,10 +20,8 @@ public class VictoryScreenManager : MonoBehaviour
     {
         Instance = this;
     }
-    void OnEnable()
+    void Start()
     {
-        if (CharSelectToMatchTransition.Instance != null)
-            CharSelectToMatchTransition.Instance.EnterFightAnimation();
 
 
         if (PersistentInputHolder.Instance.GetWinningPlayerNum() == 1)
@@ -77,15 +75,5 @@ public class VictoryScreenManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
