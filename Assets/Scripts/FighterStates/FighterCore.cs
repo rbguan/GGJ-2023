@@ -36,12 +36,13 @@ public class FighterCore : MonoBehaviour
     public int MaxStamina;
     public int PostDazeStamina;
     public float MaxShield;
-    public float DodgeTime;
+    public float ShieldDecayRate;
+    public float ShieldRechargeRate;
     public float DazeTime;
-    public float FastFallTime;
     private int _currentStamina;
     private float _currentShield;
-    private bool _isBlocking;
+
+    public bool IsBlocking = false;
 
     public FighterActions GetInputActions()
     {
@@ -138,6 +139,9 @@ public class FighterCore : MonoBehaviour
         }
 
         ChangeState(attachedStates[FighterStates.Default]);
+
+        _currentStamina = MaxStamina;
+        _currentShield = MaxShield;
     }
 
     // Changes a state to a new one (Example: From AttackState to HitStun state)
@@ -180,10 +184,14 @@ public class FighterCore : MonoBehaviour
             return false;
     }
 
+    [SerializeField]
+    public Animator attachedAnimator;
     // Calls the current States's update method
     void Update()
     {
         ExecuteStateUpdate();
+        attachedAnimator.SetFloat("yVelocity", GetComponent<Rigidbody2D>().velocity.y);
+        UpdateBlock();
     }
 
     private void ExecuteStateUpdate()
@@ -248,7 +256,8 @@ public class FighterCore : MonoBehaviour
     {
         if (playerNum == PlayerNum && movComp.IsActionable)
         {
-            axisValue = ctx.ReadValue<float>();                          
+            axisValue = ctx.ReadValue<float>();
+            attachedAnimator.SetFloat("xVelocity", axisValue);
         }
     }
 
@@ -305,19 +314,19 @@ public class FighterCore : MonoBehaviour
 
     public void ApplyAttackValues(int staminaLoss, float shieldLoss, Vector2 knockbackVec, float knockbackTime)
     {
-        if (_isBlocking)
+        if (IsBlocking)
         {
             _currentShield = Mathf.Clamp(_currentShield - shieldLoss, 0f, MaxShield);
 
             if(_currentShield == 0f)
             {
-                // TODO what do when shield gon
+                StartCoroutine(StartDaze());
             }
         }
         else if (CurrentState.fighterState == FighterStates.Dazed)
         {
             StopCoroutine(StartDaze());
-            ChangeState(FighterStates.HitStun);
+            StartCoroutine(HitstunTimer(knockbackTime));
             movComp.ApplyKnockback(knockbackVec, knockbackTime);
         }
         else
@@ -330,7 +339,7 @@ public class FighterCore : MonoBehaviour
             }
             else
             {
-                ChangeState(FighterStates.HitStun);
+                StartCoroutine(HitstunTimer(knockbackTime));
             }
 
             movComp.ApplyKnockback(knockbackVec, knockbackTime);
@@ -339,10 +348,19 @@ public class FighterCore : MonoBehaviour
 
     private IEnumerator StartDaze()
     {
+        FindObjectOfType<FightStageManager>().ScreenShakeSmall();
         ChangeState(FighterStates.Dazed);
         yield return new WaitForSeconds(DazeTime);
         ChangeState(FighterStates.Default);
     }
+
+    private IEnumerator HitstunTimer(float hitstuntime)
+    {
+        FindObjectOfType<FightStageManager>().ScreenShakeSmall();
+        ChangeState(FighterStates.HitStun);
+        yield return new WaitForSeconds(hitstuntime);
+        ChangeState(FighterStates.Default);
+    }    
 
     public void OnKill()
     {
@@ -353,5 +371,28 @@ public class FighterCore : MonoBehaviour
         }
 
         _currentStamina = MaxStamina;
+        _currentShield = MaxShield;
+    }
+
+    public void UpdateBlock()
+    {
+        if (IsBlocking)
+        {
+            _currentShield = Mathf.Clamp(_currentShield - ShieldDecayRate * Time.deltaTime, 0f, MaxShield);
+            if (_currentShield == 0f)
+            {
+                StartCoroutine(StartDaze());
+            }
+        }
+        else 
+        { 
+            _currentShield = Mathf.Clamp(_currentShield + ShieldRechargeRate * Time.deltaTime, 0f, MaxShield);            
+        }
+    }
+
+    public void PostDazeReset()
+    {
+        _currentStamina = PostDazeStamina;
+        _currentShield = MaxShield;
     }
 }

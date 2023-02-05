@@ -32,6 +32,7 @@ public class DefaultState : FighterState
                 else if (!doubleJumpConsumed)
                 {
                     doubleJumpConsumed = true;
+                    GetComponent<Animator>().SetTrigger(Settings.cancelTrigger);
                     movComp.ApplyVerticalForce();
                 }
             }
@@ -50,10 +51,18 @@ public class DefaultState : FighterState
             }
 
             if (blockCTX.WasPerformedThisFrame())
+            {
                 blockActive = true;
+                coreObject.IsBlocking = true;
+                coreObject.attachedAnimator.SetBool(Settings.blockString, true);
+            }
 
             if (blockCTX.WasReleasedThisFrame())
+            {
                 blockActive = false;
+                coreObject.IsBlocking = false;
+                coreObject.attachedAnimator.SetBool(Settings.blockString, false);
+            }
         }
         
         if (!blockActive)
@@ -79,6 +88,8 @@ public class DefaultState : FighterState
         Debug.Log("FallthroughPlatformPerformed");
     }
 
+
+
     public override void DodgeInput(bool left)
     {
         if (left)
@@ -100,5 +111,7 @@ public class DefaultState : FighterState
         jumpActive = false;
         doubleJumpConsumed = false;
         blockActive = false;
+        coreObject.IsBlocking = false;
+        coreObject.attachedAnimator.SetBool(Settings.blockString, false);
     }
 }

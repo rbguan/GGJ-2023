@@ -48,7 +48,10 @@ public abstract class PlayerAttack : MonoBehaviour
 
     public virtual void EnableInputInterrupts()
     {
-        attachedAtackState.attackCancellable = true;
+        if (attachedAtackState.GetCurrentAttack() == this)
+        {
+            attachedAtackState.attackCancellable = true;
+        }
     }
 
     /***
@@ -77,7 +80,7 @@ public abstract class PlayerAttack : MonoBehaviour
     */
     public virtual void EnableHitBox()
     {
-        if (hitBox != null)
+        if (hitBox != null && attachedAtackState.GetCurrentAttack() == this)
             hitBox.enabled = true;
     }
 
@@ -94,9 +97,12 @@ public abstract class PlayerAttack : MonoBehaviour
     
     public virtual void EndAttack()
     {
-        if (hitBox != null)
-            hitBox.enabled = false;
-        attachedAtackState.FinishAttack();
+        if (attachedAtackState.GetCurrentAttack() == this)
+        {
+            if (hitBox != null)
+                hitBox.enabled = false;
+            attachedAtackState.FinishAttack();
+        }
     }
 
     /***

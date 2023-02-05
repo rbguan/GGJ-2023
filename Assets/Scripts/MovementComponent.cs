@@ -46,11 +46,15 @@ public class MovementComponent : MonoBehaviour
         _rb.AddForce(new Vector2(HorizontalSpeed * xAxisValue, 0f));
     }
 
+    [SerializeField]
+    GameObject dashVFX;
+
     public void ApplyDodgeForce(float xAxisValue)
     {
         if (!_canDodge)
             return;
-
+        _animController.SetTrigger(Settings.dodgeTrigger);
+        Instantiate(dashVFX, transform.position, Quaternion.identity);
         _rb.velocity = Vector2.zero;
         _rb.AddForce(new Vector2(DodgeSpeed * xAxisValue, 0f));
         StartCoroutine(DodgeCooldownTimer());
@@ -70,6 +74,7 @@ public class MovementComponent : MonoBehaviour
 
     public void ApplyKnockback(Vector2 force, float time)
     {
+        Debug.Log("FORCE" + force);
         _rb.AddForce(force);
         StartCoroutine(InactionableTimer(time));
     }

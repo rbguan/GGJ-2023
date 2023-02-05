@@ -24,6 +24,7 @@ public class KillZone : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             FighterCore fighterCore = collision.gameObject.GetComponent<FighterCore>();
+            _stageManager.ScreenShakeBig();
             fighterCore.OnKill();
             _stageManager.ResetPositionToSpawnPoint(fighterCore);
         }
