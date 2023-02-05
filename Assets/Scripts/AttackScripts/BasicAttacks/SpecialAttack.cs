@@ -4,14 +4,6 @@ using UnityEngine;
 
 public class SpecialAttack : PlayerAttack
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-  
-
     public override void PeformAttack()
     {
         base.PeformAttack();
@@ -75,10 +67,5 @@ public class SpecialAttack : PlayerAttack
     }
 
     [SerializeField]
-    GameObject spikePrefab;
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    GameObject spikePrefab;    
 }

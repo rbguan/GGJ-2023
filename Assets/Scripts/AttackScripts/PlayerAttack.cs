@@ -5,9 +5,11 @@ using UnityEngine.InputSystem;
 public abstract class PlayerAttack : MonoBehaviour
 {
 
-    public Animator playerAnimator;
+    public Animator playerAnimator;    
     public BoxCollider2D hitBox;
-    AttackState attachedAtackState;
+    bool hasDealtDamage;
+    protected AttackState attachedAtackState;
+    protected FighterCore attachedFighterCore;
 
     [Header("Attack Params")]
     public int attackDamage;
@@ -20,11 +22,22 @@ public abstract class PlayerAttack : MonoBehaviour
     private void Awake()
     {
         attachedAtackState = GetComponent<AttackState>();
+        attachedFighterCore = GetComponent<FighterCore>();
+    }
+
+    public void DamageDealt()
+    {
+        hasDealtDamage = true;
+    }
+
+    public bool GetHasDealtDamage()
+    {
+        return hasDealtDamage;
     }
 
     public virtual void PeformAttack()
     {
-
+        hasDealtDamage = false;
     }
 
     public virtual void StartSpecialAttack()
@@ -68,6 +81,17 @@ public abstract class PlayerAttack : MonoBehaviour
             hitBox.enabled = true;
     }
 
+    public virtual void OnHit(FighterCore opponent, Vector2 collisionVec)
+    {
+        opponent.ApplyAttackValues(attackDamage, ShieldDamage, KnockbackForce * collisionVec, KnockbackTime);
+
+        //Apply self pushback if not 0
+        if (SelfPushbackForce > 0)
+        {
+            GetComponent<MovementComponent>().ApplyKnockback(SelfPushbackForce * -collisionVec, SelfPushbackTime);
+        }
+    }
+    
     public virtual void EndAttack()
     {
         if (hitBox != null)
@@ -84,14 +108,4 @@ public abstract class PlayerAttack : MonoBehaviour
         playerAnimator.SetTrigger(trigger);
     }
 
-    public virtual void OnHit(FighterCore opponent, Vector2 collisionVec)
-    {
-        opponent.ApplyAttackValues(attackDamage, ShieldDamage, KnockbackForce * collisionVec, KnockbackTime);
-
-        // Apply self pushback if not 0
-        if (SelfPushbackForce > 0f)
-        {
-            GetComponent<MovementComponent>().ApplyKnockback(SelfPushbackForce * -collisionVec, SelfPushbackTime);
-        }
-    }
 }
