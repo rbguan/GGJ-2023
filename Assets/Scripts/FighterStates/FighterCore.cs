@@ -32,6 +32,25 @@ public class FighterCore : MonoBehaviour
     [SerializeField]
     public BoxCollider2D _collisionBox;
 
+    [Header("Audio Assets")]
+    public AudioSource AudioSrc;
+    public AudioClip AerialAttackSfx;
+    public AudioClip BasicAttackSfx;
+    public AudioClip CombatSfx1;
+    public AudioClip CombatSfx2;
+    public AudioClip DodgeSfx;
+    public AudioClip JumpSfx1;
+    public AudioClip JumpSfx2;
+    public AudioClip KOAttackSfx1;
+    public AudioClip KOAttackSfx2;
+    public AudioClip RespawnSfx1;
+    public AudioClip RespawnSfx2;
+    public AudioClip SpecialClipSfx1;
+    public AudioClip SpecialClipSfx2;
+    public AudioClip StartSfx1;
+    public AudioClip StartSfx2;
+
+    [Header("Vital Params")]
     public int NumStocks = 3;
     public int MaxStamina;
     public int PostDazeStamina;
@@ -42,9 +61,7 @@ public class FighterCore : MonoBehaviour
     private int _currentStamina;
     private float _currentShield;
 
-    public bool IsBlocking = false;
-
-    
+    [HideInInspector] public bool IsBlocking = false;
 
     List<GameObject> stock = new List<GameObject>();
     Slider playerStaminaSlider;
@@ -163,6 +180,10 @@ public class FighterCore : MonoBehaviour
 
         _currentStamina = MaxStamina;
         _currentShield = MaxShield;
+
+        // Start audio
+        AudioClip startClip = Random.value > 0.5 ? StartSfx1 : StartSfx2;
+        AudioSrc.PlayOneShot(startClip);
     }
 
     // Changes a state to a new one (Example: From AttackState to HitStun state)
@@ -228,6 +249,10 @@ public class FighterCore : MonoBehaviour
             {
                 ChangeState(attachedStates[FighterStates.Attack]);
                 CurrentState.BasicAttackInput();
+
+                if (AudioSrc.isPlaying) AudioSrc.Stop();
+                AudioClip basicClip = IsGrounded ? BasicAttackSfx : AerialAttackSfx;
+                AudioSrc.PlayOneShot(basicClip);
             }
         }
     }
@@ -240,6 +265,10 @@ public class FighterCore : MonoBehaviour
             {
                 ChangeState(attachedStates[FighterStates.Attack]);
                 CurrentState.SpecialAttackInput();
+
+                if (AudioSrc.isPlaying) AudioSrc.Stop();
+                AudioClip specialClip = UtilityFunctionLibrary.RandomBool() ? SpecialClipSfx1 : SpecialClipSfx2;
+                AudioSrc.PlayOneShot(specialClip);
             }
         }
     }
@@ -257,6 +286,8 @@ public class FighterCore : MonoBehaviour
         if (playerNum == PlayerNum && movComp.IsActionable)
         {
             CurrentState.DodgeInput(true);
+            if (AudioSrc.isPlaying) AudioSrc.Stop();
+            AudioSrc.PlayOneShot(DodgeSfx);
         }
     }
 
@@ -265,6 +296,8 @@ public class FighterCore : MonoBehaviour
         if (playerNum == PlayerNum && movComp.IsActionable)
         {
             CurrentState.DodgeInput(false);
+            if (AudioSrc.isPlaying) AudioSrc.Stop();
+            AudioSrc.PlayOneShot(DodgeSfx);
         }
     }
 
@@ -300,6 +333,10 @@ public class FighterCore : MonoBehaviour
                     ChangeState(attachedStates[FighterStates.Default]);
                 }
                 CurrentState.JumpInput(ctx.action);
+
+                if (AudioSrc.isPlaying) AudioSrc.Stop();
+                AudioClip jumpClip = UtilityFunctionLibrary.RandomBool() ? JumpSfx1 : JumpSfx2;
+                AudioSrc.PlayOneShot(jumpClip);
             }
         }
     }
@@ -313,6 +350,10 @@ public class FighterCore : MonoBehaviour
             {
                 ChangeState(attachedStates[FighterStates.Attack]);
                 CurrentState.KnockOutInput();
+
+                if (AudioSrc.isPlaying) AudioSrc.Stop();
+                AudioClip koClip = UtilityFunctionLibrary.RandomBool() ? KOAttackSfx1 : KOAttackSfx2;
+                AudioSrc.PlayOneShot(koClip);
             }
         }
     }
@@ -423,6 +464,10 @@ public class FighterCore : MonoBehaviour
         _currentStamina = MaxStamina;
         playerStaminaSlider.value = _currentStamina;
         _currentShield = MaxShield;
+
+        // Respawn audio
+        AudioClip respawnClip = UtilityFunctionLibrary.RandomBool() ? RespawnSfx1 : RespawnSfx2;
+        AudioSrc.PlayOneShot(respawnClip);
     }
 
     public void UpdateBlock()

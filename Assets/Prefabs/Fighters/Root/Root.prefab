@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 1249837616543565497}
   - component: {fileID: 1249837616543565510}
   - component: {fileID: 1249837616543565501}
+  - component: {fileID: -8949784418758858212}
   - component: {fileID: 1249837616543565498}
   - component: {fileID: 1249837616543565499}
   - component: {fileID: 1249837616543565496}
@@ -191,6 +192,103 @@ MonoBehaviour:
   jumpDustVfX: {fileID: 6093318836390733219, guid: ecdf9765f424df74ebf06fead15ececf,
     type: 3}
   hitVFX: {fileID: 791474790081933350, guid: b947c978310a38e41bfcd59c62cf615d, type: 3}
+--- !u!82 &-8949784418758858212
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249837616543565506}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 3311867969662067358, guid: 5d322d68ce139314c998185977d331f1,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &1249837616543565498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,6 +305,22 @@ MonoBehaviour:
   playerGraphics: {fileID: 1249837616462373391}
   IsGrounded: 0
   _collisionBox: {fileID: 1249837616543565510}
+  AudioSrc: {fileID: -8949784418758858212}
+  AerialAttackSfx: {fileID: 8300000, guid: 580f697cae637144192f04c4581a9dac, type: 3}
+  BasicAttackSfx: {fileID: 8300000, guid: df1171af21e5d694881185c55c469092, type: 3}
+  CombatSfx1: {fileID: 8300000, guid: 87c362f372903384fac595531843bbbe, type: 3}
+  CombatSfx2: {fileID: 8300000, guid: 64979f61b9502354aad5968cbb5fc0dd, type: 3}
+  DodgeSfx: {fileID: 8300000, guid: e192a0edac123ef458f808ae5ae9c47e, type: 3}
+  JumpSfx1: {fileID: 8300000, guid: 5be25ecab30f60941b6eb4ba6c67f9f7, type: 3}
+  JumpSfx2: {fileID: 8300000, guid: 5be25ecab30f60941b6eb4ba6c67f9f7, type: 3}
+  KOAttackSfx1: {fileID: 8300000, guid: 91c7fb2a9352a7d46951eea561a3e450, type: 3}
+  KOAttackSfx2: {fileID: 8300000, guid: 770e9d9aedacd4a4d908487af6103b71, type: 3}
+  RespawnSfx1: {fileID: 8300000, guid: b0a6898e7d777644293796bf326a087a, type: 3}
+  RespawnSfx2: {fileID: 8300000, guid: 925db3bfbd4be7a40a152bf92494d31a, type: 3}
+  SpecialClipSfx1: {fileID: 8300000, guid: 81305f62b0281bb4581554adbd73f8e6, type: 3}
+  SpecialClipSfx2: {fileID: 8300000, guid: 6e3de18ecdb99ec489394370bf1536f9, type: 3}
+  StartSfx1: {fileID: 8300000, guid: 8afed0fc1eb309a4ebc765c2e4719c78, type: 3}
+  StartSfx2: {fileID: 8300000, guid: 294bb0bbcb6851148b0b243b0cf776a8, type: 3}
   NumStocks: 3
   MaxStamina: 20
   PostDazeStamina: 5
@@ -287,14 +401,14 @@ MonoBehaviour:
   _animController: {fileID: 310088913466764205}
   _rb: {fileID: 1249837616543565500}
   _collisionBox: {fileID: 1249837616543565510}
-  HorizontalSpeed: 5
-  DodgeSpeed: 500
+  HorizontalSpeed: 500
+  DodgeSpeed: 700
   DodgeTime: 0.5
   DodgeCooldown: 1.2
   JumpSpeed: 300
   JumpTime: 0.2
   FallThroughTime: 2
-  MaxVelocity: 10
+  MaxVelocity: 500
   dashVFX: {fileID: 6534696287886038150, guid: c823501bc586b864e8406ebcb176f694, type: 3}
 --- !u!95 &310088913466764205
 Animator:
