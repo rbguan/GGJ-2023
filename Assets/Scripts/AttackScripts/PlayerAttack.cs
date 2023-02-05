@@ -45,6 +45,10 @@ public abstract class PlayerAttack : MonoBehaviour
 
     }
 
+    public virtual void ShootSpecialPull()
+    {
+
+    }
 
     public virtual void EnableInputInterrupts()
     {

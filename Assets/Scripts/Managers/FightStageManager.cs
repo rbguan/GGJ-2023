@@ -13,10 +13,10 @@ public class FightStageManager : MonoBehaviour
     Image[] characterUIImages;
 
     [SerializeField]
-    List<GameObject> p1StockItems;
+    List<Image> p1StockItems;
 
     [SerializeField]
-    List<GameObject> p2StockItems;
+    List<Image> p2StockItems;
 
     [SerializeField]
     TextMeshProUGUI[] characterNames;

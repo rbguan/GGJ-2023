@@ -63,7 +63,7 @@ public class FighterCore : MonoBehaviour
 
     [HideInInspector] public bool IsBlocking = false;
 
-    List<GameObject> stock = new List<GameObject>();
+    List<Image> stock = new List<Image>();
     Slider playerStaminaSlider;
 
     public FighterActions GetInputActions()
@@ -80,9 +80,9 @@ public class FighterCore : MonoBehaviour
             gameObject.layer = LayerMask.NameToLayer("Player2");
     }
 
-    public void SetPlayerStockBar(List<GameObject> stockBar)
+    public void SetPlayerStockBar(List<Image> stockBar)
     {
-        foreach (GameObject stockItem in stockBar)
+        foreach (Image stockItem in stockBar)
         {
             stock.Add(stockItem);
         }
@@ -455,9 +455,9 @@ public class FighterCore : MonoBehaviour
     public void OnKill()
     {
         NumStocks--;
-        GameObject stockToDestory = stock[0];
+        Image stockToDestory = stock[0];
         stock.RemoveAt(0);
-        Destroy(stockToDestory);
+        stockToDestory.enabled = false;
 
         if (NumStocks == 0)
         {

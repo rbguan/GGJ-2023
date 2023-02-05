@@ -146,7 +146,7 @@ MonoBehaviour:
   playerAnimator: {fileID: 310088913466764205}
   hitBox: {fileID: 1249837617240425444}
   attackDamage: 2
-  ShieldDamage: 3
+  ShieldDamage: 4
   KnockbackForce: 70
   KnockbackTime: 0.2
   SelfPushbackForce: 0
@@ -323,8 +323,8 @@ MonoBehaviour:
   StartSfx1: {fileID: 8300000, guid: 8afed0fc1eb309a4ebc765c2e4719c78, type: 3}
   StartSfx2: {fileID: 8300000, guid: 294bb0bbcb6851148b0b243b0cf776a8, type: 3}
   NumStocks: 3
-  MaxStamina: 20
-  PostDazeStamina: 5
+  MaxStamina: 30
+  PostDazeStamina: 10
   MaxShield: 20
   ShieldDecayRate: 2
   ShieldRechargeRate: 1
@@ -506,7 +506,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAnimator: {fileID: 310088913466764205}
   hitBox: {fileID: 0}
-  attackDamage: 3
+  attackDamage: 5
   ShieldDamage: 3
   KnockbackForce: 60
   KnockbackTime: 0.3
