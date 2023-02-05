@@ -7,12 +7,15 @@ public class ShootSpecial : PlayerAttack
 
     bool shouldBePulled = false;
     FighterCore theOpponent;
+    Vector2 hitBoxStart;
     // Start is called before the first frame update
 
     public override void PeformAttack()
     {
+        hitBoxStart = hitBox.offset;
+        hitBox.offset = new Vector2(-99, -99);
         base.PeformAttack();
-
+        theOpponent = null;
         base.TriggerAnimation(Settings.specialAnimationTrigger);
         Debug.Log("SPECIAL ATTACK PERFORMED");
         //animationEvent for endAttack enableAttackInterrupt enableHitBox and knockPlayerBack     
@@ -22,8 +25,9 @@ public class ShootSpecial : PlayerAttack
     {
         if (attachedAtackState.GetCurrentAttack() == this)
         {
+            
             base.EnableHitBox();
-
+            hitBox.offset = hitBoxStart;
             MovementComponent movementComp = GetComponent<MovementComponent>();
             movementComp.ZeroVelocity(true, false);
         }
@@ -52,6 +56,8 @@ public class ShootSpecial : PlayerAttack
             }
         }
     }
+
+
 
     private void OnTriggerExit2D(Collider2D other)
     {
