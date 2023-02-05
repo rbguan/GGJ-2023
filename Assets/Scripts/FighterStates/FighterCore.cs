@@ -386,7 +386,7 @@ public class FighterCore : MonoBehaviour
         }
         else 
         { 
-            _currentShield = Mathf.Clamp(_currentShield + ShieldRechargeRate * Time.deltaTime, 0f, MaxShield);
+            _currentShield = Mathf.Clamp(_currentShield + ShieldRechargeRate * Time.deltaTime, 0f, MaxShield);            
         }
     }
 
