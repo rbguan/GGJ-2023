@@ -8,19 +8,20 @@ public class MenuButtonTweening : MonoBehaviour
 {
     [SerializeField][Range(0,2)] private float ButtonHoverScale;
     [SerializeField][Range(0,2)] private float ButtonHoverScaleTime;
-    [SerializeField][Range(0,2)] private float ButtonDropdownTime;
     [SerializeField][Range(0,2)] private float ButtonDropdownWaitTime;
-    [SerializeField][Range(0,2)] private float TimeGapBetweenEachDrop;
+    [SerializeField][Range(0,10)] private float PlayButtonFadePeriod;
+    [SerializeField] private AnimationCurve PlayButtonFadeCurve;
     [SerializeField][Range(0,5)] private float PlayButtonHoverPeriod;
-    [SerializeField] private AnimationCurve ButtonDropdownCurve;
-    [SerializeField][Range(0,1)] private float ButtonDropdownSquashFactor;
-    [SerializeField][Range(0,1)] private float PlayButtonY;
-    [SerializeField] private AnimationCurve ButtonDropdownScaleCurve;
+    [SerializeField] private float PlayButtonY;
+
+    [SerializeField][Range(0,10)] private float TitlePulsePeriod;
+    [SerializeField][Range(0,5)] private float TitlePulseScale;
+    [SerializeField] private AnimationCurve TitlePulseCurve;
     [SerializeField] private AnimationCurve ButtonHoverScaleCurve;
     [SerializeField] private AnimationCurve PlayButtonHoverCurve;
     [SerializeField] private RectTransform Title;
     [SerializeField] private RectTransform PlayButton;
-    [SerializeField] private RectTransform HowToPlayButton;
+    [SerializeField] private RectTransform TitleSpark;
     [SerializeField] private RectTransform QuitButton;
     void Start()
     {
@@ -61,11 +62,10 @@ public class MenuButtonTweening : MonoBehaviour
 
     private IEnumerator PlayUILoop()
     {
-        PlayButton.DOMoveY(Screen.height * PlayButtonY, PlayButtonHoverPeriod).From().SetLoops(-1).SetEase(PlayButtonHoverCurve);
+        PlayButton.DOMoveY(PlayButtonY, PlayButtonHoverPeriod).SetLoops(-1).SetEase(PlayButtonHoverCurve);
+        PlayButton.transform.GetComponent<Image>().DOFade(0, PlayButtonFadePeriod).From().SetLoops(-1).SetEase(PlayButtonFadeCurve);
+        Title.transform.DOScale(TitlePulseScale, TitlePulsePeriod).SetLoops(-1).SetEase(TitlePulseCurve);
+        TitleSpark.transform.DOScale(TitlePulseScale, TitlePulsePeriod).SetLoops(-1).SetEase(TitlePulseCurve);
         yield return null;
-        // while(true)
-        // {
-        //     yield return null;
-        // }
     }
 }
