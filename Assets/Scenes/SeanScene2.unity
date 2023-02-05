@@ -18277,6 +18277,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1113247384}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1217973976
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 4897ea94476a2224bb1a991e5464f60b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4897ea94476a2224bb1a991e5464f60b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.19
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4897ea94476a2224bb1a991e5464f60b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4897ea94476a2224bb1a991e5464f60b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 17.86
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4897ea94476a2224bb1a991e5464f60b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9678012
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4897ea94476a2224bb1a991e5464f60b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4897ea94476a2224bb1a991e5464f60b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.25171575
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4897ea94476a2224bb1a991e5464f60b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4897ea94476a2224bb1a991e5464f60b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4897ea94476a2224bb1a991e5464f60b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -29.158
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4897ea94476a2224bb1a991e5464f60b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4897ea94476a2224bb1a991e5464f60b,
+        type: 3}
+      propertyPath: m_Name
+      value: WaterTower
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4897ea94476a2224bb1a991e5464f60b, type: 3}
 --- !u!1 &1247833361
 GameObject:
   m_ObjectHideFlags: 0

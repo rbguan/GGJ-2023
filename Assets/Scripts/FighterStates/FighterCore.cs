@@ -189,6 +189,10 @@ public class FighterCore : MonoBehaviour
     // Changes a state to a new one (Example: From AttackState to HitStun state)
     public void ChangeState(FighterState fighterState)
     {
+        if (isDazed)
+        {
+            isDazed = false;
+        }
         //Perform OnStateExit if the fighter is currently in a state
         if (CurrentState != null)
         {
@@ -386,6 +390,9 @@ public class FighterCore : MonoBehaviour
 
     public void ApplyAttackValues(int staminaLoss, float shieldLoss, Vector2 knockbackVec, float knockbackTime)
     {
+        if (isDazed)
+            return;
+
         if (IsBlocking)
         {
             BlockVfx.SetActive(true);
@@ -426,11 +433,14 @@ public class FighterCore : MonoBehaviour
             movComp.ApplyKnockback(knockbackVec, knockbackTime);
         }
     }
-
+    bool isDazed = false;
+    
     private IEnumerator StartDaze()
     {
+        
         FindObjectOfType<FightStageManager>().ScreenShakeSmall();
         ChangeState(FighterStates.Dazed);
+        isDazed = true;
         yield return new WaitForSeconds(DazeTime);
         ChangeState(FighterStates.Default);
     }

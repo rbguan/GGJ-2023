@@ -6,7 +6,7 @@ TextureImporter:
   serializedVersion: 11
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -36,24 +36,24 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
+    wrapU: 1
+    wrapV: 1
     wrapW: 0
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 360
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -76,20 +76,704 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: toot_KO_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3448
+        width: 1143
+        height: 862
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5db94cdb800b20541b9b3c39c3945a4f
+      internalID: 747559960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toot_KO_1
+      rect:
+        serializedVersion: 2
+        x: 1143
+        y: 3448
+        width: 1143
+        height: 862
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f804e7542c00a4f479bc041608e76f82
+      internalID: 985553874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toot_KO_2
+      rect:
+        serializedVersion: 2
+        x: 2286
+        y: 3448
+        width: 1143
+        height: 862
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88385d10b03c5e94fa5574c38717a4fa
+      internalID: 351055600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toot_KO_3
+      rect:
+        serializedVersion: 2
+        x: 3429
+        y: 3448
+        width: 1143
+        height: 862
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84205908374c83d4fb8b10a2b47aaf92
+      internalID: -582106389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toot_KO_4
+      rect:
+        serializedVersion: 2
+        x: 4572
+        y: 3448
+        width: 1143
+        height: 862
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1c9e578d5e177a4686db10ea2e71eb1
+      internalID: 1115840410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toot_KO_5
+      rect:
+        serializedVersion: 2
+        x: 5715
+        y: 3448
+        width: 1143
+        height: 862
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecbad4b52ef4e6a42975dbc71e3805b1
+      internalID: -1427398401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toot_KO_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2586
+        width: 1143
+        height: 862
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2aa80b6a9a4685b4d821fc789565918c
+      internalID: 700512619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toot_KO_7
+      rect:
+        serializedVersion: 2
+        x: 1143
+        y: 2586
+        width: 1143
+        height: 862
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9bda0f30f263944995e752316957252
+      internalID: 168867162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toot_KO_8
+      rect:
+        serializedVersion: 2
+        x: 2286
+        y: 2586
+        width: 1143
+        height: 862
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52d26ccaa81d7c646961a19bf2f515ad
+      internalID: -81105910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toot_KO_9
+      rect:
+        serializedVersion: 2
+        x: 3429
+        y: 2586
+        width: 1143
+        height: 862
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd185e0afad33b941899684c9e9b22ac
+      internalID: 1333952084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toot_KO_10
+      rect:
+        serializedVersion: 2
+        x: 4572
+        y: 2586
+        width: 1143
+        height: 862
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8ed80d5bb657084ba14cacbff217cde
+      internalID: -1717907918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toot_KO_11
+      rect:
+        serializedVersion: 2
+        x: 5715
+        y: 2586
+        width: 1143
+        height: 862
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5cf35619d203a343adad747f4366681
+      internalID: 1793263039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toot_KO_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1724
+        width: 1143
+        height: 862
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d0dd123919178840a94b2e8c74cd45b
+      internalID: 182783136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toot_KO_13
+      rect:
+        serializedVersion: 2
+        x: 1143
+        y: 1724
+        width: 1143
+        height: 862
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecaebfcc0bbf7fc468e44e47d1feeead
+      internalID: 1545473781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toot_KO_14
+      rect:
+        serializedVersion: 2
+        x: 2286
+        y: 1724
+        width: 1143
+        height: 862
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6eebca155e588c4f901781ccb6d55c6
+      internalID: -878855362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toot_KO_15
+      rect:
+        serializedVersion: 2
+        x: 3429
+        y: 1724
+        width: 1143
+        height: 862
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9645cb1ce8015fd48b661c97cdb1ecd6
+      internalID: 1110970407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toot_KO_16
+      rect:
+        serializedVersion: 2
+        x: 4572
+        y: 1724
+        width: 1143
+        height: 862
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf426644b9b6b4e47a050ca0a550ed1e
+      internalID: -1020155514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toot_KO_17
+      rect:
+        serializedVersion: 2
+        x: 5715
+        y: 1724
+        width: 1143
+        height: 862
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7100df3f95837b840bbf95bba0d5a048
+      internalID: -1521512008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toot_KO_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 862
+        width: 1143
+        height: 862
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c47122aa0a997e64bbad11af0a418930
+      internalID: -1655740757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toot_KO_19
+      rect:
+        serializedVersion: 2
+        x: 1143
+        y: 862
+        width: 1143
+        height: 862
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fc8e3199be261f4097eb36b6ad80cf3
+      internalID: -1650830969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toot_KO_20
+      rect:
+        serializedVersion: 2
+        x: 2286
+        y: 862
+        width: 1143
+        height: 862
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a486096da4ff8c4c8cbad94d563cf14
+      internalID: 593490763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toot_KO_21
+      rect:
+        serializedVersion: 2
+        x: 3429
+        y: 862
+        width: 1143
+        height: 862
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 509421955a1a2344f8016c7f7fa1aff3
+      internalID: -1850720600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toot_KO_22
+      rect:
+        serializedVersion: 2
+        x: 4572
+        y: 862
+        width: 1143
+        height: 862
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2fe70d3216b8d54891db7685a38f039
+      internalID: 990294398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toot_KO_23
+      rect:
+        serializedVersion: 2
+        x: 5715
+        y: 862
+        width: 1143
+        height: 862
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1fbb8f84eb35ab4e967fda720dd24a2
+      internalID: -823512298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toot_KO_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1143
+        height: 862
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3aff1889f45c28b44911bf80e4ad7e4d
+      internalID: -1796293886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toot_KO_25
+      rect:
+        serializedVersion: 2
+        x: 1143
+        y: 0
+        width: 1143
+        height: 862
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6249874db99cd541afbbb1b2196ed03
+      internalID: -921418413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toot_KO_26
+      rect:
+        serializedVersion: 2
+        x: 2286
+        y: 0
+        width: 1143
+        height: 862
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13fae104f6ca1ef4cbfae27e60928ff5
+      internalID: 63908824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toot_KO_27
+      rect:
+        serializedVersion: 2
+        x: 3429
+        y: 0
+        width: 1143
+        height: 862
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27ae18f565daea94387f3c0325a0d7cc
+      internalID: 1490381169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toot_KO_28
+      rect:
+        serializedVersion: 2
+        x: 4572
+        y: 0
+        width: 1143
+        height: 862
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43d23c94b87d7ef4a88c0bec57f5df23
+      internalID: 1271529376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: toot_KO_29
+      rect:
+        serializedVersion: 2
+        x: 5715
+        y: 0
+        width: 1143
+        height: 862
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09215f2f4ac4bf94296d7ccd2d843c51
+      internalID: 1517276844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: be942d47c0617f04f9004733d7498dab
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      toot_KO_23: -823512298
+      toot_KO_6: 700512619
+      toot_KO_14: -878855362
+      toot_KO_2: 351055600
+      toot_KO_15: 1110970407
+      toot_KO_0: 747559960
+      toot_KO_24: -1796293886
+      toot_KO_26: 63908824
+      toot_KO_8: -81105910
+      toot_KO_11: 1793263039
+      toot_KO_16: -1020155514
+      toot_KO_12: 182783136
+      toot_KO_9: 1333952084
+      toot_KO_19: -1650830969
+      toot_KO_1: 985553874
+      toot_KO_17: -1521512008
+      toot_KO_29: 1517276844
+      toot_KO_10: -1717907918
+      toot_KO_3: -582106389
+      toot_KO_22: 990294398
+      toot_KO_28: 1271529376
+      toot_KO_18: -1655740757
+      toot_KO_25: -921418413
+      toot_KO_13: 1545473781
+      toot_KO_4: 1115840410
+      toot_KO_20: 593490763
+      toot_KO_27: 1490381169
+      toot_KO_7: 168867162
+      toot_KO_21: -1850720600
+      toot_KO_5: -1427398401
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

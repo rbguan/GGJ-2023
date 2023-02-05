@@ -361,7 +361,7 @@ MonoBehaviour:
   MaxShield: 20
   ShieldDecayRate: 2
   ShieldRechargeRate: 1
-  DazeTime: 4
+  DazeTime: 5
   IsBlocking: 0
   isLeft: 1
   attachedAnimator: {fileID: 310088913466764205}

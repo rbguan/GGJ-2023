@@ -233,7 +233,7 @@ MonoBehaviour:
   MaxShield: 20
   ShieldDecayRate: 2
   ShieldRechargeRate: 1
-  DazeTime: 4
+  DazeTime: 5
   IsBlocking: 0
   isLeft: 1
   attachedAnimator: {fileID: 310088913466764205}
@@ -421,7 +421,7 @@ MonoBehaviour:
   KnockbackTime: 2
   SelfPushbackForce: 100
   SelfPushbackTime: 0.5
-  knockOutProjectile: {fileID: 5777557940677311430, guid: 9512f52786d81e047bceeed11a484698,
+  knockOutProjectile: {fileID: 5777557940677311430, guid: 039386772a537484da3d37fda5a71b8b,
     type: 3}
   spawnPoint: {fileID: 2431529109261841681}
   graphics: {fileID: 1249837616462373391}
