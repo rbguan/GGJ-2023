@@ -926,6 +926,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _rootIcon: {fileID: 3997012847223613628}
+  _tootIcon: {fileID: 434835475074319546}
+  _shootIcon: {fileID: 434835476891127229}
 --- !u!95 &1255839120
 Animator:
   serializedVersion: 4
@@ -1460,6 +1463,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1399620154439653535}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &3997012847223613628 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2599787669780557859, guid: 35123f83cb709664cba6c83c8ea6ff03,
+    type: 3}
+  m_PrefabInstance: {fileID: 1399620154439653535}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2458003955485963417
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1650,6 +1659,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35123f83cb709664cba6c83c8ea6ff03, type: 3}
+--- !u!224 &434835475074319546 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2599787669780557859, guid: 35123f83cb709664cba6c83c8ea6ff03,
+    type: 3}
+  m_PrefabInstance: {fileID: 2458003955485963417}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1944551084202649574 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4098552168792003455, guid: 35123f83cb709664cba6c83c8ea6ff03,
@@ -1976,6 +1991,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35123f83cb709664cba6c83c8ea6ff03, type: 3}
+--- !u!224 &434835476891127229 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2599787669780557859, guid: 35123f83cb709664cba6c83c8ea6ff03,
+    type: 3}
+  m_PrefabInstance: {fileID: 2458003957165899166}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1944551085874196193 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4098552168792003455, guid: 35123f83cb709664cba6c83c8ea6ff03,

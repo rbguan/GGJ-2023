@@ -19,6 +19,7 @@ public class MenuFighterActions : MonoBehaviour
     public void SetCurrentFighter(Fighters newFighter)
     {
         currentFighter = newFighter;
+        CharacterSelectGameManager.Instance.SetupSelectedFighterUI(playerNum, currentFighter);
     }
 
     public Fighters GetCurrentFighter()

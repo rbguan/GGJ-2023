@@ -58,11 +58,15 @@ public class MovementComponent : MonoBehaviour
             return;
         }
 
-        _rb.AddForce(new Vector2(HorizontalSpeed * xAxisValue, 0f));
+        _rb.AddForce(new Vector2(HorizontalSpeed * xAxisValue * Time.deltaTime, 0f));
 
         if (_rb.velocity.x > MaxVelocity)
         {
             _rb.velocity = new Vector3(MaxVelocity, _rb.velocity.y);
+        }
+        else if (_rb.velocity.x < -MaxVelocity)
+        {
+            _rb.velocity = new Vector3(-MaxVelocity, _rb.velocity.y);
         }
     }
 

@@ -38,9 +38,18 @@ public class CharacterSelectUITweens : MonoBehaviour
     [SerializeField] private AnimationCurve _zoomOutTranslateCurve;
     [SerializeField] private AnimationCurve _zoomOutScaleCurve;
 
+    [Header("Icon Wag Animation Values")]
+    [SerializeField][Range(0,10)] private float _wagPeriod;
+    [SerializeField][Range(-90,90)] private float _wagMaxAngle;
+    [SerializeField] private Transform _rootIcon;
+    [SerializeField] private Transform _tootIcon;
+    [SerializeField] private Transform _shootIcon;
+    [SerializeField] private AnimationCurve _wagCurve;
+    [SerializeField] float _wagOffset;
     void Start()
     {
         _sceneTransitioner = FindObjectOfType<CharSelectToMatchTransition>();
+        StartCoroutine(StartIconBobs());
     }
 
     // Update is called once per frame
@@ -74,4 +83,18 @@ public class CharacterSelectUITweens : MonoBehaviour
         yield return new WaitForSeconds(.92f);
         CharSelectToMatchTransition.Instance.ExitCharSelectAnimation();
     }
+    private IEnumerator StartIconBobs()
+    {
+        DoWag(_rootIcon);
+        yield return new WaitForSeconds(_wagOffset);
+        DoWag(_tootIcon);
+        yield return new WaitForSeconds(_wagOffset);
+        DoWag(_shootIcon);
+    }
+
+    private void DoWag(Transform target)
+    {
+        target.DOLocalMoveY(_wagMaxAngle, _wagPeriod).SetLoops(-1).SetEase(_wagCurve);
+    }
+    
 }

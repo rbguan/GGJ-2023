@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -749746816, guid: 299d084303445c646a6f03990ad56090, type: 3}
+  m_Sprite: {fileID: 1551903146, guid: 82ba62e7cb3ec314d9f5f1d5f7b4f8bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,17 +97,18 @@ GameObject:
   - component: {fileID: 1249837616543565497}
   - component: {fileID: 1249837616543565510}
   - component: {fileID: 1249837616543565501}
+  - component: {fileID: -8949784418758858212}
   - component: {fileID: 1249837616543565498}
   - component: {fileID: 1249837616543565499}
   - component: {fileID: 1249837616543565496}
   - component: {fileID: 1249837616543565500}
   - component: {fileID: 3518125622449916534}
-  - component: {fileID: 5538379879967147972}
   - component: {fileID: 310088913466764205}
   - component: {fileID: -8432862666369420623}
   - component: {fileID: -9165368102968323892}
+  - component: {fileID: 3798799950536082267}
   m_Layer: 0
-  m_Name: Toot2 1
+  m_Name: Shoot
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -162,7 +163,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.008332372, y: -0.23326844}
+  m_Offset: {x: 0.008332372, y: -0.45012468}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -173,7 +174,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6341646, y: 1.3623728}
+  m_Size: {x: 0.6341646, y: 1.5936681}
   m_EdgeRadius: 0
 --- !u!114 &1249837616543565501
 MonoBehaviour:
@@ -191,6 +192,103 @@ MonoBehaviour:
   jumpDustVfX: {fileID: 6093318836390733219, guid: ecdf9765f424df74ebf06fead15ececf,
     type: 3}
   hitVFX: {fileID: 791474790081933350, guid: b947c978310a38e41bfcd59c62cf615d, type: 3}
+--- !u!82 &-8949784418758858212
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249837616543565506}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 3311867969662067358, guid: 5d322d68ce139314c998185977d331f1,
+    type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &1249837616543565498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,6 +305,22 @@ MonoBehaviour:
   playerGraphics: {fileID: 1249837616462373391}
   IsGrounded: 0
   _collisionBox: {fileID: 1249837616543565510}
+  AudioSrc: {fileID: -8949784418758858212}
+  AerialAttackSfx: {fileID: 8300000, guid: aa61919e28c58f741b4019ababd806b9, type: 3}
+  BasicAttackSfx: {fileID: 8300000, guid: ad936cc005d339f4a9bbf9355a0b3da9, type: 3}
+  CombatSfx1: {fileID: 8300000, guid: ce446c69f02c78b49b81764f73473e53, type: 3}
+  CombatSfx2: {fileID: 8300000, guid: 8618dbba8d394194294f5a62d609ca73, type: 3}
+  DodgeSfx: {fileID: 8300000, guid: e2f08fb6f8a6ca947b3c3d4ddafe0f2d, type: 3}
+  JumpSfx1: {fileID: 8300000, guid: ca25c9681c7937942aa5f6e28c4013f8, type: 3}
+  JumpSfx2: {fileID: 8300000, guid: ca25c9681c7937942aa5f6e28c4013f8, type: 3}
+  KOAttackSfx1: {fileID: 8300000, guid: 485f21fb62b080647a049b01a9fa8941, type: 3}
+  KOAttackSfx2: {fileID: 8300000, guid: 28309910cdd8e494a8a7a8e9a7188662, type: 3}
+  RespawnSfx1: {fileID: 8300000, guid: a1784795e40a08549b3d26f2458f220a, type: 3}
+  RespawnSfx2: {fileID: 8300000, guid: ec7b540b142820f40842e81706ed210b, type: 3}
+  SpecialClipSfx1: {fileID: 8300000, guid: 002f5f6be6f8c7544b8465f779bea139, type: 3}
+  SpecialClipSfx2: {fileID: 8300000, guid: 3c60a0c6b822d1145b6120d9fb6afc7f, type: 3}
+  StartSfx1: {fileID: 8300000, guid: bc3e8f02574c4544a905958ee6a6ec96, type: 3}
+  StartSfx2: {fileID: 8300000, guid: 9959835aa5b1e3a4f8df868bf2826fe9, type: 3}
   NumStocks: 3
   MaxStamina: 20
   PostDazeStamina: 5
@@ -234,8 +348,8 @@ MonoBehaviour:
     type: 3}
   attackCancellable: 0
   fighterBasicAttack: {fileID: 1249837616543565497}
-  fighterSpecialAttack: {fileID: 5538379879967147972}
-  knockOutAttack: {fileID: 0}
+  fighterSpecialAttack: {fileID: 3798799950536082267}
+  knockOutAttack: {fileID: 3798799950536082267}
 --- !u!114 &1249837616543565496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,36 +401,15 @@ MonoBehaviour:
   _animController: {fileID: 310088913466764205}
   _rb: {fileID: 1249837616543565500}
   _collisionBox: {fileID: 1249837616543565510}
-  HorizontalSpeed: 5
-  DodgeSpeed: 500
+  HorizontalSpeed: 500
+  DodgeSpeed: 700
   DodgeTime: 0.5
   DodgeCooldown: 1.2
   JumpSpeed: 300
   JumpTime: 0.2
   FallThroughTime: 2
-  MaxVelocity: 10
+  MaxVelocity: 500
   dashVFX: {fileID: 6534696287886038150, guid: c823501bc586b864e8406ebcb176f694, type: 3}
---- !u!114 &5538379879967147972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1249837616543565506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c66279da366b5ff4c9de04da9635cd7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerAnimator: {fileID: 310088913466764205}
-  hitBox: {fileID: 9217964302368651251}
-  attackDamage: 3
-  ShieldDamage: 5
-  KnockbackForce: 250
-  KnockbackTime: 0.5
-  SelfPushbackForce: 250
-  SelfPushbackTime: 0.5
-  graphics: {fileID: 1249837616462373391}
 --- !u!95 &310088913466764205
 Animator:
   serializedVersion: 4
@@ -327,7 +420,7 @@ Animator:
   m_GameObject: {fileID: 1249837616543565506}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b42cf318e3df4114ba47b3bf886e7a48, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1bff6775400edd649944bf8c812f01f7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -373,6 +466,33 @@ MonoBehaviour:
   KnockbackTime: 2
   SelfPushbackForce: 100
   SelfPushbackTime: 0.5
+--- !u!114 &3798799950536082267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249837616543565506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a44992d8301d71e47ae6b8f0a7db2d3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAnimator: {fileID: 310088913466764205}
+  hitBox: {fileID: 0}
+  attackDamage: 3
+  ShieldDamage: 3
+  KnockbackForce: 60
+  KnockbackTime: 0.3
+  SelfPushbackForce: 0
+  SelfPushbackTime: 0
+  graphics: {fileID: 1249837616462373391}
+  isLeft: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 2112
+  spikePrefab: {fileID: 630965392204549904, guid: 1068a1c7233f10e448173062a5e74dfc,
+    type: 3}
 --- !u!1 &1249837617240425445
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,13 +533,13 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1249837617240425445}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -1.2222856, y: -0.28343505}
+  m_Offset: {x: -1.42, y: -0.49}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}

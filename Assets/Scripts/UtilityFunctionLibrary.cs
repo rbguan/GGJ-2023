@@ -14,4 +14,9 @@ public class UtilityFunctionLibrary
     {
         return b.normalized * (Vector2.Dot(a, b) / a.magnitude);
     }
+
+    public static bool RandomBool()
+    {
+        return (Random.value > 0.5f);
+    }
 }

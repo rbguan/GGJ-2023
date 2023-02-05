@@ -48,7 +48,7 @@ public class SpecialAttack : PlayerAttack
         {
             spawnPos = hit.point;
             GameObject newPrefab = Instantiate(spikePrefab, spawnPos, Quaternion.identity);
-            newPrefab.GetComponent<SpikeDestroyScript>().SetUp(this);
+            //newPrefab.GetComponent<SpikeDestroyScript>().SetUp(this);
             if (fighterCore.GetPlayerNum() == 1)
                 newPrefab.layer = LayerMask.NameToLayer("Player1");
             else if (fighterCore.GetPlayerNum() == 2)
