@@ -450,6 +450,7 @@ public class FighterCore : MonoBehaviour
     {
 
         OnKill();
+        FightStageManager.Instance.ResetPositionToSpawnPoint(this);
     }
 
     public void OnKill()

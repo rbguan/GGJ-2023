@@ -93,11 +93,11 @@ public class FighterState : MonoBehaviour
         coreObject.attachedAnimator.SetBool("Grounded", coreObject.IsGrounded);
         Debug.Log("Any Grounders in chat" + coreObject.IsGrounded);
 
-        if (axisValue < 0)
+        if (axisValue < 0 && coreObject.CurrentState.fighterState != FighterStates.Attack)
         {
             coreObject.FlipLeft();
         }
-        else if (axisValue > 0)
+        else if (axisValue > 0 && coreObject.CurrentState.fighterState != FighterStates.Attack) 
         {
             coreObject.FlipRight();
         }
