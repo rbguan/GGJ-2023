@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 1249837616543565496}
   - component: {fileID: 1249837616543565500}
   - component: {fileID: 3518125622449916534}
-  - component: {fileID: 8656058853153650771}
+  - component: {fileID: 5538379879967147972}
   - component: {fileID: 310088913466764205}
   m_Layer: 0
   m_Name: Toot2
@@ -160,7 +160,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.09385228, y: 0.01117292}
+  m_Offset: {x: 0.008332372, y: -0.23326844}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -171,7 +171,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.44582462, y: 0.7452583}
+  m_Size: {x: 0.6341646, y: 1.3623728}
   m_EdgeRadius: 0
 --- !u!114 &1249837616543565501
 MonoBehaviour:
@@ -186,6 +186,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fighterState: 2
+  jumpDustVfX: {fileID: 6093318836390733219, guid: ecdf9765f424df74ebf06fead15ececf,
+    type: 3}
 --- !u!114 &1249837616543565498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,11 +206,12 @@ MonoBehaviour:
   _collisionBox: {fileID: 1249837616543565510}
   NumStocks: 3
   MaxStamina: 20
-  PostDazeStamina: 0
+  PostDazeStamina: 5
   MaxShield: 20
-  DodgeTime: 0
+  ShieldDecayRate: 0
+  ShieldRechargeRate: 0
   DazeTime: 0
-  FastFallTime: 0
+  IsBlocking: 0
   isLeft: 1
   attachedAnimator: {fileID: 310088913466764205}
 --- !u!114 &1249837616543565499
@@ -224,9 +227,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fighterState: 1
+  jumpDustVfX: {fileID: 6093318836390733219, guid: ecdf9765f424df74ebf06fead15ececf,
+    type: 3}
   attackCancellable: 0
   fighterBasicAttack: {fileID: 1249837616543565497}
-  fighterSpecialAttack: {fileID: 8656058853153650771}
+  fighterSpecialAttack: {fileID: 5538379879967147972}
 --- !u!114 &1249837616543565496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +245,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fighterState: 0
+  jumpDustVfX: {fileID: 6093318836390733219, guid: ecdf9765f424df74ebf06fead15ececf,
+    type: 3}
 --- !u!50 &1249837616543565500
 Rigidbody2D:
   serializedVersion: 4
@@ -260,7 +267,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &3518125622449916534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,7 +289,8 @@ MonoBehaviour:
   JumpSpeed: 200
   JumpTime: 0.2
   FallThroughTime: 2
---- !u!114 &8656058853153650771
+  dashVFX: {fileID: 6534696287886038150, guid: c823501bc586b864e8406ebcb176f694, type: 3}
+--- !u!114 &5538379879967147972
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -291,23 +299,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1249837616543565506}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a44992d8301d71e47ae6b8f0a7db2d3a, type: 3}
+  m_Script: {fileID: 11500000, guid: c66279da366b5ff4c9de04da9635cd7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerAnimator: {fileID: 310088913466764205}
-  hitBox: {fileID: 0}
+  hitBox: {fileID: 9217964302368651251}
   attackDamage: 3
-  ShieldDamage: 0
-  KnockbackForce: 0
-  KnockbackTime: 0
-  SelfPushbackForce: 0
-  SelfPushbackTime: 0
+  ShieldDamage: 5
+  KnockbackForce: 250
+  KnockbackTime: 0.5
+  SelfPushbackForce: 250
+  SelfPushbackTime: 0.5
   graphics: {fileID: 1249837616462373391}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 2113
-  spikePrefab: {fileID: 630965392204549904, guid: 1068a1c7233f10e448173062a5e74dfc,
-    type: 3}
 --- !u!95 &310088913466764205
 Animator:
   serializedVersion: 4
@@ -338,6 +341,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1249837617240425447}
   - component: {fileID: 1249837617240425444}
+  - component: {fileID: 9217964302368651251}
   m_Layer: 0
   m_Name: HitBox
   m_TagString: Untagged
@@ -385,4 +389,30 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.31621933, y: 0.19108307}
+  m_EdgeRadius: 0
+--- !u!61 &9217964302368651251
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249837617240425445}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -1.36, y: -0.1}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.69, y: 1.63}
   m_EdgeRadius: 0

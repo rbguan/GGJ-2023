@@ -67,13 +67,25 @@ public class FighterState : MonoBehaviour
 
     }
 
+    [SerializeField]
+    GameObject jumpDustVfX;
+
     //Override this method to call updates for this state: This occurs during FighterCore's update cycle;
     public virtual void FighterStateUpdate(float axisValue)
     {
-        Vector2 basePoint = UtilityFunctionLibrary.GetVec3AsVec2(transform.position) + Vector2.down * coreObject._collisionBox.size.y * 0.5f;
+        Vector2 basePoint = UtilityFunctionLibrary.GetVec3AsVec2(transform.position) + (Vector2.down * (coreObject._collisionBox.size.y * 1f));
         RaycastHit2D groundHit = Physics2D.Raycast(basePoint, Vector2.down, coreObject._collisionBox.size.y * 0.1f);
+
+        bool lastGrounding = coreObject.IsGrounded;
+
         coreObject.IsGrounded = (groundHit.collider != null)
             && !movComp.IsFallingThrough;
+
+        if (lastGrounding == false && coreObject.IsGrounded)
+        {
+            Instantiate(jumpDustVfX, groundHit.point, Quaternion.identity);
+        }
+
         coreObject.attachedAnimator.SetBool("Grounded", coreObject.IsGrounded);
         Debug.Log("Any Grounders in chat" + coreObject.IsGrounded);
 

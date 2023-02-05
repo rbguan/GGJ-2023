@@ -8,6 +8,8 @@ public class Settings
     public const string specialAnimationTrigger = "Special";
     public const string hitStunTrigger = "HitStun";
     public const string cancelTrigger = "Cancel";
+    public const string dodgeTrigger = "Dodge";
+    public const string blockString = "Block";
 }
 
 

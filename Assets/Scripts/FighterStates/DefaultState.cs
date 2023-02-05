@@ -54,12 +54,14 @@ public class DefaultState : FighterState
             {
                 blockActive = true;
                 coreObject.IsBlocking = true;
+                coreObject.attachedAnimator.SetBool(Settings.blockString, true);
             }
 
             if (blockCTX.WasReleasedThisFrame())
             {
                 blockActive = false;
                 coreObject.IsBlocking = false;
+                coreObject.attachedAnimator.SetBool(Settings.blockString, false);
             }
         }
         
@@ -86,6 +88,8 @@ public class DefaultState : FighterState
         Debug.Log("FallthroughPlatformPerformed");
     }
 
+
+
     public override void DodgeInput(bool left)
     {
         if (left)
@@ -108,5 +112,6 @@ public class DefaultState : FighterState
         doubleJumpConsumed = false;
         blockActive = false;
         coreObject.IsBlocking = false;
+        coreObject.attachedAnimator.SetBool(Settings.blockString, false);
     }
 }
