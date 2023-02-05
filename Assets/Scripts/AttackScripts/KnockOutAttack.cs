@@ -1,17 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.ParticleSystemJobs;
 public class KnockOutAttack : PlayerAttack
 {
     [SerializeField]
     GameObject knockOutProjectile;
-    
+
     public Transform spawnPoint;
     public override void PeformAttack()
     {
         base.PeformAttack();
-
         base.TriggerAnimation(Settings.knockOutString);
         Debug.Log("KNOCKOUT ATTACK PERFORMED");
         

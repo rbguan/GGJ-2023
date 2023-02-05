@@ -13,7 +13,11 @@ public class AttackState : FighterState
     [SerializeField]
     PlayerAttack knockOutAttack;
     PlayerAttack currentAttack;
-
+    [SerializeField]
+    GameObject chargeVFX;
+    GameObject currentChargeVFX;
+    [SerializeField]
+    Transform artPosition;
     public override void OnStateEnter()
     {
         base.OnStateEnter();
@@ -33,6 +37,10 @@ public class AttackState : FighterState
 
     public override void OnStateExit()
     {
+        if (currentChargeVFX != null)
+        {
+            Destroy(currentChargeVFX);
+        }
         base.OnStateExit();
         
     }
@@ -72,6 +80,7 @@ public class AttackState : FighterState
     {
         if (coreObject.CurrentState == this)
         {
+            currentChargeVFX = Instantiate(chargeVFX, artPosition.position, Quaternion.identity, transform);
             Debug.Log("KnockOut");
             currentAttack = knockOutAttack;
             knockOutAttack.PeformAttack();
