@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 using TMPro;
 public class FightStageManager : MonoBehaviour
 {
+    public static FightStageManager Instance { get; private set; }
+
     [SerializeField]
     Transform[] spawnPos = new Transform[2];
 
@@ -80,6 +82,10 @@ public class FightStageManager : MonoBehaviour
         }       
     }
 
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     public void GoToVictoryScreen(FighterCore losingPlayer)
     {
